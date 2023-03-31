@@ -1,0 +1,22 @@
+# Folders to ignore
+/admin
+data/
+temp/
+
+# Ignore file types that may contain data or models
+*.h5
+*.p
+*.pkl
+*.csv
+*.xlsx
+*.txt
+# Ignore all checkpoints  and cache folders
+**/.ipynb_checkpoints/
+**/__pycache__/
+
+# Ignore PyCharm files
+.idea
+
+# Ignore cache files (stored in this folder)
+**/__pycache__/
+
