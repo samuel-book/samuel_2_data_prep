@@ -4,6 +4,7 @@ data/
 temp/
 
 # Ignore file types that may contain data or models
+*.db
 *.h5
 *.p
 *.pkl
