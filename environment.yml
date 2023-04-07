@@ -17,6 +17,7 @@ dependencies:
     - geopandas==0.12.2
     - mapclassify==2.5.0
     - pylatex==1.4.1
+    - shap==0.41.0
     - simpy==4.0.1
     - tensorflow==2.12.0
     - xgboost==1.7.5
