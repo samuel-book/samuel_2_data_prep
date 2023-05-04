@@ -10,6 +10,7 @@ temp/
 *.csv
 *.xlsx
 *.txt
+
 # Ignore all checkpoints  and cache folders
 **/.ipynb_checkpoints/
 **/__pycache__/
@@ -20,3 +21,5 @@ temp/
 # Ignore cache files (stored in this folder)
 **/__pycache__/
 
+# Ignore VSCode settings
+.vscode/settings.json
