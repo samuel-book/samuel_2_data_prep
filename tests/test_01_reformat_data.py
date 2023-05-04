@@ -1,3 +1,4 @@
+import numpy as np
 import os
 import pandas as pd
 import unittest
@@ -13,9 +14,9 @@ class DataTests(unittest.TestCase):
     def setUpClass(self):
         '''Set up - runs prior to each test'''
         # Paths and filenames
-        raw_path: str = './../data'
+        raw_path: str = './data'
         raw_filename: str = 'SAMueL ssnap extract v2.csv'
-        clean_path: str = './../output'
+        clean_path: str = './output'
         clean_filename: str = 'reformatted_data.csv'
         # Import dataframes
         raw_data = pd.read_csv(os.path.join(raw_path, raw_filename),
@@ -45,6 +46,18 @@ class DataTests(unittest.TestCase):
         raw_freq = (self.raw[raw_col].isin(raw_val).values).sum()
         clean_freq = (self.clean[clean_col].isin(clean_val).values).sum()
         self.assertEqual(raw_freq, clean_freq)
+
+    def time_neg(self, time_column):
+        '''
+        Function for testing that times are not negative when expected
+        to be positive.
+        Input: time_column = string, column with times
+        '''
+        # Extract time column values when not null
+        time_not_null = self.clean[
+            self.clean[time_column].notnull()][time_column]
+        # Check these are all 0+
+        self.assertTrue(all(time_not_null >= 0))
 
     def test_raw_shape(self):
         '''Test the raw dataframe shape is as expected'''
@@ -79,6 +92,26 @@ class DataTests(unittest.TestCase):
         '''Test if numbers arriving by ambulance are correct'''
         self.freq('S1ArriveByAmbulance', 'Y', 'arrive_by_ambulance', 1)
         self.freq('S1ArriveByAmbulance', 'N', 'arrive_by_ambulance', 0)
+
+    def test_thrombolysis(self):
+        '''Test that numbers receiving thrombolysis are correct'''
+        self.freq('S2Thrombolysis', 'Y', 'thrombolysis', 1)
+        self.freq('S2Thrombolysis', ['N', 'NB'], 'thrombolysis', 0)
+
+    def test_thrombectomy(self):
+        '''Test that number not receiving thrombectomy equals number NaN'''
+        self.freq('ArrivaltoArterialPunctureMinutes', np.nan,
+                  'thrombectomy', 0)
+
+    def test_time_negative(self):
+        '''Test that times are not negative when expected to be positive'''
+        self.time_neg('onset_to_arrival_time')
+        self.time_neg('call_to_ambulance_arrival_time')
+        self.time_neg('ambulance_on_scene_time')
+        self.time_neg('ambulance_travel_to_hospital_time')
+        self.time_neg('ambulance_wait_time_at_hospital')
+        self.time_neg('scan_to_thrombolysis_time')
+        self.time_neg('arrival_to_thrombectomy_time')
 
 
 if __name__ == '__main__':
