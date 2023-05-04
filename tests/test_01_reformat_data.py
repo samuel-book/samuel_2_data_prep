@@ -3,7 +3,7 @@ import os
 import pandas as pd
 import unittest
 
-# Run from command line: python test_01_reformat_data.py
+# This is currently run by notebook 01_reformat_data.ipynb
 
 
 class DataTests(unittest.TestCase):
