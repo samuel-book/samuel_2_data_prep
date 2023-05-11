@@ -53,11 +53,7 @@ class DataTests(unittest.TestCase):
         to be positive.
         Input: time_column = string, column with times
         '''
-        # Extract time column values when not null
-        time_not_null = self.clean[
-            self.clean[time_column].notnull()][time_column]
-        # Check these are all 0+
-        self.assertTrue(all(time_not_null >= 0))
+        self.assertEqual(sum(self.clean[time_column] < 0), 0)
 
     def equal_array(self, df, col, exp_array):
         '''
@@ -74,6 +70,11 @@ class DataTests(unittest.TestCase):
     def test_raw_shape(self):
         '''Test the raw dataframe shape is as expected'''
         self.assertEqual(self.raw.shape, (360381, 83))
+
+    def test_id(self):
+        '''Test that ID numbers are all unique'''
+        self.assertEqual(len(self.clean.id.unique()),
+                         len(self.clean.index))
 
     def test_gender(self):
         '''Test the number of each gender has not changed'''
@@ -117,86 +118,78 @@ class DataTests(unittest.TestCase):
 
     def test_time_negative(self):
         '''Test that times are not negative when expected to be positive'''
-        self.time_neg('onset_to_arrival_time')
-        self.time_neg('call_to_ambulance_arrival_time')
-        self.time_neg('ambulance_on_scene_time')
-        self.time_neg('ambulance_travel_to_hospital_time')
-        self.time_neg('ambulance_wait_time_at_hospital')
-        self.time_neg('scan_to_thrombolysis_time')
-        self.time_neg('arrival_to_thrombectomy_time')
+        time_col = ['onset_to_arrival_time',
+                    'call_to_ambulance_arrival_time',
+                    'ambulance_on_scene_time',
+                    'ambulance_travel_to_hospital_time',
+                    'ambulance_wait_time_at_hospital',
+                    'scan_to_thrombolysis_time',
+                    'arrival_to_thrombectomy_time']
+        for col in time_col:
+            with self.subTest(msg=col):
+                self.time_neg(col)
 
-    def test_comorbid(self):
-        '''Test that comorbidity numbers are as expected'''
+    def test_comorbid_yn(self):
+        '''Test that comorbidity numbers are as expected (Y, N)'''
+        col_list = (
+            [['S2CoMCongestiveHeartFailure', 'congestive_heart_failure'],
+             ['S2CoMHypertension', 'hypertension'],
+             ['S2CoMAtrialFibrillation', 'atrial_fibrillation'],
+             ['S2CoMDiabetes', 'diabetes'],
+             ['S2CoMStrokeTIA', 'prior_stroke_tia']])
+        for raw_col, clean_col in col_list:
+            with self.subTest(msg=clean_col):
+                self.freq(raw_col, 'Y', clean_col, 1)
+                self.freq(raw_col, 'N', clean_col, 0)
 
-        self.freq('S2CoMCongestiveHeartFailure', 'Y',
-                  'congestive_heart_failure', 1)
-        self.freq('S2CoMCongestiveHeartFailure', 'N',
-                  'congestive_heart_failure', 0)
-        self.freq('S2CoMHypertension', 'Y', 'hypertension', 1)
-        self.freq('S2CoMHypertension', 'N', 'hypertension', 0)
-        self.freq('S2CoMAtrialFibrillation', 'Y', 'atrial_fibrillation', 1)
-        self.freq('S2CoMAtrialFibrillation', 'N', 'atrial_fibrillation', 0)
-        self.freq('S2CoMDiabetes', 'Y', 'diabetes', 1)
-        self.freq('S2CoMDiabetes', 'N', 'diabetes', 0)
-        self.freq('S2CoMStrokeTIA', 'Y', 'prior_stroke_tia', 1)
-        self.freq('S2CoMStrokeTIA', 'N', 'prior_stroke_tia', 0)
+    def test_comorbid_nb(self):
+        '''Test that comorbidity numbers are as expected (Y, N, NB)'''
+        col_list = (
+            [['S2CoMAFAntiplatelet', 'afib_antiplatelet'],
+             ['S2CoMAFAnticoagulent', 'afib_anticoagulant']])
+        for raw_col, clean_col in col_list:
+            with self.subTest(msg=clean_col):
+                self.freq(raw_col, 'Y', clean_col, 1)
+                self.freq(raw_col, ['N', 'NB', np.nan], clean_col, 0)
 
-        self.freq('S2CoMAFAntiplatelet', 'Y', 'afib_antiplatelet', 1)
-        self.freq('S2CoMAFAntiplatelet', ['N', 'NB', np.nan],
-                  'afib_antiplatelet', 0)
-        self.freq('S2CoMAFAnticoagulent', 'Y', 'afib_anticoagulant', 1)
-        self.freq('S2CoMAFAnticoagulent', ['N', 'NB', np.nan],
-                  'afib_anticoagulant', 0)
+    def test_comorbid_01(self):
+        '''Test that comorbidity numbers are as expected (1, 0)'''
+        col_list = (
+            [['S2CoMAFAnticoagulentVitK', 'afib_vit_k_anticoagulant'],
+             ['S2CoMAFAnticoagulentDOAC', 'afib_doac_anticoagulant'],
+             ['S2CoMAFAnticoagulentHeparin', 'afib_heparin_anticoagulant']])
+        for raw_col, clean_col in col_list:
+            with self.subTest(msg=clean_col):
+                self.freq(raw_col, 1, clean_col, 1)
+                self.freq(raw_col, [0, np.nan], clean_col, 0)
 
-        self.freq('S2CoMAFAnticoagulentVitK', 1,
-                  'afib_vit_k_anticoagulant', 1)
-        self.freq('S2CoMAFAnticoagulentVitK', [0, np.nan],
-                  'afib_vit_k_anticoagulant', 0)
-        self.freq('S2CoMAFAnticoagulentDOAC', 1,
-                  'afib_doac_anticoagulant', 1)
-        self.freq('S2CoMAFAnticoagulentDOAC', [0, np.nan],
-                  'afib_doac_anticoagulant', 0)
-        self.freq('S2CoMAFAnticoagulentHeparin', 1,
-                  'afib_heparin_anticoagulant', 1)
-        self.freq('S2CoMAFAnticoagulentHeparin', [0, np.nan],
-                  'afib_heparin_anticoagulant', 0)
-
-    def test_nihss(self):
-        '''Test that NIHSS score is as expected'''
+    def test_nihss_min_max(self):
+        '''Test that minimum and maximum NIHSS scores are within bounds'''
         # NIHSS scores on arrival all between 0 and 42
         self.assertEqual(self.clean['stroke_severity'].min(), 0)
         self.assertEqual(self.clean['stroke_severity'].max(), 42)
-        # NIHSS scores only contain the values specified
-        self.equal_array(self.clean, 'nihss_arrival_loc',
-                         [0, 1, 2, 3])
-        self.equal_array(self.clean, 'nihss_arrival_loc_questions',
-                         [0, 1, 2, -1])
-        self.equal_array(self.clean, 'nihss_arrival_loc_commands',
-                         [0, 1, 2, -1])
-        self.equal_array(self.clean, 'nihss_arrival_best_gaze',
-                         [0, 1, 2, -1])
-        self.equal_array(self.clean, 'nihss_arrival_visual',
-                         [0, 1, 2, 3, -1])
-        self.equal_array(self.clean, 'nihss_arrival_facial_palsy',
-                         [0, 1, 2, 3, -1])
-        self.equal_array(self.clean, 'nihss_arrival_motor_arm_left',
-                         [0, 1, 2, 3, 4, -1])
-        self.equal_array(self.clean, 'nihss_arrival_motor_arm_right',
-                         [0, 1, 2, 3, 4, -1])
-        self.equal_array(self.clean, 'nihss_arrival_motor_leg_left',
-                         [0, 1, 2, 3, 4, -1])
-        self.equal_array(self.clean, 'nihss_arrival_motor_leg_right',
-                         [0, 1, 2, 3, 4, -1])
-        self.equal_array(self.clean, 'nihss_arrival_limb_ataxia',
-                         [0, 1, 2, -1])
-        self.equal_array(self.clean, 'nihss_arrival_sensory',
-                         [0, 1, 2, -1])
-        self.equal_array(self.clean, 'nihss_arrival_best_language',
-                         [0, 1, 2, 3, -1])
-        self.equal_array(self.clean, 'nihss_arrival_dysarthria',
-                         [0, 1, 2, -1])
-        self.equal_array(self.clean, 'nihss_arrival_extinction_inattention',
-                         [0, 1, 2, -1])
+
+    def test_nihss_values(self):
+        '''Test that NIHSS values are as expected'''
+        expected = ([
+            ['nihss_arrival_loc', [0, 1, 2, 3]],
+            ['nihss_arrival_loc_questions', [0, 1, 2, -1]],
+            ['nihss_arrival_loc_commands', [0, 1, 2, -1]],
+            ['nihss_arrival_best_gaze', [0, 1, 2, -1]],
+            ['nihss_arrival_visual', [0, 1, 2, 3, -1]],
+            ['nihss_arrival_facial_palsy', [0, 1, 2, 3, -1]],
+            ['nihss_arrival_motor_arm_left', [0, 1, 2, 3, 4, -1]],
+            ['nihss_arrival_motor_arm_right', [0, 1, 2, 3, 4, -1]],
+            ['nihss_arrival_motor_leg_left', [0, 1, 2, 3, 4, -1]],
+            ['nihss_arrival_motor_leg_right', [0, 1, 2, 3, 4, -1]],
+            ['nihss_arrival_limb_ataxia', [0, 1, 2, -1]],
+            ['nihss_arrival_sensory', [0, 1, 2, -1]],
+            ['nihss_arrival_best_language', [0, 1, 2, 3, -1]],
+            ['nihss_arrival_dysarthria', [0, 1, 2, -1]],
+            ['nihss_arrival_extinction_inattention', [0, 1, 2, -1]]])
+        for col, values in expected:
+            with self.subTest(msg=col):
+                self.equal_array(self.clean, col, values)
 
     def test_death(self):
         '''Test number died is as expected'''
@@ -208,17 +201,19 @@ class DataTests(unittest.TestCase):
         data dictionary indicates that TRUE, FALSE or empty might also be
         possible
         '''
-        self.equal_array(self.raw, 'S2ThrombolysisNoButHaemorrhagic', [0, 1])
-        self.equal_array(self.raw, 'S2ThrombolysisNoButTimeWindow', [0, 1])
-        self.equal_array(self.raw, 'S2ThrombolysisNoButComorbidity', [0, 1])
-        self.equal_array(self.raw, 'S2ThrombolysisNoButMedication', [0, 1])
-        self.equal_array(self.raw, 'S2ThrombolysisNoButRefusal', [0, 1])
-        self.equal_array(self.raw, 'S2ThrombolysisNoButAge', [0, 1])
-        self.equal_array(self.raw, 'S2ThrombolysisNoButImproving', [0, 1])
-        self.equal_array(self.raw, 'S2ThrombolysisNoButTooMildSevere', [0, 1])
-        self.equal_array(self.raw, 'S2ThrombolysisNoButTimeUnknownWakeUp',
-                         [0, 1])
-        self.equal_array(self.raw, 'S2ThrombolysisNoButOtherMedical', [0, 1])
+        col_list = ['S2ThrombolysisNoButHaemorrhagic',
+                    'S2ThrombolysisNoButTimeWindow',
+                    'S2ThrombolysisNoButComorbidity',
+                    'S2ThrombolysisNoButMedication',
+                    'S2ThrombolysisNoButRefusal',
+                    'S2ThrombolysisNoButAge',
+                    'S2ThrombolysisNoButImproving',
+                    'S2ThrombolysisNoButTooMildSevere',
+                    'S2ThrombolysisNoButTimeUnknownWakeUp',
+                    'S2ThrombolysisNoButOtherMedical']
+        for col in col_list:
+            with self.subTest(msg=col):
+                self.equal_array(self.raw, col, [0, 1])
 
 
 if __name__ == '__main__':
