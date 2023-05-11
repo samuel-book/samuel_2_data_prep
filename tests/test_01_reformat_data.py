@@ -59,6 +59,18 @@ class DataTests(unittest.TestCase):
         # Check these are all 0+
         self.assertTrue(all(time_not_null >= 0))
 
+    def equal_array(self, df, col, exp_array):
+        '''
+        Function to check that the only possible values in a column are
+        those provided by exp_array.
+        Inputs:
+        - df = dataframe (raw or clean)
+        - col = string (column name)
+        - exp_array = array (expected values for column)
+        '''
+        # Sorted so that array order does not matter
+        self.assertEqual(sorted(df[col].unique()), sorted(exp_array))
+
     def test_raw_shape(self):
         '''Test the raw dataframe shape is as expected'''
         self.assertEqual(self.raw.shape, (360381, 83))
@@ -130,9 +142,11 @@ class DataTests(unittest.TestCase):
         self.freq('S2CoMStrokeTIA', 'N', 'prior_stroke_tia', 0)
 
         self.freq('S2CoMAFAntiplatelet', 'Y', 'afib_antiplatelet', 1)
-        self.freq('S2CoMAFAntiplatelet', ['N', 'NB'], 'afib_antiplatelet', 0)
+        self.freq('S2CoMAFAntiplatelet', ['N', 'NB', np.nan],
+                  'afib_antiplatelet', 0)
         self.freq('S2CoMAFAnticoagulent', 'Y', 'afib_anticoagulant', 1)
-        self.freq('S2CoMAFAnticoagulent', ['N', 'NB'], 'afib_anticoagulant', 0)
+        self.freq('S2CoMAFAnticoagulent', ['N', 'NB', np.nan],
+                  'afib_anticoagulant', 0)
 
         self.freq('S2CoMAFAnticoagulentVitK', 1,
                   'afib_vit_k_anticoagulant', 1)
@@ -152,6 +166,37 @@ class DataTests(unittest.TestCase):
         # NIHSS scores on arrival all between 0 and 42
         self.assertEqual(self.clean['stroke_severity'].min(), 0)
         self.assertEqual(self.clean['stroke_severity'].max(), 42)
+        # NIHSS scores only contain the values specified
+        self.equal_array(self.clean, 'nihss_arrival_loc',
+                         [0, 1, 2, 3])
+        self.equal_array(self.clean, 'nihss_arrival_loc_questions',
+                         [0, 1, 2, -1])
+        self.equal_array(self.clean, 'nihss_arrival_loc_commands',
+                         [0, 1, 2, -1])
+        self.equal_array(self.clean, 'nihss_arrival_best_gaze',
+                         [0, 1, 2, -1])
+        self.equal_array(self.clean, 'nihss_arrival_visual',
+                         [0, 1, 2, 3, -1])
+        self.equal_array(self.clean, 'nihss_arrival_facial_palsy',
+                         [0, 1, 2, 3, -1])
+        self.equal_array(self.clean, 'nihss_arrival_motor_arm_left',
+                         [0, 1, 2, 3, 4, -1])
+        self.equal_array(self.clean, 'nihss_arrival_motor_arm_right',
+                         [0, 1, 2, 3, 4, -1])
+        self.equal_array(self.clean, 'nihss_arrival_motor_leg_left',
+                         [0, 1, 2, 3, 4, -1])
+        self.equal_array(self.clean, 'nihss_arrival_motor_leg_right',
+                         [0, 1, 2, 3, 4, -1])
+        self.equal_array(self.clean, 'nihss_arrival_limb_ataxia',
+                         [0, 1, 2, -1])
+        self.equal_array(self.clean, 'nihss_arrival_sensory',
+                         [0, 1, 2, -1])
+        self.equal_array(self.clean, 'nihss_arrival_best_language',
+                         [0, 1, 2, 3, -1])
+        self.equal_array(self.clean, 'nihss_arrival_dysarthria',
+                         [0, 1, 2, -1])
+        self.equal_array(self.clean, 'nihss_arrival_extinction_inattention',
+                         [0, 1, 2, -1])
 
     def test_death(self):
         '''Test number died is as expected'''
@@ -163,21 +208,17 @@ class DataTests(unittest.TestCase):
         data dictionary indicates that TRUE, FALSE or empty might also be
         possible
         '''
-        def equal_array(col):
-            # Input: col = string (column with reason for no thrombolysis)
-            # Sorted so that array order does not matter
-            self.assertTrue(sorted(self.raw[col].unique()) == sorted([0, 1]))
-
-        equal_array('S2ThrombolysisNoButHaemorrhagic')
-        equal_array('S2ThrombolysisNoButTimeWindow')
-        equal_array('S2ThrombolysisNoButComorbidity')
-        equal_array('S2ThrombolysisNoButMedication')
-        equal_array('S2ThrombolysisNoButRefusal')
-        equal_array('S2ThrombolysisNoButAge')
-        equal_array('S2ThrombolysisNoButImproving')
-        equal_array('S2ThrombolysisNoButTooMildSevere')
-        equal_array('S2ThrombolysisNoButTimeUnknownWakeUp')
-        equal_array('S2ThrombolysisNoButOtherMedical')
+        self.equal_array(self.raw, 'S2ThrombolysisNoButHaemorrhagic', [0, 1])
+        self.equal_array(self.raw, 'S2ThrombolysisNoButTimeWindow', [0, 1])
+        self.equal_array(self.raw, 'S2ThrombolysisNoButComorbidity', [0, 1])
+        self.equal_array(self.raw, 'S2ThrombolysisNoButMedication', [0, 1])
+        self.equal_array(self.raw, 'S2ThrombolysisNoButRefusal', [0, 1])
+        self.equal_array(self.raw, 'S2ThrombolysisNoButAge', [0, 1])
+        self.equal_array(self.raw, 'S2ThrombolysisNoButImproving', [0, 1])
+        self.equal_array(self.raw, 'S2ThrombolysisNoButTooMildSevere', [0, 1])
+        self.equal_array(self.raw, 'S2ThrombolysisNoButTimeUnknownWakeUp',
+                         [0, 1])
+        self.equal_array(self.raw, 'S2ThrombolysisNoButOtherMedical', [0, 1])
 
 
 if __name__ == '__main__':
