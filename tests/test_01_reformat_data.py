@@ -129,6 +129,18 @@ class DataTests(unittest.TestCase):
             with self.subTest(msg=col):
                 self.time_neg(col)
 
+    def test_no_ambulance(self):
+        '''
+        Test that people who do not arrive by ambulance therefore have
+        no ambulance times
+        '''
+        amb_neg = self.clean[(self.clean['arrive_by_ambulance'] == 0) & (
+            (self.clean['call_to_ambulance_arrival_time'].notnull()) |
+            (self.clean['ambulance_on_scene_time'].notnull()) |
+            (self.clean['ambulance_travel_to_hospital_time'].notnull()) |
+            (self.clean['ambulance_wait_time_at_hospital'].notnull()))]
+        self.assertEqual(len(amb_neg.index), 0)
+
     def test_comorbid_yn(self):
         '''Test that comorbidity numbers are as expected (Y, N)'''
         col_list = (
