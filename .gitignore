@@ -10,7 +10,6 @@ temp/
 *.csv
 *.xlsx
 *.txt
-data/data_dictionary.xlsx
 
 # Ignore all checkpoints  and cache folders
 **/.ipynb_checkpoints/
