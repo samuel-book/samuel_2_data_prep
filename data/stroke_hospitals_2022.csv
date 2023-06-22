@@ -133,8 +133,8 @@ LL185UJ,LL18 5UJ,1,0,0,Wales,Wales,Wales,Glan Clwyd District General Hospital (R
 LL137TD,LL13 7TD,1,0,0,Wales,Wales,Wales,Maelor Hospital (Wrexham),Maelor Hospital,369,57,15.4,332375,350356,-3.01018020325524,53.0461733909502,0,0,Wrexham,
 LL572PW,LL57 2PW,1,0,0,Wales,Wales,Wales,Ysbyty Gwynedd (Bangor),Ysbyty Gwynedd,333,26,7.8,255857,370173,-4.15982510460998,53.2090195511646,0,0,Bangor,
 CF144XW,CF14 4XW,1,1,1,Wales,Wales,Wales,University Hospital of Wales (Cardiff),University Hospital of Wales,737,61,8.3,317551,179319,-3.18936031675543,51.5067643318912,1,1,Cardiff,Cardiff added to thrombectomy centres (increase numbers to 25 & 31 for examples)
-CF479DT,CF47 9DT,1,0,0,Wales,Wales,Wales,Prince Charles Hospital (Merthyr Tydfil),Pinderfields Hospital,1052,146,13.9,304481,208161,-3.38550448851503,51.7639540082508,0,0,Merthyr Tydfil,
-CF311RQ,CF31 1RQ,1,0,0,Wales,Wales,Wales,Princess Of Wales Hospital (Bridgend),Prince Charles Hospital,507,52,10.3,291047,181033,-3.5716381846259,51.5176763869279,0,0,Bridgend,
+CF479DT,CF47 9DT,1,0,0,Wales,Wales,Wales,Prince Charles Hospital (Merthyr Tydfil),Prince Charles Hospital,1052,146,13.9,304481,208161,-3.38550448851503,51.7639540082508,0,0,Merthyr Tydfil,
+CF311RQ,CF31 1RQ,1,0,0,Wales,Wales,Wales,Princess Of Wales Hospital (Bridgend),Princess Of Wales Hospital,507,52,10.3,291047,181033,-3.5716381846259,51.5176763869279,0,0,Bridgend,
 SY231ER,SY23 1ER,1,0,0,Wales,Wales,Wales,Bronglais Hospital (Aberystwyth),Bronglais Hospital,126,33,26.2,259208,281805,-4.07157747719359,52.4160678421817,0,0,Aberystwyth,
 SA148QF,SA14 8QF,1,0,0,Wales,Wales,Wales,Prince Philip Hospital (Llanelli),Prince Philip Hospital,162,15,9.3,252459,201367,-4.13597414237787,51.6916123753968,0,0,Llanelli,
 SA312AF,SA31 2AF,1,0,0,Wales,Wales,Wales,West Wales General (Carmarthen),West Wales General,207,22,10.6,242792,221240,-4.28472260396951,51.8675241877699,0,0,Carmarthen,
