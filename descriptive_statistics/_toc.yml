@@ -1,0 +1,17 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: 01_reformat_data
+- file: sam1_pathway_statistics
+- file: sam1_thrombolysis_associations
+- file: sam1_compare_by_thrombolysis
+- file: sam1_day_week_pathway_patterns
+- file: sam1_pathway_distributions
+- file: sam1_correlations
+- file: thrombectomy
+- file: disability_6_months
+- file: ambulance
+- file: compare_years
