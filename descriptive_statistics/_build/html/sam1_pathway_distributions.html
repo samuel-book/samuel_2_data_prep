@@ -1,0 +1,1141 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stroke pathway timing distributions &#8212; SAMueL-2 Descriptive Analysis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sam1_pathway_distributions';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Covariance/correlation between features" href="sam1_correlations.html" />
+    <link rel="prev" title="Daily and weekly pathway patterns" href="sam1_day_week_pathway_patterns.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">SAMueL-2 Descriptive Analysis</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Descriptive analysis
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_reformat_data.html">Reformat data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam1_pathway_statistics.html">Descriptive analysis of stroke pathway data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam1_thrombolysis_associations.html">Association between patient features and thrombolysis use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam1_compare_by_thrombolysis.html">Comparison between patients who received thrombolysis versus not</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam1_day_week_pathway_patterns.html">Daily and weekly pathway patterns</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Stroke pathway timing distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam1_correlations.html">Covariance/correlation between features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thrombectomy.html">Thrombectomy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="disability_6_months.html">Disability at six month follow up</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ambulance.html">Ambulance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compare_years.html">Year by year comparison</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fsam1_pathway_distributions.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/sam1_pathway_distributions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Stroke pathway timing distributions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aim">Aim</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up">Set up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-distributions">Plot distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-distributions">Fit distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observations">Observations</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="stroke-pathway-timing-distributions">
+<h1>Stroke pathway timing distributions<a class="headerlink" href="#stroke-pathway-timing-distributions" title="Permalink to this headline">#</a></h1>
+<div class="section" id="aim">
+<h2>Aim<a class="headerlink" href="#aim" title="Permalink to this headline">#</a></h2>
+<p>Visualises distribution of timings for:</p>
+<ul class="simple">
+<li><p>(Known) Onset to arrival time</p></li>
+<li><p>Arrival to scan time</p></li>
+<li><p>Scan to needle time</p></li>
+</ul>
+<p>Finds the best distributions to fit the above.</p>
+<p>Replicates SAMueL-1 analyses <a class="reference external" href="https://samuel-book.github.io/samuel-1/descriptive_stats/06_distributions.html">available here</a></p>
+</div>
+<div class="section" id="set-up">
+<h2>Set up<a class="headerlink" href="#set-up" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages and functions</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span>
+
+<span class="c1"># Hide warnings (to hide runtime error)</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Set max rows when display dataframe</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Linting</span>
+<span class="o">%</span><span class="k">load_ext</span> pycodestyle_magic
+<span class="o">%</span><span class="k">pycodestyle_on</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set paths and filenames</span>
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Paths</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;Singleton object for storing paths to data and files.&#39;&#39;&#39;</span>
+
+    <span class="n">data_path</span> <span class="o">=</span> <span class="s1">&#39;./../output/&#39;</span>
+    <span class="n">data_filename</span> <span class="o">=</span> <span class="s1">&#39;reformatted_data.csv&#39;</span>
+    <span class="n">admission_only_filename</span> <span class="o">=</span> <span class="s1">&#39;reformatted_data_admissions_only.csv&#39;</span>
+
+
+<span class="n">paths</span> <span class="o">=</span> <span class="n">Paths</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data</span>
+<span class="n">data_full</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">data_path</span><span class="p">,</span>
+                                     <span class="n">paths</span><span class="o">.</span><span class="n">admission_only_filename</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plot-distributions">
+<h2>Plot distributions<a class="headerlink" href="#plot-distributions" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_dist</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">binwidth</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">details</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Plots distribution of the provided series</span>
+<span class="sd">    times = series</span>
+<span class="sd">    binwidth = integer, width of bins for histogram</span>
+<span class="sd">    ax = axes object to plot histogram on</span>
+<span class="sd">    title = string, title for plot and xlabel</span>
+<span class="sd">    details = string, extra details to add for xlabel</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">times</span><span class="p">,</span>
+            <span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">times</span><span class="p">),</span>
+                           <span class="nb">max</span><span class="p">(</span><span class="n">times</span><span class="p">)</span> <span class="o">+</span> <span class="n">binwidth</span><span class="p">,</span>
+                           <span class="n">binwidth</span><span class="p">),</span>
+            <span class="n">rwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">title</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">details</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of patients&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Onset to arrival time (within 8 hours)</span>
+<span class="n">plot_dist</span><span class="p">(</span><span class="n">times</span><span class="o">=</span><span class="n">data_full</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;onset_to_arrival_time&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">480</span><span class="p">,</span>
+                              <span class="s1">&#39;onset_to_arrival_time&#39;</span><span class="p">],</span>
+          <span class="n">binwidth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+          <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+          <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Onset to arrival time&#39;</span><span class="p">,</span>
+          <span class="n">details</span><span class="o">=</span><span class="s1">&#39;(min) (&lt;= 8 hours)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Arrival to scan time (within 8 hours)</span>
+<span class="n">plot_dist</span><span class="p">(</span><span class="n">times</span><span class="o">=</span><span class="n">data_full</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;arrival_to_scan_time&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">480</span><span class="p">,</span>
+                              <span class="s1">&#39;arrival_to_scan_time&#39;</span><span class="p">],</span>
+          <span class="n">binwidth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+          <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+          <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Arrival to scan time&#39;</span><span class="p">,</span>
+          <span class="n">details</span><span class="o">=</span><span class="s1">&#39;(min) (&lt;= 8 hours)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Scan to needle time (within 4 hours)</span>
+<span class="n">plot_dist</span><span class="p">(</span><span class="n">times</span><span class="o">=</span><span class="n">data_full</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;scan_to_thrombolysis_time&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">240</span><span class="p">,</span>
+                              <span class="s1">&#39;scan_to_thrombolysis_time&#39;</span><span class="p">],</span>
+          <span class="n">binwidth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+          <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+          <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Scan to needle time&#39;</span><span class="p">,</span>
+          <span class="n">details</span><span class="o">=</span><span class="s1">&#39;(min) (&lt;= 4 hours)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/44e9811b87cc7cb7d3a59d40aa1e84a52f68ce1ad7f248df68a2884e742829ec.png" src="_images/44e9811b87cc7cb7d3a59d40aa1e84a52f68ce1ad7f248df68a2884e742829ec.png" />
+</div>
+</div>
+</div>
+<div class="section" id="fit-distributions">
+<h2>Fit distributions<a class="headerlink" href="#fit-distributions" title="Permalink to this headline">#</a></h2>
+<p>Fit distributions to bootstrapped sample of 10,000 patients</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fit_distribution</span><span class="p">(</span><span class="n">data_to_fit</span><span class="p">,</span> <span class="n">samples</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Investigate fit of ten different distributions</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">    data_to_fit - Series with data to fit</span>
+<span class="sd">    samples - Number of times to sample with replacement (default 10000)</span>
+<span class="sd">    Returns:</span>
+<span class="sd">    y_std - Array with 10,000 items, which are the bootstrapped times</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># Convert to array and remove invalid values</span>
+    <span class="c1"># (which shouldn&#39;t exist - but just in case!)</span>
+    <span class="n">yy</span> <span class="o">=</span> <span class="n">data_to_fit</span><span class="p">[(</span><span class="n">data_to_fit</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data_to_fit</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)]</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="c1"># Bootstrap sample - generate random sample of 10,000</span>
+    <span class="c1"># patients from array. Replace=True, meaning the same</span>
+    <span class="c1"># value of yy can be sampled multiple times, as a</span>
+    <span class="c1"># bootstrap sample is when you draw randomly with replacement</span>
+    <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">yy</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">samples</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Reshape from 1D array (10000,) to 2D array with 10,000 rows (10000, 1),</span>
+    <span class="c1"># so can then standardise the data (mean 0, SD 1)</span>
+    <span class="n">yy</span> <span class="o">=</span> <span class="n">yy</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">y_std</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">yy</span><span class="p">)</span>
+
+    <span class="c1"># Add +/- 0.0001 Std Dev jitter to avoid failure of fit for discrete data</span>
+    <span class="c1"># Sample between -0.0001 and 0.0001, and add those values to yy</span>
+    <span class="n">jitter</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="mf">0.0001</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">samples</span><span class="p">)</span>
+    <span class="n">y_std</span> <span class="o">+=</span> <span class="n">jitter</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Test 10 distributions</span>
+    <span class="n">dist_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;beta&#39;</span><span class="p">,</span> <span class="s1">&#39;expon&#39;</span><span class="p">,</span> <span class="s1">&#39;gamma&#39;</span><span class="p">,</span> <span class="s1">&#39;lognorm&#39;</span><span class="p">,</span> <span class="s1">&#39;norm&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;pearson3&#39;</span><span class="p">,</span> <span class="s1">&#39;triang&#39;</span><span class="p">,</span> <span class="s1">&#39;uniform&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;weibull_min&#39;</span><span class="p">,</span> <span class="s1">&#39;weibull_max&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Create empty lists to store results</span>
+    <span class="n">chi_square</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">p_values</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Set up 50 bins for chi-squared test. Observed data will be approximately</span>
+    <span class="c1"># normally distributed across all bins</span>
+    <span class="c1"># Linspace returns evently spaced numbers over specified interval</span>
+    <span class="c1"># i.e. [0, 2, 4, 6...]</span>
+    <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">51</span><span class="p">)</span>
+    <span class="c1"># Calculate the qth percentile of the data (i.e. 0th, 2nd, 4th, 6th, ...)</span>
+    <span class="n">cutoffs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">y_std</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
+    <span class="c1"># Find observed frequency in each bin (should be 200), then use that to</span>
+    <span class="c1"># create array with cumulative frequency</span>
+    <span class="n">observed_freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">y_std</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">cutoffs</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">cum_observed_freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">observed_freq</span><span class="p">)</span>
+
+    <span class="c1"># Convert values into 1D array</span>
+    <span class="n">y_std</span> <span class="o">=</span> <span class="n">y_std</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+    <span class="c1"># Loop through the candidate distributions</span>
+    <span class="k">for</span> <span class="n">distribution</span> <span class="ow">in</span> <span class="n">dist_names</span><span class="p">:</span>
+        <span class="c1"># Use string to get relevant distribution object and fit it,</span>
+        <span class="c1"># returning fitted distribution parameters</span>
+        <span class="n">dist</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="p">,</span> <span class="n">distribution</span><span class="p">)</span>
+        <span class="n">param</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">y_std</span><span class="p">)</span>
+
+        <span class="c1"># Perform Kolmogorov-Smirnov test for goodness of fit and</span>
+        <span class="c1"># extract p-value. Round to 5 d.p. and save to list</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">kstest</span><span class="p">(</span><span class="n">y_std</span><span class="p">,</span> <span class="n">distribution</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">param</span><span class="p">)</span><span class="o">.</span><span class="n">pvalue</span>
+        <span class="n">p_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+        <span class="c1"># Get expected counts in percentile bins for that distribution</span>
+        <span class="c1"># Further details:</span>
+        <span class="c1"># Find expected counts using the CDF (cumulative distribution function)</span>
+        <span class="c1"># CDF describes probably distribution of random variable.</span>
+        <span class="c1"># It calculates the probability</span>
+        <span class="c1"># of an observation equal or less than a value.</span>
+        <span class="c1"># Param has the maximum likelihood estimates of the shape parameters,</span>
+        <span class="c1"># location, and (if applicable) scale of the distribution. The</span>
+        <span class="c1"># starred expression is to treat each as seperate positional arguments</span>
+        <span class="n">cdf_fitted</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">cutoffs</span><span class="p">,</span> <span class="o">*</span><span class="n">param</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span>
+                              <span class="n">loc</span><span class="o">=</span><span class="n">param</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="n">param</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">expected_freq</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="nb">bin</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bins</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">expected_cdf_area</span> <span class="o">=</span> <span class="n">cdf_fitted</span><span class="p">[</span><span class="nb">bin</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">cdf_fitted</span><span class="p">[</span><span class="nb">bin</span><span class="p">]</span>
+            <span class="n">expected_freq</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expected_cdf_area</span><span class="p">)</span>
+
+        <span class="c1"># Calculate chi-squared</span>
+        <span class="c1"># Find expected counts for each bin by multiplying by number of samples</span>
+        <span class="c1"># Create array with those as cumulative counts</span>
+        <span class="n">expected_freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">expected_freq</span><span class="p">)</span> <span class="o">*</span> <span class="n">samples</span>
+        <span class="n">cum_expected_freq</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">expected_freq</span><span class="p">)</span>
+        <span class="n">ss</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(((</span><span class="n">cum_expected_freq</span> <span class="o">-</span> <span class="n">cum_observed_freq</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span>
+                 <span class="n">cum_observed_freq</span><span class="p">)</span>
+        <span class="n">chi_square</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ss</span><span class="p">)</span>
+
+    <span class="c1"># Collate results and sort by goodness of fit</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s1">&#39;distribution&#39;</span><span class="p">:</span> <span class="n">dist_names</span><span class="p">,</span>
+        <span class="s1">&#39;chi_square&#39;</span><span class="p">:</span> <span class="n">chi_square</span><span class="p">,</span>
+        <span class="s1">&#39;p_value&#39;</span><span class="p">:</span> <span class="n">p_values</span><span class="p">})</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;chi_square&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">display</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Distributions sorted by goodness of fit:&#39;</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+
+    <span class="c1"># Get name of the best distribution</span>
+    <span class="n">best</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">distribution</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">best</span><span class="p">,</span> <span class="n">y_std</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_chosen_distribution</span><span class="p">(</span><span class="n">best</span><span class="p">,</span> <span class="n">y_std</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Creates plots for chosen distribution - histogram of standardised</span>
+<span class="sd">    values with the chosen distribution overlaid, and a P-P plot</span>
+<span class="sd">    Inputs:</span>
+<span class="sd">    best - string, best distribution from fit_distribution()</span>
+<span class="sd">    y_std - array, contains bootstrapped times from fit_distribution()</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+    <span class="c1"># Create histogram of standardised values</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y_std</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Standardised value&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Histogram of standardised bootstrapped values&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Add line for distribution that fit best</span>
+    <span class="c1"># Get X values from histogram</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="c1"># Set up distribution and store distribution parameters</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="p">,</span> <span class="n">best</span><span class="p">)</span>
+    <span class="n">param</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">y_std</span><span class="p">)</span>
+    <span class="c1"># Get line for distribution</span>
+    <span class="c1"># Param has the maximum likelihood estimates of the shape parameters,</span>
+    <span class="c1"># location, and (if applicable) scale of the distribution. The</span>
+    <span class="c1"># starred expression is to treat each as seperate positional arguments</span>
+    <span class="n">pdf_fitted</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">param</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="n">param</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="n">param</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="c1"># Trapz is used to scale to match the observed data</span>
+    <span class="n">scale_pdf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">h</span><span class="p">[</span><span class="mi">1</span><span class="p">][:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">pdf_fitted</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">pdf_fitted</span> <span class="o">*=</span> <span class="n">scale_pdf</span>
+    <span class="c1"># Add line to the plot</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pdf_fitted</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">best</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+    <span class="c1"># Plot observed and theoretical cumulative distribution (P-P plot)</span>
+    <span class="c1"># Get size</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_std</span><span class="p">)</span>
+    <span class="c1"># Get 10,000 random numbers from distribution</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="o">*</span><span class="n">param</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="n">param</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="n">param</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">norm</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="c1"># Calculate cumulative distributions</span>
+    <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">norm</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">101</span><span class="p">))</span>
+    <span class="n">y_std_counts</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">y_std</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
+    <span class="n">norm_counts</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">norm</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
+    <span class="n">cum_y_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">y_std_counts</span><span class="p">)</span>
+    <span class="n">cum_norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">norm_counts</span><span class="p">)</span>
+    <span class="n">cum_y_std</span> <span class="o">=</span> <span class="n">cum_y_std</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">cum_y_std</span><span class="p">)</span>
+    <span class="n">cum_norm</span> <span class="o">=</span> <span class="n">cum_norm</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">cum_norm</span><span class="p">)</span>
+    <span class="c1"># Plot observed and theoretical distributions</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cum_norm</span><span class="p">,</span> <span class="n">cum_y_std</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">best</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;P-P plot&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Theoretical cumulative distribution&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Observed cumulative distribution&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="c1"># Add diagonal line</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Display plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Onset to arrival time (restrict to 8 hours)</span>
+<span class="n">data_to_fit</span> <span class="o">=</span> <span class="n">data_full</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;onset_to_arrival_time&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">480</span><span class="p">,</span>
+    <span class="s1">&#39;onset_to_arrival_time&#39;</span><span class="p">]</span>
+
+<span class="c1"># Check fit of distributions</span>
+<span class="n">best</span><span class="p">,</span> <span class="n">y_std</span> <span class="o">=</span> <span class="n">fit_distribution</span><span class="p">(</span><span class="n">data_to_fit</span><span class="p">)</span>
+
+<span class="c1"># Plot best fitting distribution</span>
+<span class="n">plot_chosen_distribution</span><span class="p">(</span><span class="n">best</span><span class="p">,</span> <span class="n">y_std</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Distributions sorted by goodness of fit:&#39;
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>distribution</th>
+      <th>chi_square</th>
+      <th>p_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>lognorm</td>
+      <td>818.485398</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>gamma</td>
+      <td>2367.759712</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>pearson3</td>
+      <td>2367.815088</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>weibull_max</td>
+      <td>3659.099162</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>weibull_min</td>
+      <td>4888.996397</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>triang</td>
+      <td>8353.191078</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>norm</td>
+      <td>17407.568087</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>uniform</td>
+      <td>36666.846595</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>expon</td>
+      <td>54825.238733</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>beta</td>
+      <td>65788.636536</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="_images/4736f5c79fa58faa1cf56e26bfed1d2085549de71bb344ead2a20282bd0b5ec6.png" src="_images/4736f5c79fa58faa1cf56e26bfed1d2085549de71bb344ead2a20282bd0b5ec6.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Arrival to scan time (restrict to 8 hours)</span>
+<span class="n">data_to_fit</span> <span class="o">=</span> <span class="n">data_full</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;arrival_to_scan_time&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">480</span><span class="p">,</span>
+    <span class="s1">&#39;arrival_to_scan_time&#39;</span><span class="p">]</span>
+
+<span class="c1"># Check fit of distributions</span>
+<span class="n">best</span><span class="p">,</span> <span class="n">y_std</span> <span class="o">=</span> <span class="n">fit_distribution</span><span class="p">(</span><span class="n">data_to_fit</span><span class="p">)</span>
+
+<span class="c1"># Plot best fitting distribution</span>
+<span class="n">plot_chosen_distribution</span><span class="p">(</span><span class="n">best</span><span class="p">,</span> <span class="n">y_std</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Distributions sorted by goodness of fit:&#39;
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>distribution</th>
+      <th>chi_square</th>
+      <th>p_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>lognorm</td>
+      <td>1132.960986</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>expon</td>
+      <td>2211.523439</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>weibull_min</td>
+      <td>2884.699198</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>pearson3</td>
+      <td>4460.571807</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>gamma</td>
+      <td>4571.925872</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>beta</td>
+      <td>5072.324299</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>weibull_max</td>
+      <td>25637.905818</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>norm</td>
+      <td>60544.135016</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>triang</td>
+      <td>61611.160487</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>uniform</td>
+      <td>119010.964239</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="_images/3e2e7a9e1e3c09a85f0787e33f66d971b25f4d59ece6bdd559e48ad60a3c08a7.png" src="_images/3e2e7a9e1e3c09a85f0787e33f66d971b25f4d59ece6bdd559e48ad60a3c08a7.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Scan to needle time (restrict to 4 hours)</span>
+<span class="n">data_to_fit</span> <span class="o">=</span> <span class="n">data_full</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;scan_to_thrombolysis_time&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">240</span><span class="p">,</span>
+    <span class="s1">&#39;scan_to_thrombolysis_time&#39;</span><span class="p">]</span>
+
+<span class="c1"># Check fit of distributions</span>
+<span class="n">best</span><span class="p">,</span> <span class="n">y_std</span> <span class="o">=</span> <span class="n">fit_distribution</span><span class="p">(</span><span class="n">data_to_fit</span><span class="p">)</span>
+
+<span class="c1"># Plot best fitting distribution</span>
+<span class="n">plot_chosen_distribution</span><span class="p">(</span><span class="n">best</span><span class="p">,</span> <span class="n">y_std</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Distributions sorted by goodness of fit:&#39;
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>distribution</th>
+      <th>chi_square</th>
+      <th>p_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>lognorm</td>
+      <td>142.134396</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>gamma</td>
+      <td>439.596759</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>pearson3</td>
+      <td>439.776160</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>beta</td>
+      <td>486.457739</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>weibull_max</td>
+      <td>1373.352341</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>norm</td>
+      <td>17310.822831</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>expon</td>
+      <td>29157.884375</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>triang</td>
+      <td>56861.395556</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>weibull_min</td>
+      <td>81922.375776</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>uniform</td>
+      <td>121902.929085</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><img alt="_images/ecfe1e89bf572a852dc8d416b92addd0a77b4cf2ee4b12d9c9ad07b8a24d9d36.png" src="_images/ecfe1e89bf572a852dc8d416b92addd0a77b4cf2ee4b12d9c9ad07b8a24d9d36.png" />
+</div>
+</div>
+</div>
+<div class="section" id="observations">
+<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>All timings have a right skew, with lognormal having minimum chi-squared</p></li>
+<li><p>No distribution was a perfect fit for the data (all had p&lt;0.01)</p></li>
+<li><p>Choose log normal distributions for pathway process times</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sam1_day_week_pathway_patterns.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Daily and weekly pathway patterns</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="sam1_correlations.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Covariance/correlation between features</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aim">Aim</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up">Set up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-distributions">Plot distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fit-distributions">Fit distributions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observations">Observations</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By SAMueL-2 team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
