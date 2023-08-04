@@ -1,0 +1,1215 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Associations between thrombolysis use and patient features &#8212; SAMueL-2 Descriptive Analysis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sam1_thrombolysis_associations';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Comparison between patients who received thrombolysis versus not" href="sam1_compare_by_thrombolysis.html" />
+    <link rel="prev" title="Descriptive analysis of stroke pathway data" href="sam1_pathway_statistics.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">SAMueL-2 Descriptive Analysis</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Descriptive analysis
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Set up</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_reformat_data.html">Reformat data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SAMueL-1</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sam1_pathway_statistics.html">Descriptive analysis of stroke pathway data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Associations between thrombolysis use and patient features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam1_compare_by_thrombolysis.html">Comparison between patients who received thrombolysis versus not</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam1_day_week_pathway_patterns.html">Daily and weekly pathway patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam1_pathway_distributions.html">Stroke pathway timing distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam1_correlations.html">Covariance/correlation between features</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SAMueL-2 (detailed/complete)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sam2_disability_6months_completion.html">Disability at six months (completion)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam2_disability_6months_results.html">Disability at six months (results)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam2_thrombectomy.html">Thrombectomy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SAMUeL-2 (incomplete)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sam2_ambulance.html">Ambulance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam2_size_associations.html">Associations with number of admissions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam2_compare_years.html">Year by year comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam2_disability_discharge.html">Thrombolysis outcomes</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fsam1_thrombolysis_associations.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/sam1_thrombolysis_associations.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Associations between thrombolysis use and patient features</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aims">Aims</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up">Set up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thrombolysis-use-by-patient-features">Thrombolysis use by patient features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reasons-for-not-giving-thrombolysis">Reasons for not giving thrombolysis</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="associations-between-thrombolysis-use-and-patient-features">
+<h1>Associations between thrombolysis use and patient features<a class="headerlink" href="#associations-between-thrombolysis-use-and-patient-features" title="Permalink to this headline">#</a></h1>
+<div class="section" id="aims">
+<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">#</a></h2>
+<p>Replicate SAMueL-1 analysis <a class="reference external" href="https://samuel-book.github.io/samuel-1/descriptive_stats/04_thrombolysis_general.html">available to view here.</a>.</p>
+<p>(1) Describes thrombolysis use (for all arrivals, and those arriving with 4 hours of known stroke onset) according to various patient features. Note: The association of particular features with thrombolysis use does not imply that these relationships are causal.</p>
+<p>(2) Examines reasons why thrombolysis was not given, with a little extra about frequency of multiple reasons.</p>
+</div>
+<div class="section" id="set-up">
+<h2>Set up<a class="headerlink" href="#set-up" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages and functions</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Set max rows when display dataframe</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Linting</span>
+<span class="o">%</span><span class="k">load_ext</span> pycodestyle_magic
+<span class="o">%</span><span class="k">pycodestyle_on</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set paths and filenames</span>
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Paths</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;Singleton object for storing paths to data and files.&#39;&#39;&#39;</span>
+
+    <span class="n">data_path</span> <span class="o">=</span> <span class="s1">&#39;./../output/&#39;</span>
+    <span class="n">data_filename</span> <span class="o">=</span> <span class="s1">&#39;reformatted_data.csv&#39;</span>
+    <span class="n">admission_only_filename</span> <span class="o">=</span> <span class="s1">&#39;reformatted_data_admissions_only.csv&#39;</span>
+
+
+<span class="n">paths</span> <span class="o">=</span> <span class="n">Paths</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">data_path</span><span class="p">,</span>
+                                <span class="n">paths</span><span class="o">.</span><span class="n">data_filename</span><span class="p">))</span>
+<span class="n">data_full</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">data_path</span><span class="p">,</span>
+                                     <span class="n">paths</span><span class="o">.</span><span class="n">admission_only_filename</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="thrombolysis-use-by-patient-features">
+<h2>Thrombolysis use by patient features<a class="headerlink" href="#thrombolysis-use-by-patient-features" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_ivt_differences</span><span class="p">(</span><span class="n">plot_type</span><span class="p">,</span> <span class="n">column</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Finds the proportion of individuals who received thrombolysis by the</span>
+<span class="sd">    chosen characteristic, and creates a plot to summarise that</span>
+<span class="sd">    plot_type = string, either line or bar</span>
+<span class="sd">    column = string, column of interest</span>
+<span class="sd">    label = string, describes the column and used on plot</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># Proportion of individuals receiving thrombolysis by characteristic</span>
+    <span class="nb">all</span> <span class="o">=</span> <span class="s1">&#39;All arrivals&#39;</span>
+    <span class="n">four</span> <span class="o">=</span> <span class="s1">&#39;Arrive within 4 hours</span><span class="se">\n</span><span class="s1">of known stroke onset&#39;</span>
+    <span class="n">ivt_group</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span>
+        <span class="n">data_full</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">column</span><span class="p">)[</span><span class="s1">&#39;thrombolysis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="nb">all</span><span class="p">),</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">column</span><span class="p">)[</span><span class="s1">&#39;thrombolysis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">four</span><span class="p">)],</span>
+        <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+
+    <span class="c1"># Plot those proportions</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">plot_type</span> <span class="o">==</span> <span class="s1">&#39;line&#39;</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ivt_group</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">get_lines</span><span class="p">(),</span> <span class="n">ivt_group</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span>
+                  <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Patients&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Thrombolysis use (%)&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">plot_type</span> <span class="o">==</span> <span class="s1">&#39;bar&#39;</span><span class="p">:</span>
+        <span class="n">ivt_group</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">ivt_group</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span>
+                  <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Patients&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Thrombolysis use (%)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Prior disability:</strong> The higher the level of disability before stroke (according to modified Rankin Scale, mRS), the lower the use of thrombolysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_ivt_differences</span><span class="p">(</span><span class="s1">&#39;line&#39;</span><span class="p">,</span> <span class="s1">&#39;prior_disability&#39;</span><span class="p">,</span> <span class="s1">&#39;Prior disability (mRS)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/16803fb73e7dfaaa56cb361d0adf51f7bc227a9cff255e67d3d84bd16c1e720d.png" src="_images/16803fb73e7dfaaa56cb361d0adf51f7bc227a9cff255e67d3d84bd16c1e720d.png" />
+</div>
+</div>
+<p><strong>Stroke severity:</strong> Thrombolysis use is very low at extreme NIHSS scores. Based on threshold of 11, a higher proportion of patients receive thrombolysis for scores of 11 or more (than for scores of 10 or less).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Overall relationship</span>
+<span class="n">plot_ivt_differences</span><span class="p">(</span><span class="s1">&#39;line&#39;</span><span class="p">,</span> <span class="s1">&#39;stroke_severity&#39;</span><span class="p">,</span> <span class="s1">&#39;Stroke severity (NIHSS)&#39;</span><span class="p">)</span>
+
+<span class="c1"># By cut-off of NIHSS score 11 or more</span>
+<span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;nihss_11_plus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;stroke_severity&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;nihss_11_plus&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;stroke_severity&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">plot_ivt_differences</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;nihss_11_plus&#39;</span><span class="p">,</span> <span class="s1">&#39;NIHSS 11+&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/96a60c2324b81b870933e9d5b7bc0165a0d59a4c1486d9d84f4200a60f1ac544.png" src="_images/96a60c2324b81b870933e9d5b7bc0165a0d59a4c1486d9d84f4200a60f1ac544.png" />
+<img alt="_images/302f1ab35b6e5a75281c952bc4772135d34f133398ebfc0577d5e5bbfef3441b.png" src="_images/302f1ab35b6e5a75281c952bc4772135d34f133398ebfc0577d5e5bbfef3441b.png" />
+</div>
+</div>
+<p><strong>Gender:</strong> A slightly higher proportion of males receive thrombolysis than females.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_ivt_differences</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;male&#39;</span><span class="p">,</span> <span class="s1">&#39;Male&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/35b4fffb1f758459f03094421378fefd9589f2ad2929008b53c7b0e929991208.png" src="_images/35b4fffb1f758459f03094421378fefd9589f2ad2929008b53c7b0e929991208.png" />
+</div>
+</div>
+<p><strong>Ethnicity:</strong> Not requested for SAMueL-2 (as didn’t see an effect in SAMueL-1, except for slightly shorter arrival times, and as requesting more variables in SAMueL-2, so important to remove those not needed/reduce identifiability)</p>
+<p><strong>Age:</strong> Thrombolysis use declines with age.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_ivt_differences</span><span class="p">(</span><span class="s1">&#39;line&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/dd96b2d56c674c52a37bd16c5be703063b9d48421281a74edc2f8ba005f478b3.png" src="_images/dd96b2d56c674c52a37bd16c5be703063b9d48421281a74edc2f8ba005f478b3.png" />
+</div>
+</div>
+<p><strong>Knowledge of time of onset:</strong> Fairly equally split between “not known”, “best estimate” and “precise estimate”. Highest thrombolysis rates in patients with precise estimate, lower in those with best estimate, very few in those with unknown time of onset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add column with three onset type categories</span>
+<span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;onset_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+    <span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;precise_onset_known&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;precise&#39;</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;precise_onset_known&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span>
+             <span class="p">(</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;onset_known&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;best_estimate&#39;</span><span class="p">,</span> <span class="s1">&#39;unknown&#39;</span><span class="p">))</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;onset_type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;precise_onset_known&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;precise&#39;</span><span class="p">,</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;precise_onset_known&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span>
+             <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;onset_known&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">),</span> <span class="s1">&#39;best_estimate&#39;</span><span class="p">,</span> <span class="s1">&#39;unknown&#39;</span><span class="p">))</span>
+
+<span class="c1"># Find proportion of each category in full data</span>
+<span class="n">display</span><span class="p">(</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;onset_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="c1"># Find proportion receiving thrombolysis</span>
+<span class="n">plot_ivt_differences</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;onset_type&#39;</span><span class="p">,</span> <span class="s1">&#39;Onset type&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>precise          0.336103
+best_estimate    0.334036
+unknown          0.329861
+Name: onset_type, dtype: float64
+</pre></div>
+</div>
+<img alt="_images/3f7158cbae28fba37a1ec696d91507bd0a645120d609766ec3b967d5a413e1d8.png" src="_images/3f7158cbae28fba37a1ec696d91507bd0a645120d609766ec3b967d5a413e1d8.png" />
+</div>
+</div>
+<p><strong>Arrive by ambulance:</strong> Higher thrombolysis rates in patients arriving by ambulance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_ivt_differences</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">,</span> <span class="s1">&#39;Arrived by ambulance&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2e67068b06a9583006e9601a9d1f50acbe7d8c9e693cf955b3a1d2268147e44e.png" src="_images/2e67068b06a9583006e9601a9d1f50acbe7d8c9e693cf955b3a1d2268147e44e.png" />
+</div>
+</div>
+<p><strong>Presence of comorbidities:</strong> This can also associate with thrombolysis use. For example, much lower rate in patients on anti-coagulants or with atrial fibrillation. Unlike SAMueL-1, those on anti-platelets also have lower thrombolysis rate (difference: SAMueL-1 ignored “no but”).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">comords</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;congestive_heart_failure&#39;</span><span class="p">,</span> <span class="s1">&#39;hypertension&#39;</span><span class="p">,</span> <span class="s1">&#39;atrial_fibrillation&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;diabetes&#39;</span><span class="p">,</span> <span class="s1">&#39;prior_stroke_tia&#39;</span><span class="p">,</span> <span class="s1">&#39;afib_antiplatelet&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;afib_anticoagulant&#39;</span><span class="p">,</span> <span class="s1">&#39;afib_vit_k_anticoagulant&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;afib_doac_anticoagulant&#39;</span><span class="p">,</span> <span class="s1">&#39;afib_heparin_anticoagulant&#39;</span><span class="p">,</span>
+           <span class="s1">&#39;new_afib_diagnosis&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">com</span> <span class="ow">in</span> <span class="n">comords</span><span class="p">:</span>
+    <span class="n">plot_ivt_differences</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">com</span><span class="p">,</span> <span class="n">com</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3e9e7d3c817cd0aa4e18287454c254de6105916f969d113015e40011021490f5.png" src="_images/3e9e7d3c817cd0aa4e18287454c254de6105916f969d113015e40011021490f5.png" />
+<img alt="_images/0c822e7514e2499430f3f0ad1bca75b178d939367722f49fa21dfccc28309303.png" src="_images/0c822e7514e2499430f3f0ad1bca75b178d939367722f49fa21dfccc28309303.png" />
+<img alt="_images/dbee8ccab5ea4f75e6a6011a3ddd79922156826058426fa8108bdd1ee8f5e0f1.png" src="_images/dbee8ccab5ea4f75e6a6011a3ddd79922156826058426fa8108bdd1ee8f5e0f1.png" />
+<img alt="_images/38c0d1d3e6b8df817b3ccf442a9a678630ba423c16317bae180904059e757060.png" src="_images/38c0d1d3e6b8df817b3ccf442a9a678630ba423c16317bae180904059e757060.png" />
+<img alt="_images/984fa62a3e43cf8d79649a6e65c598740aa0e2482d410002b6363dda749b1dcb.png" src="_images/984fa62a3e43cf8d79649a6e65c598740aa0e2482d410002b6363dda749b1dcb.png" />
+<img alt="_images/8aef7445b1eda79807a5d253a5befc5a1285522b49248cd02dfef573f948867c.png" src="_images/8aef7445b1eda79807a5d253a5befc5a1285522b49248cd02dfef573f948867c.png" />
+<img alt="_images/065eca1747dee4d2953fe299b24290beaeb78b4e58d54d8c9d8ff3f03332e2ae.png" src="_images/065eca1747dee4d2953fe299b24290beaeb78b4e58d54d8c9d8ff3f03332e2ae.png" />
+<img alt="_images/bdaed5c45b54b8d62de4c74e9a49d0618a77ac5fbca3abf0fa31a50aeb1f95a8.png" src="_images/bdaed5c45b54b8d62de4c74e9a49d0618a77ac5fbca3abf0fa31a50aeb1f95a8.png" />
+<img alt="_images/533b391d9ddd02c2dd3f5b26cb2d39b7973f9264af774dc6df09f440d7d63e63.png" src="_images/533b391d9ddd02c2dd3f5b26cb2d39b7973f9264af774dc6df09f440d7d63e63.png" />
+<img alt="_images/56b959d46e01eb0494d0e089a97b142f8f165f828574b1eeaccc5f2f0c7ef27e.png" src="_images/56b959d46e01eb0494d0e089a97b142f8f165f828574b1eeaccc5f2f0c7ef27e.png" />
+<img alt="_images/a6c2a6289969a5702613bd0db6b6bafc545b449d7dddbe58a1f45dbdae4ed448.png" src="_images/a6c2a6289969a5702613bd0db6b6bafc545b449d7dddbe58a1f45dbdae4ed448.png" />
+</div>
+</div>
+</div>
+<div class="section" id="reasons-for-not-giving-thrombolysis">
+<h2>Reasons for not giving thrombolysis<a class="headerlink" href="#reasons-for-not-giving-thrombolysis" title="Permalink to this headline">#</a></h2>
+<p>May be more than one selected for each patient.</p>
+<p>Just examining reasons for patients who arrived within 4 hours of known stroke onset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Restrict to patients who were not thrombolysed</span>
+<span class="n">not_ivt</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;thrombolysis&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Make list of &quot;thrombolysis_no_but&quot; columns</span>
+<span class="n">no_but_col</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">data</span> <span class="k">if</span> <span class="p">(</span><span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;thrombolysis_no_but&#39;</span><span class="p">))]</span>
+
+<span class="c1"># Make list of &quot;thrombolysis_no&quot; columns</span>
+<span class="n">no_col</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">not_ivt</span> <span class="k">if</span> <span class="p">(</span>
+    <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;thrombolysis_no&#39;</span><span class="p">)</span> <span class="o">&amp;</span>
+    <span class="o">~</span><span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;thrombolysis_no_but&#39;</span><span class="p">))]</span>
+
+<span class="c1"># Check that all patients have at least one reason provided</span>
+<span class="p">(</span><span class="n">not_ivt</span><span class="p">[</span><span class="n">no_col</span> <span class="o">+</span> <span class="n">no_but_col</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True    96964
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_no_thrombolysis</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="c1"># Find proportion of individuals with each answer</span>
+    <span class="n">reasons</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span>
+
+    <span class="c1"># Plot results</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">reasons</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">reasons</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sample: Patients who were not thrombolysed, &#39;</span> <span class="o">+</span>
+              <span class="s1">&#39;arrived within 4h known onset,</span><span class="se">\n</span><span class="s1">and are &#39;</span> <span class="o">+</span>
+              <span class="s1">&#39;recorded with one of the following reasons&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Percentage of patients with this reason (%)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter to patients who have &quot;no but&quot; reason</span>
+<span class="n">no_but_df</span> <span class="o">=</span> <span class="n">not_ivt</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">not_ivt</span><span class="p">[</span><span class="n">no_but_col</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">no_but_col</span><span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Total patients: </span><span class="si">{</span><span class="n">no_but_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot proportion with each answer</span>
+<span class="n">plot_no_thrombolysis</span><span class="p">(</span><span class="n">no_but_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Total patients: 96480&#39;
+</pre></div>
+</div>
+<img alt="_images/9b4f4d602698d615b1b41e7414f184c8fae5ea86c5b9e4124aae6c9575fa102c.png" src="_images/9b4f4d602698d615b1b41e7414f184c8fae5ea86c5b9e4124aae6c9575fa102c.png" />
+</div>
+</div>
+<p>Observations: Stroke being too mild or severe, and haemorrhagic stroke, are the most common reasons why thrombolysis was not given.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Filter to patients who have &quot;no but&quot; reason</span>
+<span class="n">no_df</span> <span class="o">=</span> <span class="n">not_ivt</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">not_ivt</span><span class="p">[</span><span class="n">no_col</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">no_col</span><span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Total patients: </span><span class="si">{</span><span class="n">no_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot proportion with each answer</span>
+<span class="n">plot_no_thrombolysis</span><span class="p">(</span><span class="n">no_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Total patients: 484&#39;
+</pre></div>
+</div>
+<img alt="_images/41c3b287c4550e5882b2fd58a3c366963732943cac6a055736bbe9586ee775c3.png" src="_images/41c3b287c4550e5882b2fd58a3c366963732943cac6a055736bbe9586ee775c3.png" />
+</div>
+</div>
+<p>Observations: Only a small number of patients are “thrombolysis no” (rather than “no but”). Here, the most common reason is no reason.</p>
+<p><strong>Further analysis of “no but” - frequency of multiple reasons</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find the number of answers given per patients</span>
+<span class="n">multiple</span> <span class="o">=</span> <span class="p">(</span><span class="n">no_but_df</span>
+            <span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+            <span class="o">.</span><span class="n">to_frame</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">names</span><span class="o">=</span><span class="s1">&#39;item&#39;</span><span class="p">))</span>
+
+<span class="c1"># Convert count to proportion</span>
+<span class="n">multiple</span><span class="p">[</span><span class="s1">&#39;proportion&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">multiple</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">multiple</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">multiple</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>item</th>
+      <th>count</th>
+      <th>proportion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>78055</td>
+      <td>0.809028</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>15894</td>
+      <td>0.164739</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>2302</td>
+      <td>0.023860</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>208</td>
+      <td>0.002156</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>20</td>
+      <td>0.000207</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>1</td>
+      <td>0.000010</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Observations: The majority of patients have one answer given (81%). Approximately 16% have 2 answers, 2% have 3 answers, and very few have more than 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multiple_df</span> <span class="o">=</span> <span class="n">no_but_df</span><span class="p">[</span><span class="n">no_but_df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">multiple_df</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+      <th>11</th>
+      <th>12</th>
+      <th>13</th>
+      <th>14</th>
+      <th>15</th>
+      <th>16</th>
+      <th>17</th>
+      <th>18</th>
+      <th>19</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>thrombolysis_no_but_haemorrhagic</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>thrombolysis_no_but_time_window</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>thrombolysis_no_but_comorbidity</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>thrombolysis_no_but_medication</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>thrombolysis_no_but_refusal</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>thrombolysis_no_but_age</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>thrombolysis_no_but_improving</th>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>thrombolysis_no_but_too_mild_severe</th>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>thrombolysis_no_but_time_unknown_wake_up</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>thrombolysis_no_but_other_medical</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>count</th>
+      <td>5194</td>
+      <td>1026</td>
+      <td>1025</td>
+      <td>861</td>
+      <td>815</td>
+      <td>668</td>
+      <td>621</td>
+      <td>562</td>
+      <td>499</td>
+      <td>450</td>
+      <td>445</td>
+      <td>431</td>
+      <td>402</td>
+      <td>376</td>
+      <td>318</td>
+      <td>314</td>
+      <td>303</td>
+      <td>284</td>
+      <td>223</td>
+      <td>180</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Observations: The top 5 move common combinations -</p>
+<ol class="arabic simple">
+<li><p>“Stroke too mild or too severe” and “symptoms improving”</p></li>
+<li><p>“Stroke too mild or too severe” and “symptom onset time unknown/wake-up stroke”</p></li>
+<li><p>“Co-morbidity” and “Other medical reason”</p></li>
+<li><p>“Arrived outside thrombolysis time window” and “symptom onset time unknown/wake-up stroke”</p></li>
+<li><p>“Stroke too mild or too severe” and “Other medical reason”</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sam1_pathway_statistics.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Descriptive analysis of stroke pathway data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="sam1_compare_by_thrombolysis.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Comparison between patients who received thrombolysis versus not</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aims">Aims</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up">Set up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thrombolysis-use-by-patient-features">Thrombolysis use by patient features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reasons-for-not-giving-thrombolysis">Reasons for not giving thrombolysis</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By SAMueL-2 team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

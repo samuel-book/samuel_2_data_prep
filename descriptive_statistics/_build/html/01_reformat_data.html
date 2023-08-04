@@ -1,0 +1,1094 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reformat data &#8212; SAMueL-2 Descriptive Analysis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '01_reformat_data';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Descriptive analysis of stroke pathway data" href="sam1_pathway_statistics.html" />
+    <link rel="prev" title="Descriptive analysis" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">SAMueL-2 Descriptive Analysis</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Descriptive analysis
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Set up</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Reformat data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SAMueL-1</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sam1_pathway_statistics.html">Descriptive analysis of stroke pathway data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam1_thrombolysis_associations.html">Associations between thrombolysis use and patient features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam1_compare_by_thrombolysis.html">Comparison between patients who received thrombolysis versus not</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam1_day_week_pathway_patterns.html">Daily and weekly pathway patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam1_pathway_distributions.html">Stroke pathway timing distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam1_correlations.html">Covariance/correlation between features</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SAMueL-2 (detailed/complete)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sam2_disability_6months_completion.html">Disability at six months (completion)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam2_disability_6months_results.html">Disability at six months (results)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam2_thrombectomy.html">Thrombectomy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SAMUeL-2 (incomplete)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sam2_ambulance.html">Ambulance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam2_size_associations.html">Associations with number of admissions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam2_compare_years.html">Year by year comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam2_disability_discharge.html">Thrombolysis outcomes</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F01_reformat_data.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/01_reformat_data.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Reformat data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aims">Aims</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up">Set up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#restrict-by-number-of-admissions">Restrict by number of admissions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#restrict-by-onset-to-arrival-time">Restrict by onset to arrival time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-data">Save data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendices">Appendices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#previous-restrictions">Previous restrictions</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="reformat-data">
+<h1>Reformat data<a class="headerlink" href="#reformat-data" title="Permalink to this headline">#</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<p>Reformat data for descriptive analysis.</p>
+</div>
+<div class="section" id="aims">
+<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">#</a></h2>
+<p>Restrict clean data (from 01_clean_raw_data.ipynb) to:</p>
+<ul class="simple">
+<li><p>Years for each hospital where they have at least 20 admissions.</p></li>
+<li><p>Arrivals within four hours of known onset.</p></li>
+</ul>
+</div>
+<div class="section" id="set-up">
+<h2>Set up<a class="headerlink" href="#set-up" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Linting</span>
+<span class="o">%</span><span class="k">load_ext</span> pycodestyle_magic
+<span class="o">%</span><span class="k">pycodestyle_on</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages and functions</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set paths and filenames</span>
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Paths</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;Singleton object for storing paths to data and files.&#39;&#39;&#39;</span>
+
+    <span class="n">data_path</span> <span class="o">=</span> <span class="s1">&#39;./../output/&#39;</span>
+    <span class="n">data_filename</span> <span class="o">=</span> <span class="s1">&#39;clean_samuel_ssnap_extract_v2.csv&#39;</span>
+    <span class="n">restrict_filename</span> <span class="o">=</span> <span class="s1">&#39;reformatted_data.csv&#39;</span>
+    <span class="n">admission_only_filename</span> <span class="o">=</span> <span class="s1">&#39;reformatted_data_admissions_only.csv&#39;</span>
+    <span class="n">notebook</span> <span class="o">=</span> <span class="s1">&#39;01&#39;</span>
+
+
+<span class="n">paths</span> <span class="o">=</span> <span class="n">Paths</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data</span>
+<span class="n">raw_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">data_path</span><span class="p">,</span> <span class="n">paths</span><span class="o">.</span><span class="n">data_filename</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="restrict-by-number-of-admissions">
+<h2>Restrict by number of admissions<a class="headerlink" href="#restrict-by-number-of-admissions" title="Permalink to this headline">#</a></h2>
+<p>We also want to remove very small centres (i.e. not considered “stroke units”, not routinely receiving patients).</p>
+<p>To determine an appropriate threshold of a “small centre”, reviewed the number of admissions and thrombolysis patients per year for hospitals where they had any year with either (a) less than 100 admissions, or (b) less than 3 thrombolysis patients.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create empty object to store rows</span>
+<span class="n">discard</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Loop through name (each stroke team) and group_df (relevant rows</span>
+<span class="c1"># from data)</span>
+<span class="n">groups</span> <span class="o">=</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;stroke_team&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group_df</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">:</span>
+    <span class="c1"># Find admissions and thrombolysis use per year</span>
+    <span class="n">test_restrictions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span>
+        <span class="p">[</span><span class="n">group_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;admissions&#39;</span><span class="p">),</span>
+         <span class="n">group_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)[</span><span class="s1">&#39;thrombolysis&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()],</span>
+        <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="n">test_restrictions</span><span class="p">[</span><span class="s1">&#39;stroke_team&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
+
+    <span class="c1"># Check if any year fail conditions over the whole time period</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">any</span><span class="p">(</span><span class="n">test_restrictions</span><span class="p">[</span><span class="s1">&#39;admissions&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">)</span> <span class="ow">or</span>
+            <span class="nb">any</span><span class="p">(</span><span class="n">test_restrictions</span><span class="p">[</span><span class="s1">&#39;thrombolysis&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)):</span>
+        <span class="n">discard</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test_restrictions</span><span class="p">)</span>
+
+<span class="c1"># Convert into a dataframe</span>
+<span class="n">admissions_thrombolysis</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">discard</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">admissions_thrombolysis</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>admissions</th>
+      <th>thrombolysis</th>
+      <th>stroke_team</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2016</td>
+      <td>110</td>
+      <td>24</td>
+      <td>Bronglais Hospital</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017</td>
+      <td>96</td>
+      <td>18</td>
+      <td>Bronglais Hospital</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2018</td>
+      <td>107</td>
+      <td>28</td>
+      <td>Bronglais Hospital</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019</td>
+      <td>91</td>
+      <td>21</td>
+      <td>Bronglais Hospital</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2020</td>
+      <td>94</td>
+      <td>21</td>
+      <td>Bronglais Hospital</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2021</td>
+      <td>87</td>
+      <td>24</td>
+      <td>Bronglais Hospital</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2020</td>
+      <td>77</td>
+      <td>3</td>
+      <td>Grange University Hospital</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2021</td>
+      <td>416</td>
+      <td>51</td>
+      <td>Grange University Hospital</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2016</td>
+      <td>916</td>
+      <td>100</td>
+      <td>Leeds General Infirmary</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017</td>
+      <td>750</td>
+      <td>73</td>
+      <td>Leeds General Infirmary</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2018</td>
+      <td>23</td>
+      <td>7</td>
+      <td>Leeds General Infirmary</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019</td>
+      <td>73</td>
+      <td>13</td>
+      <td>Leeds General Infirmary</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2020</td>
+      <td>839</td>
+      <td>95</td>
+      <td>Leeds General Infirmary</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2021</td>
+      <td>1156</td>
+      <td>94</td>
+      <td>Leeds General Infirmary</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2016</td>
+      <td>345</td>
+      <td>35</td>
+      <td>Medway Maritime Hospital</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017</td>
+      <td>275</td>
+      <td>30</td>
+      <td>Medway Maritime Hospital</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2018</td>
+      <td>331</td>
+      <td>37</td>
+      <td>Medway Maritime Hospital</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019</td>
+      <td>394</td>
+      <td>41</td>
+      <td>Medway Maritime Hospital</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2020</td>
+      <td>88</td>
+      <td>11</td>
+      <td>Medway Maritime Hospital</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2016</td>
+      <td>44</td>
+      <td>5</td>
+      <td>Princess Alexandra Hospital</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017</td>
+      <td>3</td>
+      <td>0</td>
+      <td>Princess Alexandra Hospital</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2016</td>
+      <td>20</td>
+      <td>4</td>
+      <td>Princess Royal Hospital Haywards Heath</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017</td>
+      <td>1</td>
+      <td>0</td>
+      <td>Princess Royal Hospital Haywards Heath</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2016</td>
+      <td>367</td>
+      <td>40</td>
+      <td>Queen Elizabeth the Queen Mother Hospital</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017</td>
+      <td>286</td>
+      <td>47</td>
+      <td>Queen Elizabeth the Queen Mother Hospital</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2018</td>
+      <td>331</td>
+      <td>39</td>
+      <td>Queen Elizabeth the Queen Mother Hospital</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019</td>
+      <td>344</td>
+      <td>44</td>
+      <td>Queen Elizabeth the Queen Mother Hospital</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2020</td>
+      <td>88</td>
+      <td>16</td>
+      <td>Queen Elizabeth the Queen Mother Hospital</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2021</td>
+      <td>1</td>
+      <td>0</td>
+      <td>Queen Elizabeth the Queen Mother Hospital</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2017</td>
+      <td>2</td>
+      <td>0</td>
+      <td>Queen's Medical Centre - Nottingham</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2018</td>
+      <td>10</td>
+      <td>3</td>
+      <td>Queen's Medical Centre - Nottingham</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2019</td>
+      <td>4</td>
+      <td>3</td>
+      <td>Queen's Medical Centre - Nottingham</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2020</td>
+      <td>479</td>
+      <td>64</td>
+      <td>Queen's Medical Centre - Nottingham</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2021</td>
+      <td>1097</td>
+      <td>140</td>
+      <td>Queen's Medical Centre - Nottingham</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2016</td>
+      <td>168</td>
+      <td>3</td>
+      <td>Warwick Hospital</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017</td>
+      <td>187</td>
+      <td>10</td>
+      <td>Warwick Hospital</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2018</td>
+      <td>176</td>
+      <td>6</td>
+      <td>Warwick Hospital</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019</td>
+      <td>185</td>
+      <td>2</td>
+      <td>Warwick Hospital</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2020</td>
+      <td>149</td>
+      <td>0</td>
+      <td>Warwick Hospital</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2021</td>
+      <td>170</td>
+      <td>0</td>
+      <td>Warwick Hospital</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>2016</td>
+      <td>408</td>
+      <td>61</td>
+      <td>William Harvey Hospital</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017</td>
+      <td>410</td>
+      <td>64</td>
+      <td>William Harvey Hospital</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2018</td>
+      <td>400</td>
+      <td>52</td>
+      <td>William Harvey Hospital</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2019</td>
+      <td>437</td>
+      <td>59</td>
+      <td>William Harvey Hospital</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2020</td>
+      <td>128</td>
+      <td>13</td>
+      <td>William Harvey Hospital</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2021</td>
+      <td>1</td>
+      <td>0</td>
+      <td>William Harvey Hospital</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Group by stroke team and loop through</span>
+<span class="n">admissions_thrombolysis_teams</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">admissions_thrombolysis</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;stroke_team&#39;</span><span class="p">))</span>
+
+<span class="c1"># Set up figure and counter</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+    <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">nrows</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">admissions_thrombolysis_teams</span><span class="p">),</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Loop through teams and plot</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group_df</span> <span class="ow">in</span> <span class="n">admissions_thrombolysis_teams</span><span class="p">:</span>
+    <span class="c1"># Admissions plot</span>
+    <span class="n">group_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;admissions&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
+                  <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=</span><span class="mi">2016</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">2021</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+    <span class="c1"># Thrombolysis patients plot</span>
+    <span class="n">group_df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;thrombolysis&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
+                  <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=</span><span class="mi">2016</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">2021</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Admissions (left) and thrombolysis (right)&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="mf">0.93</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/78116f209bded0cdd2f1ef515add14e16a9ea44589a9c7af7117b8cf0b82ad51.png" src="_images/78116f209bded0cdd2f1ef515add14e16a9ea44589a9c7af7117b8cf0b82ad51.png" />
+</div>
+</div>
+<p>Suggested restrictions:</p>
+<ul class="simple">
+<li><p><strong>Minimum of 50 admissions per year</strong> - this means we drop really small hospitals (three have no more than 10 per year), but still keep fairly small (one has around 90-100 admissions per year).</p></li>
+<li><p><strong>No minimum number of thrombolysis patients</strong> - as there are hospitals like Warwick Hospital with around 180 admissions per year but only 2 to 10 thrombolysis patients per year.</p></li>
+<li><p><strong>Check these criteria year by year</strong> - keep years where they meet criteria and drop years where they don’t (as centres open and close, and only want years where they were actually open)</p></li>
+</ul>
+<p><em>(Agreed threshold with MA, KP, AL &amp; AH on 02/06/2023)</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create empty object to store rows</span>
+<span class="n">keep</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Group by stroke team and year and check criteria</span>
+<span class="n">groups</span> <span class="o">=</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;stroke_team&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group_df</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">:</span>
+    <span class="c1"># Check if year meets conditions</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">group_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">):</span>
+        <span class="n">keep</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">group_df</span><span class="p">)</span>
+
+<span class="c1"># Concatenate to create dataframe</span>
+<span class="n">raw_data_size</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">keep</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Printing number of stroke teams kept v.s. removed</span>
+<span class="n">n_raw_team</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw_data</span><span class="p">[</span><span class="s1">&#39;stroke_team&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="n">n_clean_team</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw_data_size</span><span class="p">[</span><span class="s1">&#39;stroke_team&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;N stroke teams with at least 1 year kept: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n_clean_team</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;N stroke teams fully removed: </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+    <span class="n">n_raw_team</span> <span class="o">-</span> <span class="n">n_clean_team</span>
+<span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>N stroke teams with at least 1 year kept: 119
+N stroke teams fully removed: 2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="restrict-by-onset-to-arrival-time">
+<h2>Restrict by onset to arrival time<a class="headerlink" href="#restrict-by-onset-to-arrival-time" title="Permalink to this headline">#</a></h2>
+<p>This project is just focussed on the <strong>emergency stroke pathway</strong>, and hence we often just focus on individuals who arrived with <strong>four</strong> hours of <strong>known</strong> onset</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">raw_data_size</span><span class="p">[(</span><span class="n">raw_data_size</span><span class="p">[</span><span class="s1">&#39;onset_known&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span>
+                     <span class="p">(</span><span class="n">raw_data_size</span><span class="p">[</span><span class="s1">&#39;onset_to_arrival_time&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">4</span><span class="o">*</span><span class="mi">60</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="save-data">
+<h2>Save data<a class="headerlink" href="#save-data" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save dataset just restricted by number of admissions</span>
+<span class="n">admissions_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">paths</span><span class="o">.</span><span class="n">data_path</span><span class="p">,</span> <span class="n">paths</span><span class="o">.</span><span class="n">admission_only_filename</span><span class="p">)</span>
+<span class="n">raw_data_size</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">admissions_filename</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Save dataset with both restrictions</span>
+<span class="n">both_filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">data_path</span><span class="p">,</span> <span class="n">paths</span><span class="o">.</span><span class="n">restrict_filename</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">both_filename</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="appendices">
+<h2>Appendices<a class="headerlink" href="#appendices" title="Permalink to this headline">#</a></h2>
+<div class="section" id="previous-restrictions">
+<h3>Previous restrictions<a class="headerlink" href="#previous-restrictions" title="Permalink to this headline">#</a></h3>
+<p>This section notes down previous restrictions we used, and why we are no longer using them here.</p>
+<p><strong>Year:</strong> We had assumed that 2016 would be too long ago, and that 2020 onwards would be impacted by COVID-19, but we have chosen to include them, so we can see to what extent results vary year-to-year, and if there might be a possibility of using other years (and not just 2017-2019).</p>
+<p><strong>Arrival by ambulance:</strong> We had previously considered restricting descriptive analysis to only individuals who arrived by ambulance, as we are focussed on the emergency stroke pathway, which often means arriving by ambulance, with the ambulance often being the trigger of the start of the pathway. We decided not to, as we know that there will be some emergency patients who do manage to get on the emergency pathway, despite not arriving by ambulance.</p>
+<p><strong>Number of thrombolysis patients per year:</strong> As above, there are some hospitals with a reasonable number of admissions but very low numbers of thrombolysis patients (e.g . 0, 1, 2) that would be relevant to include.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Descriptive analysis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="sam1_pathway_statistics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Descriptive analysis of stroke pathway data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aims">Aims</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up">Set up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#restrict-by-number-of-admissions">Restrict by number of admissions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#restrict-by-onset-to-arrival-time">Restrict by onset to arrival time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#save-data">Save data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendices">Appendices</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#previous-restrictions">Previous restrictions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By SAMueL-2 team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1009 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Covariance/correlation between features &#8212; SAMueL-2 Descriptive Analysis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sam1_correlations';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Disability at six months (completion)" href="sam2_disability_6months_completion.html" />
+    <link rel="prev" title="Stroke pathway timing distributions" href="sam1_pathway_distributions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">SAMueL-2 Descriptive Analysis</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Descriptive analysis
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Set up</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_reformat_data.html">Reformat data</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SAMueL-1</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sam1_pathway_statistics.html">Descriptive analysis of stroke pathway data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam1_thrombolysis_associations.html">Associations between thrombolysis use and patient features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam1_compare_by_thrombolysis.html">Comparison between patients who received thrombolysis versus not</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam1_day_week_pathway_patterns.html">Daily and weekly pathway patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam1_pathway_distributions.html">Stroke pathway timing distributions</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Covariance/correlation between features</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SAMueL-2 (detailed/complete)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sam2_disability_6months_completion.html">Disability at six months (completion)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam2_disability_6months_results.html">Disability at six months (results)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam2_thrombectomy.html">Thrombectomy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SAMUeL-2 (incomplete)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sam2_ambulance.html">Ambulance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam2_size_associations.html">Associations with number of admissions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam2_compare_years.html">Year by year comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam2_disability_discharge.html">Thrombolysis outcomes</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fsam1_correlations.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/sam1_correlations.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Covariance/correlation between features</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aim">Aim</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up">Set up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#restrict-data">Restrict data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scale-data">Scale data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-covariance-of-scaled-data-correlation">Get covariance of scaled data (correlation)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#investigate-distribution-of-r-squared-values">Investigate distribution of R-squared values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#show-highly-correlated-features">Show highly correlated features</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="covariance-correlation-between-features">
+<h1>Covariance/correlation between features<a class="headerlink" href="#covariance-correlation-between-features" title="Permalink to this headline">#</a></h1>
+<div class="section" id="aim">
+<h2>Aim<a class="headerlink" href="#aim" title="Permalink to this headline">#</a></h2>
+<p>Measure the correlation between features. Uses full dataset (i.e. just restricted by number of admissions - and not by whether arrived within 4 hours of known stroke onset).</p>
+<p>Replicates SAMueL-1 analyses <a class="reference external" href="https://samuel-book.github.io/samuel-1/descriptive_stats/07_covariance.html">available here</a></p>
+</div>
+<div class="section" id="set-up">
+<h2>Set up<a class="headerlink" href="#set-up" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import libraries</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="c1"># Linting</span>
+<span class="o">%</span><span class="k">load_ext</span> pycodestyle_magic
+<span class="o">%</span><span class="k">pycodestyle_on</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set paths and filenames</span>
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Paths</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;Singleton object for storing paths to data and files.&#39;&#39;&#39;</span>
+
+    <span class="n">data_path</span> <span class="o">=</span> <span class="s1">&#39;./../output/&#39;</span>
+    <span class="n">data_filename</span> <span class="o">=</span> <span class="s1">&#39;reformatted_data.csv&#39;</span>
+    <span class="n">admission_only_filename</span> <span class="o">=</span> <span class="s1">&#39;reformatted_data_admissions_only.csv&#39;</span>
+
+
+<span class="n">paths</span> <span class="o">=</span> <span class="n">Paths</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data</span>
+<span class="n">data_full</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">data_path</span><span class="p">,</span>
+                                     <span class="n">paths</span><span class="o">.</span><span class="n">admission_only_filename</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="restrict-data">
+<h2>Restrict data<a class="headerlink" href="#restrict-data" title="Permalink to this headline">#</a></h2>
+<p>Note: In SAMueL-1, they used ‘../data/10k_training_test/cohort_10000_train.csv’. This appears to have some differences to what I have done below including:</p>
+<ul class="simple">
+<li><p>One hot encoding for variables with missing values (e.g. AFAnticoagulentHeparin_No, AFAnticoagulentHeparin_missing)</p></li>
+<li><p>One hot encoding variables that we have as numerical (e.g. admission year is S1AdmissionYear_2018, S1AdmissionYear_2017, S1AdmissionYear_2016)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop ID and categorical variables</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">data_full</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;stroke_team&#39;</span><span class="p">,</span>
+                     <span class="s1">&#39;weekday&#39;</span><span class="p">,</span> <span class="s1">&#39;discharge_destination&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Find columns with NaN and drop them</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Show remaining data</span>
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 358884 entries, 0 to 358883
+Data columns (total 35 columns):
+ #   Column                                    Non-Null Count   Dtype  
+---  ------                                    --------------   -----  
+ 0   age                                       358884 non-null  float64
+ 1   male                                      358884 non-null  int64  
+ 2   infarction                                358884 non-null  float64
+ 3   onset_known                               358884 non-null  int64  
+ 4   precise_onset_known                       358884 non-null  int64  
+ 5   onset_during_sleep                        358884 non-null  int64  
+ 6   month                                     358884 non-null  int64  
+ 7   year                                      358884 non-null  int64  
+ 8   arrival_time_3_hour_period                358884 non-null  int64  
+ 9   arrival_to_scan_time                      358884 non-null  float64
+ 10  thrombolysis                              358884 non-null  int64  
+ 11  thrombectomy                              358884 non-null  int64  
+ 12  congestive_heart_failure                  358884 non-null  float64
+ 13  hypertension                              358884 non-null  float64
+ 14  atrial_fibrillation                       358884 non-null  float64
+ 15  diabetes                                  358884 non-null  float64
+ 16  prior_stroke_tia                          358884 non-null  float64
+ 17  prior_disability                          358884 non-null  int64  
+ 18  stroke_severity                           358884 non-null  int64  
+ 19  nihss_complete                            358884 non-null  int64  
+ 20  nihss_arrival_loc                         358884 non-null  int64  
+ 21  thrombolysis_no_not_available             358884 non-null  int64  
+ 22  thrombolysis_no_out_of_hours              358884 non-null  int64  
+ 23  thrombolysis_no_scan_not_quick_enough     358884 non-null  int64  
+ 24  thrombolysis_no_no_reason                 358884 non-null  int64  
+ 25  thrombolysis_no_but_haemorrhagic          358884 non-null  int64  
+ 26  thrombolysis_no_but_time_window           358884 non-null  int64  
+ 27  thrombolysis_no_but_comorbidity           358884 non-null  int64  
+ 28  thrombolysis_no_but_medication            358884 non-null  int64  
+ 29  thrombolysis_no_but_refusal               358884 non-null  int64  
+ 30  thrombolysis_no_but_age                   358884 non-null  int64  
+ 31  thrombolysis_no_but_improving             358884 non-null  int64  
+ 32  thrombolysis_no_but_too_mild_severe       358884 non-null  int64  
+ 33  thrombolysis_no_but_time_unknown_wake_up  358884 non-null  int64  
+ 34  thrombolysis_no_but_other_medical         358884 non-null  int64  
+dtypes: float64(8), int64(27)
+memory usage: 95.8 MB
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="scale-data">
+<h2>Scale data<a class="headerlink" href="#scale-data" title="Permalink to this headline">#</a></h2>
+<p>Covariance is not standardised, so cannot be used to compare strength of relationship, and only indicates direction. Correlation is standardised, meaning it can be used to make comparisons.</p>
+<p>After scaling the data, the reported covariance will be the correlation between data features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">df_std</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">df_std</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df_std</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="get-covariance-of-scaled-data-correlation">
+<h2>Get covariance of scaled data (correlation)<a class="headerlink" href="#get-covariance-of-scaled-data-correlation" title="Permalink to this headline">#</a></h2>
+<p>Also calculated R-squared, which is the square of the correlation.  Whilst correlation measures the strength of the relationship, R-squared indicates the percentage of variance in one variable explained by the other variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get covariance</span>
+<span class="n">cov</span> <span class="o">=</span> <span class="n">df_std</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
+
+<span class="c1"># Convert from wide to tall</span>
+<span class="n">cov</span> <span class="o">=</span> <span class="n">cov</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Remove correlation with self</span>
+<span class="n">cov</span> <span class="o">=</span> <span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="o">.</span><span class="n">index</span> <span class="o">!=</span> <span class="n">cov</span><span class="p">[</span><span class="s1">&#39;variable&#39;</span><span class="p">]]</span>
+
+<span class="c1"># Add absolute correlation (ie. +/- becomes +)</span>
+<span class="n">cov</span><span class="p">[</span><span class="s1">&#39;abs_value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">])</span>
+
+<span class="c1"># Add R-squared</span>
+<span class="n">cov</span><span class="p">[</span><span class="s1">&#39;r-squared&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cov</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="c1"># Sort by absolute covariance</span>
+<span class="n">cov</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;abs_value&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Round to four decimal places</span>
+<span class="n">cov</span> <span class="o">=</span> <span class="n">cov</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Remove duplicate pairs of features</span>
+<span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">cov</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">combination</span> <span class="o">=</span> <span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="n">values</span><span class="p">[</span><span class="s1">&#39;variable&#39;</span><span class="p">]]</span>
+    <span class="n">combination</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="n">string</span> <span class="o">=</span> <span class="n">combination</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="n">combination</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+<span class="n">cov</span><span class="p">[</span><span class="s1">&#39;pair&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span>
+<span class="n">cov</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;pair&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">cov</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pair&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Sort by r-squared</span>
+<span class="n">cov</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;r-squared&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cov</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>variable</th>
+      <th>value</th>
+      <th>abs_value</th>
+      <th>r-squared</th>
+      <th>pair</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>infarction</th>
+      <td>thrombolysis_no_but_haemorrhagic</td>
+      <td>-0.9857</td>
+      <td>0.9857</td>
+      <td>0.9716</td>
+      <td>infarction-thrombolysis_no_but_haemorrhagic</td>
+    </tr>
+    <tr>
+      <th>nihss_arrival_loc</th>
+      <td>stroke_severity</td>
+      <td>0.6086</td>
+      <td>0.6086</td>
+      <td>0.3704</td>
+      <td>nihss_arrival_loc-stroke_severity</td>
+    </tr>
+    <tr>
+      <th>precise_onset_known</th>
+      <td>onset_known</td>
+      <td>0.4992</td>
+      <td>0.4992</td>
+      <td>0.2492</td>
+      <td>onset_known-precise_onset_known</td>
+    </tr>
+    <tr>
+      <th>precise_onset_known</th>
+      <td>thrombolysis_no_but_time_unknown_wake_up</td>
+      <td>-0.4518</td>
+      <td>0.4518</td>
+      <td>0.2041</td>
+      <td>precise_onset_known-thrombolysis_no_but_time_u...</td>
+    </tr>
+    <tr>
+      <th>thrombolysis_no_but_time_unknown_wake_up</th>
+      <td>onset_known</td>
+      <td>-0.4383</td>
+      <td>0.4383</td>
+      <td>0.1921</td>
+      <td>onset_known-thrombolysis_no_but_time_unknown_w...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>hypertension</th>
+      <td>thrombolysis_no_no_reason</td>
+      <td>-0.0050</td>
+      <td>0.0050</td>
+      <td>0.0000</td>
+      <td>hypertension-thrombolysis_no_no_reason</td>
+    </tr>
+    <tr>
+      <th>hypertension</th>
+      <td>thrombolysis_no_but_refusal</td>
+      <td>-0.0022</td>
+      <td>0.0022</td>
+      <td>0.0000</td>
+      <td>hypertension-thrombolysis_no_but_refusal</td>
+    </tr>
+    <tr>
+      <th>hypertension</th>
+      <td>thrombolysis_no_but_other_medical</td>
+      <td>-0.0039</td>
+      <td>0.0039</td>
+      <td>0.0000</td>
+      <td>hypertension-thrombolysis_no_but_other_medical</td>
+    </tr>
+    <tr>
+      <th>hypertension</th>
+      <td>thrombolysis_no_but_improving</td>
+      <td>-0.0071</td>
+      <td>0.0071</td>
+      <td>0.0000</td>
+      <td>hypertension-thrombolysis_no_but_improving</td>
+    </tr>
+    <tr>
+      <th>thrombolysis_no_scan_not_quick_enough</th>
+      <td>year</td>
+      <td>-0.0022</td>
+      <td>0.0022</td>
+      <td>0.0000</td>
+      <td>thrombolysis_no_scan_not_quick_enough-year</td>
+    </tr>
+  </tbody>
+</table>
+<p>595 rows × 5 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="investigate-distribution-of-r-squared-values">
+<h2>Investigate distribution of R-squared values<a class="headerlink" href="#investigate-distribution-of-r-squared-values" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot frequency of the different R-squared values</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;r-squared&#39;</span><span class="p">]),</span> <span class="nb">max</span><span class="p">(</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;r-squared&#39;</span><span class="p">])</span><span class="o">+</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;r-squared&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;R-squared&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1b241db2d7b8c19a8b0ba59bd65abf399e3d63b8f4bcad91e972011d2f344e6f.png" src="_images/1b241db2d7b8c19a8b0ba59bd65abf399e3d63b8f4bcad91e972011d2f344e6f.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Count proportion of results in the following bins</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;r-squared&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="n">counts</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&lt;0.10&#39;</span><span class="p">,</span> <span class="s1">&#39;0.1 to 0.25&#39;</span><span class="p">,</span> <span class="s1">&#39;0.25 to 0.50&#39;</span><span class="p">,</span> <span class="s1">&#39;0.50 to 0.75&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;0.75 to 0.999&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">]</span>
+<span class="n">counts_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">labels</span><span class="p">)</span>
+<span class="n">counts_df</span><span class="p">[</span><span class="s1">&#39;Proportion&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">counts</span>
+<span class="n">counts_df</span><span class="p">[</span><span class="s1">&#39;Cumulative Proportion&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">counts</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">counts_df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;R-squared&#39;</span>
+<span class="n">counts_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Proportion</th>
+      <th>Cumulative Proportion</th>
+    </tr>
+    <tr>
+      <th>R-squared</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>&lt;0.10</th>
+      <td>0.986555</td>
+      <td>0.986555</td>
+    </tr>
+    <tr>
+      <th>0.1 to 0.25</th>
+      <td>0.010084</td>
+      <td>0.996639</td>
+    </tr>
+    <tr>
+      <th>0.25 to 0.50</th>
+      <td>0.001681</td>
+      <td>0.998319</td>
+    </tr>
+    <tr>
+      <th>0.50 to 0.75</th>
+      <td>0.000000</td>
+      <td>0.998319</td>
+    </tr>
+    <tr>
+      <th>0.75 to 0.999</th>
+      <td>0.001681</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.000000</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="show-highly-correlated-features">
+<h2>Show highly correlated features<a class="headerlink" href="#show-highly-correlated-features" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;r-squared&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.999</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>variable</th>
+      <th>value</th>
+      <th>abs_value</th>
+      <th>r-squared</th>
+      <th>pair</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cov</span><span class="p">[</span><span class="n">cov</span><span class="p">[</span><span class="s1">&#39;r-squared&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>variable</th>
+      <th>value</th>
+      <th>abs_value</th>
+      <th>r-squared</th>
+      <th>pair</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>infarction</th>
+      <td>thrombolysis_no_but_haemorrhagic</td>
+      <td>-0.9857</td>
+      <td>0.9857</td>
+      <td>0.9716</td>
+      <td>infarction-thrombolysis_no_but_haemorrhagic</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sam1_pathway_distributions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Stroke pathway timing distributions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="sam2_disability_6months_completion.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Disability at six months (completion)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aim">Aim</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up">Set up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#restrict-data">Restrict data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scale-data">Scale data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-covariance-of-scaled-data-correlation">Get covariance of scaled data (correlation)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#investigate-distribution-of-r-squared-values">Investigate distribution of R-squared values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#show-highly-correlated-features">Show highly correlated features</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By SAMueL-2 team
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

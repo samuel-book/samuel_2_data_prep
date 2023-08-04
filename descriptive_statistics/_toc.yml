@@ -1,0 +1,28 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+- caption: Set up
+  chapters:
+  - file: 01_reformat_data
+- caption: SAMueL-1
+  chapters:
+  - file: sam1_pathway_statistics
+  - file: sam1_thrombolysis_associations
+  - file: sam1_compare_by_thrombolysis
+  - file: sam1_day_week_pathway_patterns
+  - file: sam1_pathway_distributions
+  - file: sam1_correlations
+- caption: SAMueL-2 (detailed/complete)
+  chapters:
+  - file: sam2_disability_6months_completion
+  - file: sam2_disability_6months_results
+  - file: sam2_thrombectomy
+- caption: SAMUeL-2 (incomplete)
+  chapters:
+  - file: sam2_ambulance
+  - file: sam2_size_associations
+  - file: sam2_compare_years
+  - file: sam2_disability_discharge

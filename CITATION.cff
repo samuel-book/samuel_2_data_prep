@@ -1,0 +1,45 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Cleaning and descriptive analysis of SAMueL-2 dataset
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - orcid: 'https://orcid.org/0000-0002-8746-9957'
+    given-names: Mike
+    family-names: Allen
+    email: m.allen@exeter.ac.uk
+    affiliation: >-
+      University of Exeter, Medical School and the National
+      Institute for Health Research (NIHR) Applied Research
+      Collaboration South West Peninsula (SWPenARC), Exeter,
+      UK
+  - given-names: Kerry
+    family-names: Pearn
+    affiliation: >-
+      University of Exeter, Medical School and the National
+      Institute for Health Research (NIHR) Applied Research
+      Collaboration South West Peninsula (SWPenARC), Exeter,
+      UK
+    email: k.pearn@exeter.ac.uk
+  - email: a.laws2@exeter.ac.uk
+    given-names: Anna
+    family-names: Laws
+    affiliation: >-
+      University of Exeter, Medical School and the National
+      Institute for Health Research (NIHR) Applied Research
+      Collaboration South West Peninsula (SWPenARC), Exeter,
+      UK
+  - given-names: Amy
+    name-particle: Heather
+    email: a.heather2@exeter.ac.uk
+    affiliation: >-
+      University of Exeter, Medical School and the National
+      Institute for Health Research (NIHR) Applied Research
+      Collaboration South West Peninsula (SWPenARC), Exeter,
+      UK
+    orcid: 'https://orcid.org/0000-0002-6596-3479'
+license: MIT
