@@ -62,7 +62,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'sam1_pathway_distributions';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Covariance/correlation between features" href="sam1_correlations.html" />
+    <link rel="next" title="Correlations between features" href="sam1_correlations.html" />
     <link rel="prev" title="Daily and weekly pathway patterns" href="sam1_day_week_pathway_patterns.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -152,27 +152,22 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01_reformat_data.html">Reformat data</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">SAMueL-1</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Based on SAMueL-1</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="sam1_pathway_statistics.html">Descriptive analysis of stroke pathway data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam1_thrombolysis_associations.html">Associations between thrombolysis use and patient features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam1_compare_by_thrombolysis.html">Comparison between patients who received thrombolysis versus not</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam1_day_week_pathway_patterns.html">Daily and weekly pathway patterns</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Stroke pathway timing distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sam1_correlations.html">Covariance/correlation between features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam1_correlations.html">Correlations between features</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">SAMueL-2 (detailed/complete)</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">New for SAMueL-2</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="sam2_disability_6months_completion.html">Disability at six months (completion)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam2_disability_6months_results.html">Disability at six months (results)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam2_thrombectomy.html">Thrombectomy</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">SAMUeL-2 (incomplete)</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="sam2_ambulance.html">Ambulance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sam2_size_associations.html">Associations with number of admissions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam2_compare_years.html">Year by year comparison</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sam2_disability_discharge.html">Thrombolysis outcomes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam2_ambulance.html">Ambulance</a></li>
 </ul>
 
     </div>
@@ -737,66 +732,66 @@ document.write(`
     <tr>
       <th>3</th>
       <td>lognorm</td>
-      <td>1091.614396</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>pearson3</td>
-      <td>2781.193833</td>
+      <td>802.724032</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>gamma</td>
-      <td>2781.366636</td>
+      <td>2346.218327</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>pearson3</td>
+      <td>2346.328601</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>9</th>
       <td>weibull_max</td>
-      <td>3991.770271</td>
+      <td>3763.649893</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>8</th>
       <td>weibull_min</td>
-      <td>5437.970539</td>
+      <td>4762.978273</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>6</th>
       <td>triang</td>
-      <td>8831.063820</td>
+      <td>7611.830586</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>4</th>
       <td>norm</td>
-      <td>18047.029775</td>
+      <td>17454.803563</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>7</th>
       <td>uniform</td>
-      <td>37197.695295</td>
+      <td>34665.888954</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>expon</td>
-      <td>55580.946570</td>
+      <td>53728.310272</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>0</th>
       <td>beta</td>
-      <td>68212.610808</td>
+      <td>63197.954477</td>
       <td>0.0</td>
     </tr>
   </tbody>
 </table>
-</div></div><img alt="_images/231268eb28ebbe36c45b6a31c592c568e0e1dbfd725691a4406ecf85c4f9ab77.png" src="_images/231268eb28ebbe36c45b6a31c592c568e0e1dbfd725691a4406ecf85c4f9ab77.png" />
+</div></div><img alt="_images/1ca29c16c737c1dc31c3a106cd79c91544ff6d63e24d6947bf91ac8f339ae780.png" src="_images/1ca29c16c737c1dc31c3a106cd79c91544ff6d63e24d6947bf91ac8f339ae780.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -845,66 +840,66 @@ document.write(`
     <tr>
       <th>3</th>
       <td>lognorm</td>
-      <td>1052.788700</td>
+      <td>995.391500</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>expon</td>
-      <td>2178.104366</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>weibull_min</td>
-      <td>2641.993796</td>
+      <td>2412.158067</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>2</th>
       <td>gamma</td>
-      <td>3888.416239</td>
+      <td>4135.011558</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>5</th>
       <td>pearson3</td>
-      <td>4164.647312</td>
+      <td>4194.198740</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>0</th>
       <td>beta</td>
-      <td>5072.607026</td>
+      <td>6729.380875</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>weibull_min</td>
+      <td>8256.838004</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>9</th>
       <td>weibull_max</td>
-      <td>25820.091470</td>
+      <td>27665.051536</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>6</th>
       <td>triang</td>
-      <td>59501.809783</td>
+      <td>59039.646003</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>4</th>
       <td>norm</td>
-      <td>59988.984473</td>
+      <td>62197.760046</td>
       <td>0.0</td>
     </tr>
     <tr>
       <th>7</th>
       <td>uniform</td>
-      <td>116806.616792</td>
+      <td>114863.744150</td>
       <td>0.0</td>
     </tr>
   </tbody>
 </table>
-</div></div><img alt="_images/8cd4629e4f2579b3252d0574877b2e0ddda460aa72314c81ac3eac6e9f84e1dc.png" src="_images/8cd4629e4f2579b3252d0574877b2e0ddda460aa72314c81ac3eac6e9f84e1dc.png" />
+</div></div><img alt="_images/0ea0e6691350abcc47135b694e711fd5abbc22dd5714ae91ff4151d0c522c9c9.png" src="_images/0ea0e6691350abcc47135b694e711fd5abbc22dd5714ae91ff4151d0c522c9c9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -953,66 +948,66 @@ document.write(`
     <tr>
       <th>3</th>
       <td>lognorm</td>
-      <td>116.947350</td>
-      <td>0.00075</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>beta</td>
-      <td>248.754473</td>
-      <td>0.00000</td>
+      <td>96.117945</td>
+      <td>0.00027</td>
     </tr>
     <tr>
       <th>5</th>
       <td>pearson3</td>
-      <td>287.679872</td>
+      <td>330.124322</td>
       <td>0.00000</td>
     </tr>
     <tr>
       <th>2</th>
       <td>gamma</td>
-      <td>287.732886</td>
+      <td>330.284266</td>
+      <td>0.00000</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>beta</td>
+      <td>450.608940</td>
       <td>0.00000</td>
     </tr>
     <tr>
       <th>8</th>
       <td>weibull_min</td>
-      <td>1188.838052</td>
-      <td>0.00000</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>weibull_max</td>
-      <td>1794.459494</td>
+      <td>1373.262433</td>
       <td>0.00000</td>
     </tr>
     <tr>
       <th>4</th>
       <td>norm</td>
-      <td>15925.164511</td>
+      <td>16512.021391</td>
       <td>0.00000</td>
     </tr>
     <tr>
       <th>1</th>
       <td>expon</td>
-      <td>29065.219702</td>
+      <td>29281.649124</td>
       <td>0.00000</td>
     </tr>
     <tr>
       <th>6</th>
       <td>triang</td>
-      <td>81439.629614</td>
+      <td>61994.391204</td>
       <td>0.00000</td>
     </tr>
     <tr>
       <th>7</th>
       <td>uniform</td>
-      <td>118671.296495</td>
+      <td>123216.202393</td>
+      <td>0.00000</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>weibull_max</td>
+      <td>227120.802863</td>
       <td>0.00000</td>
     </tr>
   </tbody>
 </table>
-</div></div><img alt="_images/ddba2b28563ab6ec71b7820c866728485dd589623acf8b898a8ab31470e57477.png" src="_images/ddba2b28563ab6ec71b7820c866728485dd589623acf8b898a8ab31470e57477.png" />
+</div></div><img alt="_images/e6a5cf30bd88be948213a3892376bb9a93d3f9ac61bd102b301e8ab19db1c8a7.png" src="_images/e6a5cf30bd88be948213a3892376bb9a93d3f9ac61bd102b301e8ab19db1c8a7.png" />
 </div>
 </div>
 </div>
@@ -1071,7 +1066,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Covariance/correlation between features</p>
+        <p class="prev-next-title">Correlations between features</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

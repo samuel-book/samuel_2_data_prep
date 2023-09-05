@@ -62,8 +62,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'sam2_compare_years';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Thrombolysis outcomes" href="sam2_disability_discharge.html" />
-    <link rel="prev" title="Associations with number of admissions" href="sam2_size_associations.html" />
+    <link rel="next" title="Ambulance" href="sam2_ambulance.html" />
+    <link rel="prev" title="Thrombectomy" href="sam2_thrombectomy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -152,27 +152,22 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01_reformat_data.html">Reformat data</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">SAMueL-1</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Based on SAMueL-1</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="sam1_pathway_statistics.html">Descriptive analysis of stroke pathway data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam1_thrombolysis_associations.html">Associations between thrombolysis use and patient features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam1_compare_by_thrombolysis.html">Comparison between patients who received thrombolysis versus not</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam1_day_week_pathway_patterns.html">Daily and weekly pathway patterns</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam1_pathway_distributions.html">Stroke pathway timing distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sam1_correlations.html">Covariance/correlation between features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam1_correlations.html">Correlations between features</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">SAMueL-2 (detailed/complete)</span></p>
-<ul class="nav bd-sidenav">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">New for SAMueL-2</span></p>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="sam2_disability_6months_completion.html">Disability at six months (completion)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam2_disability_6months_results.html">Disability at six months (results)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam2_thrombectomy.html">Thrombectomy</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">SAMUeL-2 (incomplete)</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="sam2_ambulance.html">Ambulance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sam2_size_associations.html">Associations with number of admissions</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Year by year comparison</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sam2_disability_discharge.html">Thrombolysis outcomes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam2_ambulance.html">Ambulance</a></li>
 </ul>
 
     </div>
@@ -366,8 +361,29 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aims">Aims</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caveats">Caveats</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#existing-analysis">Existing analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observations">Observations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up">Set up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Set up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#admissions">Admissions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#age">Age</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gender">Gender</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ischaemic-v-s-haemorrhagic">Ischaemic v.s. Haemorrhagic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thrombolysis-and-thrombectomy">Thrombolysis and thrombectomy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-to-arrival-and-treatment">Time to arrival and treatment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-onset">Known onset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stroke-severity">Stroke severity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arriving-by-ambulance">Arriving by ambulance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comorbidities">Comorbidities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#antiplatelets-and-anticoagulants">Antiplatelets and anticoagulants</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prior-disability">Prior disability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discharge-disability">Discharge disability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#disability-at-6-months">Disability at 6 months</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mortality">Mortality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reasons-for-not-receiving-thrombolysis">Reasons for not receiving thrombolysis</a></li>
 </ul>
             </nav>
         </div>
@@ -381,15 +397,67 @@ document.write(`
                   
   <div class="tex2jax_ignore mathjax_ignore section" id="year-by-year-comparison">
 <h1>Year by year comparison<a class="headerlink" href="#year-by-year-comparison" title="Permalink to this headline">#</a></h1>
-<p>(2016 vs 2017 vs 2018 vs 2019 vs 2020 vs 2021)</p>
-<p>Is there consistency? e.g. thrombolysis, arrival to scan, ambulance times. Note: we don’t know if they had COVID.</p>
-<p>Existing research includes:</p>
+<div class="section" id="aims">
+<h2>Aims<a class="headerlink" href="#aims" title="Permalink to this headline">#</a></h2>
+<p>Compare SSNAP data between each year (from 2016 to 2021), with the aim of understanding whether there might be any large differences related to the COVID-19 pandemic. Uses full dataset unless stated otherwise (i.e. just restricted by number of admissions - and not by whether arrived within 4 hours of known stroke onset).</p>
+</div>
+<div class="section" id="caveats">
+<h2>Caveats<a class="headerlink" href="#caveats" title="Permalink to this headline">#</a></h2>
+<p>Looking overall (not by stroke team) - variation between them in terms of impact.</p>
+</div>
+<div class="section" id="existing-analysis">
+<h2>Existing analysis<a class="headerlink" href="#existing-analysis" title="Permalink to this headline">#</a></h2>
+<p>Looked into existing analysis of SSNAP data for changes over time which is on Overleaf, which typically evaluated changes with reference to the data from the same time period/quarter in a prior year… <a class="reference external" href="https://www.strokeaudit.org/SupportFiles/Documents/Webinars/Webinar-slides.aspx">example 1</a>, <a class="reference external" href="https://uat.ssnap.org/SupportFiles/Documents/Posters-and-oral-presentations/2021/Impact-of-Covid-on-SU-access-Poster-Number-098.aspx">example 2</a>, <a class="reference external" href="https://www.ahajournals.org/doi/10.1161/STROKEAHA.120.032253">example 3</a>, <a class="reference external" href="https://www.strokeaudit.org/Documents/National/Clinical/Apr2019Mar2020/Apr2019Mar2020-AnnualReport.aspx">example 4</a>, <a class="reference external" href="https://www.strokeaudit.org/Documents/National/Clinical/Apr2020Mar2021/Apr2020Mar2021-AnnualReport.aspx">example 5</a>, <a class="reference external" href="https://www.strokeaudit.org/Documents/National/Clinical/Apr2021Mar2022/Apr2021Mar2022-AnnualReport.aspx">example 6</a>. A brief summary:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.strokeaudit.org/SupportFiles/Documents/Webinars/Webinar-slides.aspx">https://www.strokeaudit.org/SupportFiles/Documents/Webinars/Webinar-slides.aspx</a></p></li>
-<li><p><a class="reference external" href="https://www.strokeaudit.org/SupportFiles/Documents/Research/Impact-of-Covid-on-SU-access-Poster-Number-098.aspx">https://www.strokeaudit.org/SupportFiles/Documents/Research/Impact-of-Covid-on-SU-access-Poster-Number-098.aspx</a></p></li>
-<li><p><a class="reference external" href="https://www.ahajournals.org/doi/pdf/10.1161/STROKEAHA.120.032253">https://www.ahajournals.org/doi/pdf/10.1161/STROKEAHA.120.032253</a> (and they have COVID-19 status for 23%)</p></li>
+<li><p><strong>First lockdown:</strong> Fewer admissions, and more haemorrhagic, older and severe strokes. Increased mortality (particularly if had COVID and stroke). One concluded higher clinical quality, one found longer times and reduced proportion admitted within four hours, and receiving thrombolysis (likely due to specific time periods and comparators). etc.</p></li>
+<li><p><strong>Second lockdown:</strong> No drop in admissions. Proportion admitted within four hours dropped. Increase in onset to arrival time. Decline in proportion receiving thrombolysis. Slight improvement in door to needle time. etc.</p></li>
 </ul>
-<p>Aim is to understand whether it would be appropriate to include 2016 or 2020 or 2021 in analysis.</p>
+</div>
+<div class="section" id="observations">
+<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">#</a></h2>
+<p>There is <strong>seasonal variation</strong>. In the winter, you typically see:</p>
+<ul class="simple">
+<li><p>Higher mean age</p></li>
+<li><p>Lower proportion of males</p></li>
+<li><p>Lower proportion infarction</p></li>
+<li><p>More severe strokes</p></li>
+<li><p>Worse discharge disability</p></li>
+<li><p>Higher proportion die</p></li>
+</ul>
+<p>There are many general <strong>trends occuring over the years</strong>:</p>
+<ul class="simple">
+<li><p>Increasing admissions</p></li>
+<li><p>Increasing proportion of males</p></li>
+<li><p>Decreasing thrombolysis rates (in 2020 + 21)</p></li>
+<li><p>Increasing thrombectomy rates</p></li>
+<li><p>Increasing onset to arrival time - but not for NIHSS 0 or people who did not arrive by ambulance (for whom times have actually decreased in 2021)</p></li>
+<li><p>Decreasing arrival to scan time</p></li>
+<li><p>Increasing scan to thrombolysis time</p></li>
+<li><p>Increasing arrival to thrombectomy time</p></li>
+<li><p>Decreasing proportion of people arriving by ambulance</p></li>
+<li><p>Median call to ambulance time decreased in 2020 but increased in 2021</p></li>
+<li><p>Median ambulance on scene time increasing</p></li>
+<li><p>Proportion with hypertension and diabetes increasing, and proportion with atrial fibrillation and prior stroke or TIA decreasing</p></li>
+<li><p>Proportion on anticoaulants is decreasing, but anticoagulant data is impacted by high rate of NAN in 2016-17</p></li>
+<li><p>Decreasing proportion who are dead by discharge</p></li>
+<li><p>In terms of reasons for not receiving thrombolysis, “No” reasons only available for a small number of patients. “No but” reasons have trends - either not consistent, or increasing (time window, medication) or decreasing (comorbidity, improving)</p></li>
+</ul>
+<p>You can see potential impacts of COVID-19 looking at data from the first month or so of the <strong>first lockdown</strong>:</p>
+<ul class="simple">
+<li><p>Drop in number of admissions</p></li>
+<li><p>More severe strokes</p></li>
+<li><p>Increase in proportion arriving by ambulance</p></li>
+<li><p>Median call to ambulance time was shorter</p></li>
+</ul>
+<p>However, for many variables, this is not outside of usual variation, and often overall trends by quarter or year seem relatively normal.</p>
+<p>There are also some variables were there are not obvious trends over time:</p>
+<ul class="simple">
+<li><p>Median travel to hospital time</p></li>
+<li><p>Median hospital wait time</p></li>
+<li><p>Prior disability</p></li>
+<li><p>Six month disability</p></li>
+</ul>
+</div>
 <div class="section" id="set-up">
 <h2>Set up<a class="headerlink" href="#set-up" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
@@ -397,6 +465,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import packages and functions</span>
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
@@ -414,10 +483,10 @@ document.write(`
 <span class="k">class</span> <span class="nc">Paths</span><span class="p">:</span>
     <span class="sd">&#39;&#39;&#39;Singleton object for storing paths to data and files.&#39;&#39;&#39;</span>
 
+    <span class="n">raw_path</span> <span class="o">=</span> <span class="s1">&#39;./../data/&#39;</span>
+    <span class="n">raw_filename</span> <span class="o">=</span> <span class="s1">&#39;SAMueL ssnap extract v2.csv&#39;</span>
     <span class="n">data_path</span> <span class="o">=</span> <span class="s1">&#39;./../output/&#39;</span>
-    <span class="n">data_filename</span> <span class="o">=</span> <span class="s1">&#39;reformatted_data.csv&#39;</span>
     <span class="n">admission_only_filename</span> <span class="o">=</span> <span class="s1">&#39;reformatted_data_admissions_only.csv&#39;</span>
-    <span class="n">hospitals_filename</span> <span class="o">=</span> <span class="s1">&#39;clean_stroke_hospitals_2022.csv&#39;</span>
 
     <span class="n">notebook</span> <span class="o">=</span> <span class="s1">&#39;01&#39;</span>
 
@@ -430,9 +499,239 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">data_path</span><span class="p">,</span> <span class="n">paths</span><span class="o">.</span><span class="n">data_filename</span><span class="p">))</span>
 <span class="n">data_full</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
     <span class="n">paths</span><span class="o">.</span><span class="n">data_path</span><span class="p">,</span> <span class="n">paths</span><span class="o">.</span><span class="n">admission_only_filename</span><span class="p">))</span>
+
+<span class="n">raw_data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">raw_path</span><span class="p">,</span> <span class="n">paths</span><span class="o">.</span><span class="n">raw_filename</span><span class="p">),</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Set up<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>Create column with month+year or quarter+year.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create datetime with month and year</span>
+<span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;month_year_dt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span>
+    <span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span>
+    <span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m&#39;</span><span class="p">)</span>
+
+<span class="c1"># Convert to period of m (month and year)</span>
+<span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;month_year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;month_year_dt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+
+<span class="c1"># Convert to period of q (quarter and year)</span>
+<span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;quarter_year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;month_year_dt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Add column with grouped stroke severity</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conditions</span> <span class="o">=</span> <span class="p">[(</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;stroke_severity&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">),</span>
+              <span class="p">(</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;stroke_severity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">))),</span>
+              <span class="p">(</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;stroke_severity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">16</span><span class="p">))),</span>
+              <span class="p">(</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;stroke_severity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">21</span><span class="p">))),</span>
+              <span class="p">(</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;stroke_severity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="mi">43</span><span class="p">)))]</span>
+<span class="n">nihss_choices</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A: 0&#39;</span><span class="p">,</span> <span class="s1">&#39;B: 1-4&#39;</span><span class="p">,</span> <span class="s1">&#39;C: 5-15&#39;</span><span class="p">,</span> <span class="s1">&#39;D: 16-20&#39;</span><span class="p">,</span> <span class="s1">&#39;E: 21-42&#39;</span><span class="p">]</span>
+<span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;stroke_severity_groups&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span>
+                                                <span class="n">nihss_choices</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h2>
+<p>These are functions used in multiple sections and so stored seperately.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_line</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">outcome</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">legend</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Create line plot</span>
+<span class="sd">    time = string, column with time variable</span>
+<span class="sd">    outcome = string, column with outcome variable</span>
+<span class="sd">    type = string, type of operation (e.g. size, mean)</span>
+<span class="sd">    ax = axis object to plot on</span>
+<span class="sd">    title = string, figure title</span>
+<span class="sd">    legend = True or False (depending on whether want to show legend)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># Groupby timeperiod and period operation (e.g. count, proportion)</span>
+    <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;size&#39;</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">data_full</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">time</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">outcome</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;mean&#39;</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">data_full</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">time</span><span class="p">)[</span><span class="n">outcome</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;median&#39;</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">data_full</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">time</span><span class="p">)[</span><span class="n">outcome</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+    <span class="c1"># Create line plot</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">outcome</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
+                 <span class="n">markersize</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+    <span class="c1"># Add vertical line indicating start of lockdown</span>
+    <span class="k">if</span> <span class="n">time</span> <span class="o">==</span> <span class="s1">&#39;month_year&#39;</span><span class="p">:</span>
+        <span class="n">first</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2020-03-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+        <span class="n">second</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2020-11-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+        <span class="n">third</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2021-01-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">time</span> <span class="o">==</span> <span class="s1">&#39;quarter_year&#39;</span><span class="p">:</span>
+        <span class="n">first</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2020-03-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+        <span class="n">second</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2020-11-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+        <span class="n">third</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2021-01-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">time</span> <span class="o">==</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span>
+        <span class="n">first</span> <span class="o">=</span> <span class="mi">2020</span>
+        <span class="n">second</span> <span class="o">=</span> <span class="mi">2020</span>
+        <span class="n">third</span> <span class="o">=</span> <span class="mi">2021</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">first</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+               <span class="n">label</span><span class="o">=</span><span class="s1">&#39;first lockdown&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">second</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+               <span class="n">label</span><span class="o">=</span><span class="s1">&#39;second lockdown&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">third</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+               <span class="n">label</span><span class="o">=</span><span class="s1">&#39;third lockdown&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">legend</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">})</span>
+
+
+<span class="k">def</span> <span class="nf">create_line_plots</span><span class="p">(</span><span class="n">outcome</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">title_start</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Create series of line plots (per month, per quarter and per year)</span>
+<span class="sd">    outcome = string, column with outcome variable</span>
+<span class="sd">    type = string, type of operation (e.g. size, mean)</span>
+<span class="sd">    title_start = string, start of title (to then end with &#39;per month&#39; etc)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="n">plot_line</span><span class="p">(</span><span class="s1">&#39;month_year&#39;</span><span class="p">,</span> <span class="n">outcome</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+              <span class="n">title_start</span> <span class="o">+</span> <span class="s1">&#39; per month&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plot_line</span><span class="p">(</span><span class="s1">&#39;quarter_year&#39;</span><span class="p">,</span> <span class="n">outcome</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+              <span class="n">title_start</span> <span class="o">+</span> <span class="s1">&#39; per quarter&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">plot_line</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">outcome</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+              <span class="n">title_start</span> <span class="o">+</span> <span class="s1">&#39; per year&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">plot_stacked_bar</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Create stacked bar chart with the proportion of patients in</span>
+<span class="sd">    each per specified time period</span>
+<span class="sd">    time = string, column with time period (e.g. month_year)</span>
+<span class="sd">    group = string, column with group (e.g. prior_disability)</span>
+<span class="sd">    order = array, specifies column order, optional</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># Find proportions</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_full</span>
+          <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">time</span><span class="p">)[</span><span class="n">group</span><span class="p">]</span>
+          <span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+          <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;prop&#39;</span><span class="p">)</span>
+          <span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">group</span><span class="p">,</span>
+                 <span class="n">index</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;prop&#39;</span><span class="p">))</span>
+
+    <span class="c1"># Create stacked bar plot</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">order</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">nihss_choices</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+                               <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+                <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Proportion&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Add lines for each lockdown</span>
+    <span class="k">if</span> <span class="n">time</span> <span class="o">==</span> <span class="s1">&#39;month_year&#39;</span><span class="p">:</span>
+        <span class="n">first</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="s1">&#39;2020-03&#39;</span><span class="p">)</span>
+        <span class="n">second</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="s1">&#39;2020-11&#39;</span><span class="p">)</span>
+        <span class="n">third</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="s1">&#39;2021-01&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">time</span> <span class="o">==</span> <span class="s1">&#39;quarter_year&#39;</span><span class="p">:</span>
+        <span class="n">first</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="s1">&#39;2020Q1&#39;</span><span class="p">)</span>
+        <span class="n">second</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="s1">&#39;2020Q4&#39;</span><span class="p">)</span>
+        <span class="n">third</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="s1">&#39;2021Q1&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">time</span> <span class="o">==</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span>
+        <span class="n">first</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+        <span class="n">second</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="mi">2020</span><span class="p">)</span>
+        <span class="n">third</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="mi">2021</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">first</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span>
+               <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;first lockdown&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">second</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span>
+               <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;second lockdown&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">third</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span>
+               <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;third lockdown&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Create legend and display plot</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">plot_proportion_lines</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">outcome</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">ylab</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span>
+                          <span class="n">dataset</span><span class="o">=</span><span class="n">data_full</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Plot proportions as individual line plots for each group, stacked.</span>
+<span class="sd">    time = string, time period</span>
+<span class="sd">    outcome = string, outcome of interest</span>
+<span class="sd">    type = string, type of analysis (e.g. proportion, median)</span>
+<span class="sd">    ylab = string, y axis label</span>
+<span class="sd">    title = string, title</span>
+<span class="sd">    dataset = dataframe to use, default is data_full</span>
+<span class="sd">    var = string, variable to analyse (optional, not applicable for proportion)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;proportion&#39;</span><span class="p">:</span>
+        <span class="c1"># Find proportion in each category by specified time period</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">dataset</span>
+              <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">time</span><span class="p">)[</span><span class="n">outcome</span><span class="p">]</span>
+              <span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+              <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;val&#39;</span><span class="p">))</span>
+    <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;median&#39;</span><span class="p">:</span>
+        <span class="c1"># Find the median of var when grouped by time and outcome</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">dataset</span>
+              <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">time</span><span class="p">,</span> <span class="n">outcome</span><span class="p">])[</span><span class="n">var</span><span class="p">]</span>
+              <span class="o">.</span><span class="n">median</span><span class="p">()</span>
+              <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;val&#39;</span><span class="p">))</span>
+
+    <span class="c1"># Create series of subplots</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="n">outcome</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">r</span><span class="o">+</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">pivot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">time</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">outcome</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;val&#39;</span><span class="p">)</span>
+    <span class="n">pivot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+               <span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+    <span class="c1"># Add points for vertical lines indicating each lockdown</span>
+    <span class="k">if</span> <span class="n">time</span> <span class="o">==</span> <span class="s1">&#39;month_year&#39;</span><span class="p">:</span>
+        <span class="n">first</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2020-03-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+        <span class="n">second</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2020-11-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+        <span class="n">third</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2021-01-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">time</span> <span class="o">==</span> <span class="s1">&#39;quarter_year&#39;</span><span class="p">:</span>
+        <span class="n">first</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2020-03-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+        <span class="n">second</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2020-11-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+        <span class="n">third</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2021-01-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">time</span> <span class="o">==</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span>
+        <span class="n">first</span> <span class="o">=</span> <span class="mi">2020</span>
+        <span class="n">second</span> <span class="o">=</span> <span class="mi">2020</span>
+        <span class="n">third</span> <span class="o">=</span> <span class="mi">2021</span>
+
+    <span class="c1"># Move legends outside plots and remove x axis for all except last</span>
+    <span class="c1"># And add vertica lines</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">a</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+        <span class="n">a</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">first</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span>
+                  <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;first lockdown&#39;</span><span class="p">)</span>
+        <span class="n">a</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">second</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span>
+                  <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;second lockdown&#39;</span><span class="p">)</span>
+        <span class="n">a</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">third</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span>
+                  <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;third lockdown&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">c</span> <span class="o">&lt;</span> <span class="n">r</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">a</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">c</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># Remove space between plots</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">supylabel</span><span class="p">(</span><span class="n">ylab</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -440,43 +739,621 @@ document.write(`
 </div>
 <div class="section" id="admissions">
 <h2>Admissions<a class="headerlink" href="#admissions" title="Permalink to this headline">#</a></h2>
-<p>Using restricted dataset.</p>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>The general trend is that number of admissions is increasing over time</p></li>
+<li><p>There is a drop in admissions at the start of 2020 (but, for whole year, it is not too disimilar from prior years)</p></li>
+<li><p>There is a notable increase in admissions in 2021</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Admissions per year</span>
-<span class="n">yearly_admissions</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;admissions&#39;</span><span class="p">)</span>
-<span class="n">yearly_admissions</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;admissions&#39;</span><span class="p">,</span>
-                           <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Number of stroke admissions per year&#39;</span><span class="p">,</span>
-                           <span class="n">legend</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;admissions&#39;</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">,</span> <span class="s1">&#39;Number of admissions&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/db3dce076deeebdc1c4dee88cc7899a88e350da00494c1ca9f6d5d79aade7598.png" src="_images/db3dce076deeebdc1c4dee88cc7899a88e350da00494c1ca9f6d5d79aade7598.png" />
+<img alt="_images/72c7538935df3b3ab86b34c135d36df486fb9567510d5fa790a7392bb9798763.png" src="_images/72c7538935df3b3ab86b34c135d36df486fb9567510d5fa790a7392bb9798763.png" />
+</div>
+</div>
+</div>
+<div class="section" id="age">
+<h2>Age<a class="headerlink" href="#age" title="Permalink to this headline">#</a></h2>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>The general trend is that mean age of patients is decreasing over time.</p></li>
+<li><p>There is seasonal variation - typically higher mean age in winter than in summer.</p></li>
+</ul>
+<p>This is reported elsewhere, with possible explanations people provide including a rise in risk factors for stroke in younger adults (e.g. hypertension, diabetes, premature atherosclerosis).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Mean age&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/48d32c2c246db9e0dd077f9c9dd2abf61de02e2508ce5d9d59c5c5a8ed6b1453.png" src="_images/48d32c2c246db9e0dd077f9c9dd2abf61de02e2508ce5d9d59c5c5a8ed6b1453.png" />
+</div>
+</div>
+</div>
+<div class="section" id="gender">
+<h2>Gender<a class="headerlink" href="#gender" title="Permalink to this headline">#</a></h2>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>The general trend is that the proportion of patients who are male is increasing over time.</p></li>
+<li><p>There is seasonal variation - typically lower proportion male in winter than in summer.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;male&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Proportion male&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3656bcd9e6172b56557698df2e0d0b9b4c5c31730a01d3fba9b8b45eaf209392.png" src="_images/3656bcd9e6172b56557698df2e0d0b9b4c5c31730a01d3fba9b8b45eaf209392.png" />
+</div>
+</div>
+</div>
+<div class="section" id="ischaemic-v-s-haemorrhagic">
+<h2>Ischaemic v.s. Haemorrhagic<a class="headerlink" href="#ischaemic-v-s-haemorrhagic" title="Permalink to this headline">#</a></h2>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>There does not appear to be a general trend across the whole time period</p></li>
+<li><p>There is some seasonal variation - typically lower proportion infarction in winter than in summer</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;infarction&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Proportion infarction&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b4f7e8554e8448c941376d4c6fdc79201e39c005aed08d12515f0e8d66f09dd5.png" src="_images/b4f7e8554e8448c941376d4c6fdc79201e39c005aed08d12515f0e8d66f09dd5.png" />
+</div>
+</div>
+</div>
+<div class="section" id="thrombolysis-and-thrombectomy">
+<h2>Thrombolysis and thrombectomy<a class="headerlink" href="#thrombolysis-and-thrombectomy" title="Permalink to this headline">#</a></h2>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>The proportion <strong>thrombolysed</strong> was consistent from 2016 to 2019, but dropped in 2020 and 2021</p></li>
+<li><p>The proportion receiving <strong>thrombectomy</strong> is increasing over time</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;thrombolysis&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Proportion thrombolysed&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;thrombectomy&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Proportion thrombectomy&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5220d37670f6b72c2b37fe1614c0283492cdac172a509ccba810f4fa55e650b2.png" src="_images/5220d37670f6b72c2b37fe1614c0283492cdac172a509ccba810f4fa55e650b2.png" />
+<img alt="_images/e8ed1e4769be56a04cfdd5f2a12fec4946cca5866c81a51e769f6268fe171b25.png" src="_images/e8ed1e4769be56a04cfdd5f2a12fec4946cca5866c81a51e769f6268fe171b25.png" />
+</div>
+</div>
+</div>
+<div class="section" id="time-to-arrival-and-treatment">
+<h2>Time to arrival and treatment<a class="headerlink" href="#time-to-arrival-and-treatment" title="Permalink to this headline">#</a></h2>
+<p>Focus on <strong>median</strong> times due to presence of outliers in dataset.</p>
+<p>Observations:</p>
+<ul class="simple">
+<li><p><strong>Onset to arrival time</strong> is getting longer</p></li>
+<li><p><strong>Arrival to scan time</strong> was shortening but has plateued</p></li>
+<li><p><strong>Scan to thrombolysis time</strong> was consistent until 2019 when it began to get longer</p></li>
+<li><p><strong>Arrival to thrombectomy time</strong> is getting longer</p></li>
+</ul>
+<p>Onset to arrival time, as in the <a class="reference external" href="https://www.strokeaudit.org/Documents/National/Clinical/Apr2021Mar2022/Apr2021Mar2022-AnnualReport.aspx">latest SSNAP report</a>: <em>“There has been a significant increase in stroke onset to hospital arrival time in 2021-22 compared to the previous two years (figure 4) with a median time from stroke onset to hospital
+arrival of 3 hours and 29 minutes during April-June 2021 increasing to 3 hours and 53 minutes
+during January-March 2022. The causes are multifactorial and include delays in recognising stroke symptoms at the outset, reconfiguration of acute stroke services, conveyance of patients to their thrombectomy centre instead of their local acute service and infection control procedures applied between patients and ambulance staff. The most pressing issue which requires addressing urgently concerns overstretched ambulance services and rising staff shortages coupled with increased COVID-19 hospitalisations, which have been replicated across other emergency conditions. These ongoing pressures at the pre-hospital stage threaten to adversely affect patients throughout the hospital stroke pathway and beyond.”</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;onset_to_arrival_time&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Median onset to arrival time&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;arrival_to_scan_time&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Median arrival to scan time&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;scan_to_thrombolysis_time&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Median scan to thrombolysis time&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;arrival_to_thrombectomy_time&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Median arrival to thrombectomy time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/705057e685ba590c903281964fe025dc498c2204f8dca595a672aaca9a7dda3c.png" src="_images/705057e685ba590c903281964fe025dc498c2204f8dca595a672aaca9a7dda3c.png" />
+<img alt="_images/cb1af45022b37539161a7304a03f412c8d1854e42ccac2bbd1a8aea63a2e1286.png" src="_images/cb1af45022b37539161a7304a03f412c8d1854e42ccac2bbd1a8aea63a2e1286.png" />
+<img alt="_images/e5b3f7b56f6faa66f0e2d350ca745ec9d7deadd3e50c4d954614570828387cd5.png" src="_images/e5b3f7b56f6faa66f0e2d350ca745ec9d7deadd3e50c4d954614570828387cd5.png" />
+<img alt="_images/11f9904a4b6f0d149f4e0a80f915f6ab61d3ea75320eba153f45b4065c04e7df.png" src="_images/11f9904a4b6f0d149f4e0a80f915f6ab61d3ea75320eba153f45b4065c04e7df.png" />
+</div>
+</div>
+<p><strong>Looking in more detail at onset to arrival time and stroke severity…</strong></p>
+<p>These plots show median onset to arrival time over time, by stroke severity (using severity groups as <a class="reference external" href="https://en.wikipedia.org/wiki/National_Institutes_of_Health_Stroke_Scale">here</a>).</p>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>Times not consistently increasing for strokes with NIHSS=0</p></li>
+<li><p>Smaller (but still large) average increase for more severe strokes than for mild strokes</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_proportion_lines</span><span class="p">(</span>
+    <span class="n">time</span><span class="o">=</span><span class="s1">&#39;month_year&#39;</span><span class="p">,</span>
+    <span class="n">outcome</span><span class="o">=</span><span class="s1">&#39;stroke_severity_groups&#39;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">,</span>
+    <span class="n">ylab</span><span class="o">=</span><span class="s1">&#39;Median onset to arrival time&#39;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Median onset to arrival time by stroke severity and month&#39;</span><span class="p">,</span>
+    <span class="n">var</span><span class="o">=</span><span class="s1">&#39;onset_to_arrival_time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/eba40091b2e5552c06cd7c9a40bb6a31d966be9bb0e37d1ada8e2754cdcbffcf.png" src="_images/eba40091b2e5552c06cd7c9a40bb6a31d966be9bb0e37d1ada8e2754cdcbffcf.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find number of admissions per stroke team per year</span>
-<span class="n">team_admissions_yearly</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span>
-                          <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;stroke_team&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">])</span>
-                          <span class="o">.</span><span class="n">size</span><span class="p">()</span>
-                          <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;admissions&#39;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_proportion_lines</span><span class="p">(</span>
+    <span class="n">time</span><span class="o">=</span><span class="s1">&#39;quarter_year&#39;</span><span class="p">,</span>
+    <span class="n">outcome</span><span class="o">=</span><span class="s1">&#39;stroke_severity_groups&#39;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">,</span>
+    <span class="n">ylab</span><span class="o">=</span><span class="s1">&#39;Median onset to arrival time&#39;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Median onset to arrival time by stroke severity and quarter&#39;</span><span class="p">,</span>
+    <span class="n">var</span><span class="o">=</span><span class="s1">&#39;onset_to_arrival_time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/10bee92031549afba51cf6cb0bec667c99b392192b713de97aa18e5993017e45.png" src="_images/10bee92031549afba51cf6cb0bec667c99b392192b713de97aa18e5993017e45.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_proportion_lines</span><span class="p">(</span>
+    <span class="n">time</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span>
+    <span class="n">outcome</span><span class="o">=</span><span class="s1">&#39;stroke_severity_groups&#39;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">,</span>
+    <span class="n">ylab</span><span class="o">=</span><span class="s1">&#39;Median onset to arrival time&#39;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Median onset to arrival time by stroke severity and year&#39;</span><span class="p">,</span>
+    <span class="n">var</span><span class="o">=</span><span class="s1">&#39;onset_to_arrival_time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2f9f7a451945ce404025c8845bc0c3b96a93e7fd45d3305e79db6b13387a188d.png" src="_images/2f9f7a451945ce404025c8845bc0c3b96a93e7fd45d3305e79db6b13387a188d.png" />
+</div>
+</div>
+<p><strong>Looking in more detail at onset to arrival time and arrival by ambulance…</strong></p>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>Onset to arrival time is only increasing for individuals who are arriving by ambulance - and in 2021, for those not arriving by ambulance, it has actually dropped quite a bit</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_proportion_lines</span><span class="p">(</span>
+    <span class="n">time</span><span class="o">=</span><span class="s1">&#39;month_year&#39;</span><span class="p">,</span>
+    <span class="n">outcome</span><span class="o">=</span><span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">,</span>
+    <span class="n">ylab</span><span class="o">=</span><span class="s1">&#39;Median onset to arrival time&#39;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Median onset to arrival time by ambulance use and month&#39;</span><span class="p">,</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="n">data_full</span><span class="p">[</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()],</span>
+    <span class="n">var</span><span class="o">=</span><span class="s1">&#39;onset_to_arrival_time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6d65d8980bab4e8f6d1ba45d21ae67754ed49f9907cfa51de432772bd91df9f9.png" src="_images/6d65d8980bab4e8f6d1ba45d21ae67754ed49f9907cfa51de432772bd91df9f9.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_proportion_lines</span><span class="p">(</span>
+    <span class="n">time</span><span class="o">=</span><span class="s1">&#39;quarter_year&#39;</span><span class="p">,</span>
+    <span class="n">outcome</span><span class="o">=</span><span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">,</span>
+    <span class="n">ylab</span><span class="o">=</span><span class="s1">&#39;Median onset to arrival time&#39;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Median onset to arrival time by ambulance use and quarter&#39;</span><span class="p">,</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="n">data_full</span><span class="p">[</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()],</span>
+    <span class="n">var</span><span class="o">=</span><span class="s1">&#39;onset_to_arrival_time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/caa2bff989685864cf3f81874f807eaccdfd8752b43fc308ea09defe20e77743.png" src="_images/caa2bff989685864cf3f81874f807eaccdfd8752b43fc308ea09defe20e77743.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_proportion_lines</span><span class="p">(</span>
+    <span class="n">time</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span>
+    <span class="n">outcome</span><span class="o">=</span><span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;median&#39;</span><span class="p">,</span>
+    <span class="n">ylab</span><span class="o">=</span><span class="s1">&#39;Median onset to arrival time&#39;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Median onset to arrival time by ambulance use and year&#39;</span><span class="p">,</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="n">data_full</span><span class="p">[</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()],</span>
+    <span class="n">var</span><span class="o">=</span><span class="s1">&#39;onset_to_arrival_time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b1b82b955369cb5fc1da08a3cf25dd9c3068b19a4687f9696938bc7898920c68.png" src="_images/b1b82b955369cb5fc1da08a3cf25dd9c3068b19a4687f9696938bc7898920c68.png" />
+</div>
+</div>
+</div>
+<div class="section" id="known-onset">
+<h2>Known onset<a class="headerlink" href="#known-onset" title="Permalink to this headline">#</a></h2>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>Proportion with known onset was highest in 2019</p></li>
+<li><p>The proportion known in 2020-2021 is similar to (if not a little higher than) 2016-2018</p></li>
+</ul>
+<p>Not sure why this would be</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;onset_known&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Proportion onset known&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d41913565dd445c838ea368a8558bf4bb1cfe4a1c92ac596b71087b69114951f.png" src="_images/d41913565dd445c838ea368a8558bf4bb1cfe4a1c92ac596b71087b69114951f.png" />
+</div>
+</div>
+</div>
+<div class="section" id="stroke-severity">
+<h2>Stroke severity<a class="headerlink" href="#stroke-severity" title="Permalink to this headline">#</a></h2>
+<p>These graphs focus on <strong>mean</strong> stroke severity.</p>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>The general trend is that mean stroke severity is decreasing over time.</p></li>
+<li><p>There is apparent seasonal variation in mean stroke severity. There is a peak in the months from the start of the first lockdown, but (a) there are prior months with high peaks like in 2018, and (b) overall for the quarter and year, it doesn’t appear unusual.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;stroke_severity&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Mean stroke severity&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/dee4faab114b98cf98d557686944abfd51ac5c334bd9e676e52b644b01fe6002.png" src="_images/dee4faab114b98cf98d557686944abfd51ac5c334bd9e676e52b644b01fe6002.png" />
+</div>
+</div>
+</div>
+<div class="section" id="arriving-by-ambulance">
+<h2>Arriving by ambulance<a class="headerlink" href="#arriving-by-ambulance" title="Permalink to this headline">#</a></h2>
+<p>The proportion arriving by ambulance declines from 2016 to 2019, but with a notable increase with the start of the COVID-19 pandemic, and then a large decline to the end of 2021 (with another, smaller increase for the second/third lockdown).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Proportion arriving by ambulance&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d010e9abc764572763b43db0331250a71cd7b2a88155710a3ac46ad03c2eba9e.png" src="_images/d010e9abc764572763b43db0331250a71cd7b2a88155710a3ac46ad03c2eba9e.png" />
+</div>
+</div>
+<p>These graphs now focus on <strong>median ambulance times</strong>.</p>
+<p>Observations:</p>
+<ul class="simple">
+<li><p><strong>Call to ambulance arrival time</strong> from 2019 became shorter in 2020 but then longer in 2021</p></li>
+<li><p><strong>Ambulance on scene time</strong> from 2019 has become longer in 2020 and 2021</p></li>
+<li><p><strong>Travel to hospital time</strong> appears fairly consistent</p></li>
+<li><p><strong>Hospital wait time</strong> appears fairly consistent</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;call_to_ambulance_arrival_time&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Median call to ambulance arrival time&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;ambulance_on_scene_time&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Median ambulance on scene time&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;ambulance_travel_to_hospital_time&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Median travel to hospital time&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;ambulance_wait_time_at_hospital&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Median hospital wait time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/566c6332352d13e8e1a9270a553f1321e6be93a2fdb3fa03d77c217dfb6015bd.png" src="_images/566c6332352d13e8e1a9270a553f1321e6be93a2fdb3fa03d77c217dfb6015bd.png" />
+<img alt="_images/defc434f7bab8f6dafc4abe113dfbb8da1c020f993f8d3e7b49bb9c1609533a9.png" src="_images/defc434f7bab8f6dafc4abe113dfbb8da1c020f993f8d3e7b49bb9c1609533a9.png" />
+<img alt="_images/799d4c819cf7bb3490fcd0bc826d979737e090356e6be9284a330a75d424b110.png" src="_images/799d4c819cf7bb3490fcd0bc826d979737e090356e6be9284a330a75d424b110.png" />
+<img alt="_images/4520991a22b78df58b489448ed5e262da861bf9a2670a7e6a152910afd5bed1a.png" src="_images/4520991a22b78df58b489448ed5e262da861bf9a2670a7e6a152910afd5bed1a.png" />
+</div>
+</div>
+</div>
+<div class="section" id="comorbidities">
+<h2>Comorbidities<a class="headerlink" href="#comorbidities" title="Permalink to this headline">#</a></h2>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>Proportion with congestive heart failure does not have consistent trend over time</p></li>
+<li><p>Proportion with hypertension is increasing slightly</p></li>
+<li><p>Proportion with atrial fibrillation is decreasing slightly</p></li>
+<li><p>Proportion with diabetes is increasing slightly</p></li>
+<li><p>Proportion with prior stroke or TIA is decreasing slightly</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;congestive_heart_failure&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Proportion congestive_heart_failure&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;hypertension&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Proportion hypertension&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;atrial_fibrillation&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Proportion atrial fibrillation&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;diabetes&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Proportion diabetes&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;prior_stroke_tia&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Proportion prior stroke/TIA&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c2b8de081e769f83fbc30f9347da3aef53d003deba1163c49a3150dd70d14648.png" src="_images/c2b8de081e769f83fbc30f9347da3aef53d003deba1163c49a3150dd70d14648.png" />
+<img alt="_images/fe055d2e8c42157b50483556693b7a0bd26f83a16d37713c9dff0bb09d7fc832.png" src="_images/fe055d2e8c42157b50483556693b7a0bd26f83a16d37713c9dff0bb09d7fc832.png" />
+<img alt="_images/fe872e6d7c22f6b55ee8c7142e2a22c3299de68b9f635dab7215b35975a332a0.png" src="_images/fe872e6d7c22f6b55ee8c7142e2a22c3299de68b9f635dab7215b35975a332a0.png" />
+<img alt="_images/f4c2fad8d6775493a71f988232c0d04ef544fa9aa9d7871dcc45d97f2fe18683.png" src="_images/f4c2fad8d6775493a71f988232c0d04ef544fa9aa9d7871dcc45d97f2fe18683.png" />
+<img alt="_images/68424e74672b49d04cc5090efe06887b39ef94ddd2fe4d70574f62065a4b3468.png" src="_images/68424e74672b49d04cc5090efe06887b39ef94ddd2fe4d70574f62065a4b3468.png" />
+</div>
+</div>
+</div>
+<div class="section" id="antiplatelets-and-anticoagulants">
+<h2>Antiplatelets and anticoagulants<a class="headerlink" href="#antiplatelets-and-anticoagulants" title="Permalink to this headline">#</a></h2>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>Proportion on antiplatelets is decreasing over time.</p></li>
+<li><p>Proportion on anticoagulants is impacted by the high rate of missing values (in particular for 2016 and 2017) - if you exclude NaN for that period, the proportion on anticoagulants appears incredibly high (apx. 50%) but if you set them as NaN=No, then the proportion is lower than the following years (apx. 9-11%).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;afib_antiplatelet&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Proportion on antiplatelets&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;afib_anticoagulant&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Prop. anticoagulants (exc. NaN)&#39;</span><span class="p">)</span>
 
-<span class="c1"># Plot per year</span>
-<span class="n">team_admissions_yearly</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="s1">&#39;admissions&#39;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Admissions&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Admissions per stroke team per year&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># Add variable where NaN = 0</span>
+<span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;anticoag_nan0&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+    <span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;afib_anticoagulant&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;anticoag_nan0&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Prop. anticoagulants (NaN=No)&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/be3e973aeb54902f7e2d31a992264760c1bd333344884ca45b152909ebde56e6.png" src="_images/be3e973aeb54902f7e2d31a992264760c1bd333344884ca45b152909ebde56e6.png" />
+<img alt="_images/1d9a42e73282c8565323a90ab182dff7b1b954d785f6d07728d1103225c3e011.png" src="_images/1d9a42e73282c8565323a90ab182dff7b1b954d785f6d07728d1103225c3e011.png" />
+<img alt="_images/908c23ab5686d256cbca55650e7e76027a82895872d451474082f842bc131407.png" src="_images/908c23ab5686d256cbca55650e7e76027a82895872d451474082f842bc131407.png" />
+<img alt="_images/bcde28cbd8e31c9157235de554bc51dbf04ec85a90e37f075e88bea43b9f4eec.png" src="_images/bcde28cbd8e31c9157235de554bc51dbf04ec85a90e37f075e88bea43b9f4eec.png" />
+</div>
+</div>
+</div>
+<div class="section" id="prior-disability">
+<h2>Prior disability<a class="headerlink" href="#prior-disability" title="Permalink to this headline">#</a></h2>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>No major trends over time or with COVID-19 pandemic.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_stacked_bar</span><span class="p">(</span><span class="s1">&#39;month_year&#39;</span><span class="p">,</span> <span class="s1">&#39;prior_disability&#39;</span><span class="p">)</span>
+<span class="n">plot_stacked_bar</span><span class="p">(</span><span class="s1">&#39;quarter_year&#39;</span><span class="p">,</span> <span class="s1">&#39;prior_disability&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7df349dda0db8057ff03022b30deae923e9942fd79dc77f55e7fbb872012e20e.png" src="_images/7df349dda0db8057ff03022b30deae923e9942fd79dc77f55e7fbb872012e20e.png" />
+<img alt="_images/562dcdc5295cc5d5f70cf74c3c37dd28a7c73f51a526463c69b6d90f3550027d.png" src="_images/562dcdc5295cc5d5f70cf74c3c37dd28a7c73f51a526463c69b6d90f3550027d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;prior_disability&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Mean prior disability&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8686797f878afdf4dac10804e299830d87bc1a5ff090007fe3da02890b9e8464.png" src="_images/8686797f878afdf4dac10804e299830d87bc1a5ff090007fe3da02890b9e8464.png" />
+</div>
+</div>
+</div>
+<div class="section" id="discharge-disability">
+<h2>Discharge disability<a class="headerlink" href="#discharge-disability" title="Permalink to this headline">#</a></h2>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>Can’t easily see any trends over time</p></li>
+<li><p>There is some seasonal variation (lower proportion of the worse disability scores in the summer)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_stacked_bar</span><span class="p">(</span><span class="s1">&#39;month_year&#39;</span><span class="p">,</span> <span class="s1">&#39;discharge_disability&#39;</span><span class="p">)</span>
+<span class="n">plot_stacked_bar</span><span class="p">(</span><span class="s1">&#39;quarter_year&#39;</span><span class="p">,</span> <span class="s1">&#39;discharge_disability&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f9dc87f10ca39eba50c144cebc1c19ec7d8d48eaf9b94d4b58a812e70bc446a5.png" src="_images/f9dc87f10ca39eba50c144cebc1c19ec7d8d48eaf9b94d4b58a812e70bc446a5.png" />
+<img alt="_images/8bf1315633df12418f82c2bbe1313e88156059371864d58ff806e3885225fc8f.png" src="_images/8bf1315633df12418f82c2bbe1313e88156059371864d58ff806e3885225fc8f.png" />
+</div>
+</div>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>The proportion with discharge disability of 0 and 6 is decreasing over time</p></li>
+<li><p>The poprtion with discharge disability of 2, 3 or 4 is increasing</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_proportion_lines</span><span class="p">(</span>
+    <span class="n">time</span><span class="o">=</span><span class="s1">&#39;month_year&#39;</span><span class="p">,</span>
+    <span class="n">outcome</span><span class="o">=</span><span class="s1">&#39;discharge_disability&#39;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;proportion&#39;</span><span class="p">,</span>
+    <span class="n">ylab</span><span class="o">=</span><span class="s1">&#39;Proportion&#39;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Monthly proportion of patients with each discharge disability&#39;</span><span class="p">,</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="n">data_full</span><span class="p">[</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;discharge_disability&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0c3c207f5d68f51515edf8c3c82e7714f1731a10aa6c53aa339197a8c2c0642d.png" src="_images/0c3c207f5d68f51515edf8c3c82e7714f1731a10aa6c53aa339197a8c2c0642d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_proportion_lines</span><span class="p">(</span>
+    <span class="n">time</span><span class="o">=</span><span class="s1">&#39;quarter_year&#39;</span><span class="p">,</span>
+    <span class="n">outcome</span><span class="o">=</span><span class="s1">&#39;discharge_disability&#39;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;proportion&#39;</span><span class="p">,</span>
+    <span class="n">ylab</span><span class="o">=</span><span class="s1">&#39;Proportion&#39;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Quartely proportion of patients with each discharge disability&#39;</span><span class="p">,</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="n">data_full</span><span class="p">[</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;discharge_disability&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8917e527a056c5464f90d475d5a9326edc65fdce92bfff21fcfbd0fcffc4ae7c.png" src="_images/8917e527a056c5464f90d475d5a9326edc65fdce92bfff21fcfbd0fcffc4ae7c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_proportion_lines</span><span class="p">(</span>
+    <span class="n">time</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span>
+    <span class="n">outcome</span><span class="o">=</span><span class="s1">&#39;discharge_disability&#39;</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;proportion&#39;</span><span class="p">,</span>
+    <span class="n">ylab</span><span class="o">=</span><span class="s1">&#39;Proportion&#39;</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Yearly proportion of patients with each discharge disability&#39;</span><span class="p">,</span>
+    <span class="n">dataset</span><span class="o">=</span><span class="n">data_full</span><span class="p">[</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;discharge_disability&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4ea4d682fdc6421cf705eb8acd33695c6589f829cb6b8add2b2d445a8d2454e6.png" src="_images/4ea4d682fdc6421cf705eb8acd33695c6589f829cb6b8add2b2d445a8d2454e6.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;discharge_disability&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Mean discharge disability&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8810cd6aa216d1d346d27840c9277c55c47b4a419ac535ec08659285b1508c74.png" src="_images/8810cd6aa216d1d346d27840c9277c55c47b4a419ac535ec08659285b1508c74.png" />
+</div>
+</div>
+</div>
+<div class="section" id="disability-at-6-months">
+<h2>Disability at 6 months<a class="headerlink" href="#disability-at-6-months" title="Permalink to this headline">#</a></h2>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>Can’t easily see seasonal variation or trends over time</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_stacked_bar</span><span class="p">(</span><span class="s1">&#39;month_year&#39;</span><span class="p">,</span> <span class="s1">&#39;disability_6_month&#39;</span><span class="p">)</span>
+<span class="n">plot_stacked_bar</span><span class="p">(</span><span class="s1">&#39;quarter_year&#39;</span><span class="p">,</span> <span class="s1">&#39;disability_6_month&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b52b9d78ea3487fefb8b8c5aeb3beab2a3b929b9905554c1155f4e7d5f2c7089.png" src="_images/b52b9d78ea3487fefb8b8c5aeb3beab2a3b929b9905554c1155f4e7d5f2c7089.png" />
+<img alt="_images/a96e7cb2284b6f695e87cde5fbb5ed673f8453a2b6b119360794466cfa3701fc.png" src="_images/a96e7cb2284b6f695e87cde5fbb5ed673f8453a2b6b119360794466cfa3701fc.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;disability_6_month&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Mean disability at 6 months&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c929dded58e78637e8502f4d0ac210b657ae183a575a043a1efe629984342d46.png" src="_images/c929dded58e78637e8502f4d0ac210b657ae183a575a043a1efe629984342d46.png" />
+</div>
+</div>
+</div>
+<div class="section" id="mortality">
+<h2>Mortality<a class="headerlink" href="#mortality" title="Permalink to this headline">#</a></h2>
+<p>Proportion:</p>
+<ul class="simple">
+<li><p>Proportion dead at discharge is generally decreasing over time</p></li>
+<li><p>There is seasonal variation, with typically a higher proportion dead at discharge in winter than in summer</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;death&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Proportion dead&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/285b45e74d8a7cdc1701cfd563a5c9f25c1b4674c7d46e7dfdf43528933ac61d.png" src="_images/285b45e74d8a7cdc1701cfd563a5c9f25c1b4674c7d46e7dfdf43528933ac61d.png" />
+</div>
+</div>
+</div>
+<div class="section" id="reasons-for-not-receiving-thrombolysis">
+<h2>Reasons for not receiving thrombolysis<a class="headerlink" href="#reasons-for-not-receiving-thrombolysis" title="Permalink to this headline">#</a></h2>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>There does not appear to be particular trends - but note, this is only available for a very very small number of patients.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;thrombolysis_no_not_available&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Proportion no as unavailable&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;thrombolysis_no_out_of_hours&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Proportion no as out of hours&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;thrombolysis_no_scan_not_quick_enough&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Proportion no scan timing&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;thrombolysis_no_no_reason&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Proportion no no reason&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e6e4057b21309bc00e90c845157d51db78599bb85f651cefd6cfcf1f2187a6ee.png" src="_images/e6e4057b21309bc00e90c845157d51db78599bb85f651cefd6cfcf1f2187a6ee.png" />
+<img alt="_images/29e1edcd8728c68b57ffcd37d91aee790cf2cf1ed9ea707e99813df763a14a9c.png" src="_images/29e1edcd8728c68b57ffcd37d91aee790cf2cf1ed9ea707e99813df763a14a9c.png" />
+<img alt="_images/8a7c2c745f66ec421bc51236cf309e07657c5f1d262d05a842760d9c8bb7c1f9.png" src="_images/8a7c2c745f66ec421bc51236cf309e07657c5f1d262d05a842760d9c8bb7c1f9.png" />
+<img alt="_images/1da71d2eab1af6dd74c0fed12eec2e1bf71b3ddbc03dffc68bcf1fa2dadc85fe.png" src="_images/1da71d2eab1af6dd74c0fed12eec2e1bf71b3ddbc03dffc68bcf1fa2dadc85fe.png" />
+</div>
+</div>
+<p>Observations for proportion not receiving thrombolysis due to:</p>
+<ul class="simple">
+<li><p><strong>Stroke type</strong> - seasonal variation (higher in winter), not consistent trend across years</p></li>
+<li><p><strong>Time window</strong> - increasing across years</p></li>
+<li><p><strong>Comorbidity</strong> - decreasing across years</p></li>
+<li><p><strong>Medication</strong> - increasing across years</p></li>
+<li><p><strong>Refusal</strong> - not consistent trend across years</p></li>
+<li><p><strong>Age</strong> - not consistent trend across years</p></li>
+<li><p><strong>Improving</strong> - decreasing across years</p></li>
+<li><p><strong>Too mild or too severe</strong> - not consistent trend across years</p></li>
+<li><p><strong>Onset time unknown</strong> - not consistent trend across years</p></li>
+<li><p><strong>Other medical reason</strong> - not consistent trend across years</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;thrombolysis_no_but_haemorrhagic&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Haemorrhagic&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;thrombolysis_no_but_time_window&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Time window&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;thrombolysis_no_but_comorbidity&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Comorbidity&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;thrombolysis_no_but_medication&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Medication&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;thrombolysis_no_but_refusal&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Refusal&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;thrombolysis_no_but_age&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Age&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;thrombolysis_no_but_improving&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Improving&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;thrombolysis_no_but_too_mild_severe&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Too mild or too severe&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;thrombolysis_no_but_time_unknown_wake_up&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Time unknown wake up&#39;</span><span class="p">)</span>
+<span class="n">create_line_plots</span><span class="p">(</span><span class="s1">&#39;thrombolysis_no_but_other_medical&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Other medical reason&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/50835a64699ff05cd09879403c897051f664f28f853169ff3e2c4ee201051e23.png" src="_images/50835a64699ff05cd09879403c897051f664f28f853169ff3e2c4ee201051e23.png" />
+<img alt="_images/ee0f375c2004e2926751204e7b674dc7d7defb355fe7dcec45afecfa2659e4c0.png" src="_images/ee0f375c2004e2926751204e7b674dc7d7defb355fe7dcec45afecfa2659e4c0.png" />
+<img alt="_images/01f9b5ad99e62c6cc3c18c20481033bca80687edd415f04f1db82dcb8975b064.png" src="_images/01f9b5ad99e62c6cc3c18c20481033bca80687edd415f04f1db82dcb8975b064.png" />
+<img alt="_images/30d92e79882ca5fd34edff4b4e980735f73213abaca961499dba3d8f2529acb2.png" src="_images/30d92e79882ca5fd34edff4b4e980735f73213abaca961499dba3d8f2529acb2.png" />
+<img alt="_images/1a5107a8db5dff46eea36e0c4dca6e060b22f2ce967f86ef9b56464eba9c8e15.png" src="_images/1a5107a8db5dff46eea36e0c4dca6e060b22f2ce967f86ef9b56464eba9c8e15.png" />
+<img alt="_images/45c4f3ce3b2860e10db8cc84c3cd27316b5c31e5c6f51098205f894d227984b6.png" src="_images/45c4f3ce3b2860e10db8cc84c3cd27316b5c31e5c6f51098205f894d227984b6.png" />
+<img alt="_images/cf859bd84cfc8e5fca69bacfa6b700e829daf2e57c7ed7a1abcafa0aba508fc5.png" src="_images/cf859bd84cfc8e5fca69bacfa6b700e829daf2e57c7ed7a1abcafa0aba508fc5.png" />
+<img alt="_images/7ac6522083bcffbbbc1e70c31a25ed0bd91593d299169a862e77f3193951508f.png" src="_images/7ac6522083bcffbbbc1e70c31a25ed0bd91593d299169a862e77f3193951508f.png" />
+<img alt="_images/eb07aa5d4576e16d63011acc88f2b0945684063988f16430881aa34fd94905ac.png" src="_images/eb07aa5d4576e16d63011acc88f2b0945684063988f16430881aa34fd94905ac.png" />
+<img alt="_images/33aa748f8131e6ef29fe4a99706855a1778b54ad2e2bb1c49a433600736465fb.png" src="_images/33aa748f8131e6ef29fe4a99706855a1778b54ad2e2bb1c49a433600736465fb.png" />
 </div>
 </div>
 </div>
@@ -514,20 +1391,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="sam2_size_associations.html"
+       href="sam2_thrombectomy.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Associations with number of admissions</p>
+        <p class="prev-next-title">Thrombectomy</p>
       </div>
     </a>
     <a class="right-next"
-       href="sam2_disability_discharge.html"
+       href="sam2_ambulance.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Thrombolysis outcomes</p>
+        <p class="prev-next-title">Ambulance</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -549,8 +1426,29 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aims">Aims</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caveats">Caveats</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#existing-analysis">Existing analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#observations">Observations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up">Set up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Set up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#admissions">Admissions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#age">Age</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gender">Gender</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ischaemic-v-s-haemorrhagic">Ischaemic v.s. Haemorrhagic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thrombolysis-and-thrombectomy">Thrombolysis and thrombectomy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-to-arrival-and-treatment">Time to arrival and treatment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-onset">Known onset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stroke-severity">Stroke severity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arriving-by-ambulance">Arriving by ambulance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comorbidities">Comorbidities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#antiplatelets-and-anticoagulants">Antiplatelets and anticoagulants</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prior-disability">Prior disability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discharge-disability">Discharge disability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#disability-at-6-months">Disability at 6 months</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mortality">Mortality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reasons-for-not-receiving-thrombolysis">Reasons for not receiving thrombolysis</a></li>
 </ul>
   </nav></div>
 

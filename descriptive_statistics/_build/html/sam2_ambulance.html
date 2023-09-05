@@ -62,8 +62,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'sam2_ambulance';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Associations with number of admissions" href="sam2_size_associations.html" />
-    <link rel="prev" title="Thrombectomy" href="sam2_thrombectomy.html" />
+    <link rel="prev" title="Year by year comparison" href="sam2_compare_years.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -152,27 +151,22 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01_reformat_data.html">Reformat data</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">SAMueL-1</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Based on SAMueL-1</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="sam1_pathway_statistics.html">Descriptive analysis of stroke pathway data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam1_thrombolysis_associations.html">Associations between thrombolysis use and patient features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam1_compare_by_thrombolysis.html">Comparison between patients who received thrombolysis versus not</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam1_day_week_pathway_patterns.html">Daily and weekly pathway patterns</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam1_pathway_distributions.html">Stroke pathway timing distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sam1_correlations.html">Covariance/correlation between features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam1_correlations.html">Correlations between features</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">SAMueL-2 (detailed/complete)</span></p>
-<ul class="nav bd-sidenav">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">New for SAMueL-2</span></p>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="sam2_disability_6months_completion.html">Disability at six months (completion)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam2_disability_6months_results.html">Disability at six months (results)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam2_thrombectomy.html">Thrombectomy</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">SAMUeL-2 (incomplete)</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Ambulance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sam2_size_associations.html">Associations with number of admissions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam2_compare_years.html">Year by year comparison</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sam2_disability_discharge.html">Thrombolysis outcomes</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Ambulance</a></li>
 </ul>
 
     </div>
@@ -368,7 +362,21 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aims">Aims:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up">Set up</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-by-whether-arrive-by-ambulance">Comparing by whether arrive by ambulance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reformat-data">Reformat data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frequency-of-ambulance-arrivals">Frequency of ambulance arrivals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristics-of-patients-who-arrive-by-ambulance-v-s-not">Characteristics of patients who arrive by ambulance v.s. not</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table">Summary table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stroke-severity">Stroke severity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#age">Age</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discharge-disability">Discharge disability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prior-disability">Prior disability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disability-at-6-months">Disability at 6 months</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thrombolysis">Thrombolysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#onset-to-arrival-time">Onset to arrival time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrival-to-scan-time">Arrival to scan time</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -384,10 +392,7 @@ document.write(`
 <h1>Ambulance<a class="headerlink" href="#ambulance" title="Permalink to this headline">#</a></h1>
 <div class="section" id="aims">
 <h2>Aims:<a class="headerlink" href="#aims" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>Compare people who arrived by ambulance to those who did not</p></li>
-</ul>
-<p>Uses dataset of people who arrived within four hours of known stroke onset.</p>
+<p>Compares people who arrived by ambulance to those who did not. This includes visualisations that look at the relationships over time, since the proportion arriving by ambulance has changed so much over time.</p>
 </div>
 <div class="section" id="set-up">
 <h2>Set up<a class="headerlink" href="#set-up" title="Permalink to this headline">#</a></h2>
@@ -418,7 +423,7 @@ document.write(`
     <span class="sd">&#39;&#39;&#39;Singleton object for storing paths to data and files.&#39;&#39;&#39;</span>
 
     <span class="n">data_path</span> <span class="o">=</span> <span class="s1">&#39;./../output/&#39;</span>
-    <span class="n">data_filename</span> <span class="o">=</span> <span class="s1">&#39;reformatted_data.csv&#39;</span>
+    <span class="n">admission_only_filename</span> <span class="o">=</span> <span class="s1">&#39;reformatted_data_admissions_only.csv&#39;</span>
 
 
 <span class="n">paths</span> <span class="o">=</span> <span class="n">Paths</span><span class="p">()</span>
@@ -429,30 +434,284 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">data_path</span><span class="p">,</span>
-                                <span class="n">paths</span><span class="o">.</span><span class="n">data_filename</span><span class="p">))</span>
+<span class="n">data_full</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">paths</span><span class="o">.</span><span class="n">data_path</span><span class="p">,</span> <span class="n">paths</span><span class="o">.</span><span class="n">admission_only_filename</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="section" id="comparing-by-whether-arrive-by-ambulance">
-<h2>Comparing by whether arrive by ambulance<a class="headerlink" href="#comparing-by-whether-arrive-by-ambulance" title="Permalink to this headline">#</a></h2>
+<div class="section" id="reformat-data">
+<h2>Reformat data<a class="headerlink" href="#reformat-data" title="Permalink to this headline">#</a></h2>
+<p>Drop the few patients who are missing data on whether they arrived by ambulance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find counts arriving by ambulance or not</span>
-<span class="n">arrive_ambulance_stats</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">data</span><span class="p">[</span><span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">]</span>
-    <span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;Did not arrive by ambulance&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;Arrived by ambulance&#39;</span><span class="p">})</span>
-    <span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;count&#39;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_full</span> <span class="o">=</span> <span class="n">data_full</span><span class="p">[</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Create columns with month and year, or quarter and year.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create datetime with month and year</span>
+<span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;month_year_dt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span>
+    <span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span>
+    <span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">),</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m&#39;</span><span class="p">)</span>
 
-<span class="c1"># Find proportions</span>
-<span class="n">arrive_ambulance_stats</span><span class="p">[</span><span class="s1">&#39;percentage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">arrive_ambulance_stats</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span> <span class="o">/</span>
-    <span class="n">arrive_ambulance_stats</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+<span class="c1"># Convert to period of m (month and year)</span>
+<span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;month_year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;month_year_dt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
 
-<span class="n">arrive_ambulance_stats</span>
+<span class="c1"># Convert to period of q (quarter and year)</span>
+<span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;quarter_year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;month_year_dt&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;q&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Add stroke severity groups</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conditions</span> <span class="o">=</span> <span class="p">[(</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;stroke_severity&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">),</span>
+              <span class="p">(</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;stroke_severity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">))),</span>
+              <span class="p">(</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;stroke_severity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">16</span><span class="p">))),</span>
+              <span class="p">(</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;stroke_severity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">21</span><span class="p">))),</span>
+              <span class="p">(</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;stroke_severity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="mi">43</span><span class="p">)))]</span>
+<span class="n">nihss_choices</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A: 0&#39;</span><span class="p">,</span> <span class="s1">&#39;B: 1-4&#39;</span><span class="p">,</span> <span class="s1">&#39;C: 5-15&#39;</span><span class="p">,</span> <span class="s1">&#39;D: 16-20&#39;</span><span class="p">,</span> <span class="s1">&#39;E: 21-42&#39;</span><span class="p">]</span>
+<span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;stroke_severity_groups&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">conditions</span><span class="p">,</span> <span class="n">nihss_choices</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Add column where ambulance arrival is yes/no rather than 1/0.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;arrive_by_ambulance_lab&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">({</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;No&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;Yes&#39;</span><span class="p">}))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Creating dataframe with just patients who arrived within 4 hours of known onset</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_4h</span> <span class="o">=</span> <span class="n">data_full</span><span class="p">[(</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;onset_known&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span>
+                    <span class="p">(</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;onset_to_arrival_time&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">4</span><span class="o">*</span><span class="mi">60</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">proportion_arrivals</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="n">xlab</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span>
+                        <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">data_full</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Plot the proportion of patients arriving by ambulance in</span>
+<span class="sd">    the specified groups of patients</span>
+<span class="sd">    group: string, with categories to find proportions in</span>
+<span class="sd">    xlab: string, x axis label</span>
+<span class="sd">    ax: axis object to plot on</span>
+<span class="sd">    type: type of graph, &#39;line&#39; or &#39;bar&#39;</span>
+<span class="sd">    dataset: dataframe to use, default is data_full</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># Find proportions</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">group</span><span class="p">)[</span><span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;line&#39;</span><span class="p">:</span>
+        <span class="c1"># Create line plot</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+        <span class="c1"># Set title</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Proportion of patients arriving by ambulance</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+                     <span class="s1">&#39;for each &#39;</span> <span class="o">+</span> <span class="n">xlab</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;bar&#39;</span><span class="p">:</span>
+        <span class="c1"># Create bar plot</span>
+        <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+        <span class="c1"># Set title</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+    <span class="c1"># Set x and y label</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlab</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Proportion of patients</span><span class="se">\n</span><span class="s1">arriving by ambulance&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">proportions_by_arrival</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">xlab</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="nb">type</span><span class="p">,</span> <span class="n">bin_pos</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                           <span class="n">alt_m</span><span class="o">=</span><span class="s1">&#39;No&#39;</span><span class="p">,</span> <span class="n">alt_title</span><span class="o">=</span><span class="s1">&#39;No&#39;</span><span class="p">,</span>
+                           <span class="n">alt_bins</span><span class="o">=</span><span class="s1">&#39;No&#39;</span><span class="p">,</span> <span class="n">alt_bins_array</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+                           <span class="n">dataset</span><span class="o">=</span><span class="n">data_full</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Plots the proportions of patients in the specified columns categories,</span>
+<span class="sd">    from a dataset split into whether arrived by ambulance or not. Creates</span>
+<span class="sd">    overlaid histograms or bar charts with a mean line for each.</span>
+<span class="sd">    col: string, groups of interest</span>
+<span class="sd">    xlab: string, label for x axis (also used for title)</span>
+<span class="sd">    ax: axis object to plot on</span>
+<span class="sd">    type: type of graph, enter &#39;hist&#39; or &#39;bar&#39;</span>
+<span class="sd">    bin_pos: number, optional, to modify bin positioning</span>
+<span class="sd">    alt_m: string, optional, if alternative column for mean calculation</span>
+<span class="sd">    (if providing different columns due to pre-processing/bin locations)</span>
+<span class="sd">    alt_bins: whether providing alternative bin method</span>
+<span class="sd">    alt_bins_array: optional arrival to provide when alt_bins == &#39;Yes&#39;</span>
+<span class="sd">    alt_title: string, optional, can provide an alternative title</span>
+<span class="sd">    dataset: dataframe to use, default is data_full</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># Seperate ambulance and non-ambulance</span>
+    <span class="n">amb</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="n">amb_df</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">amb</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span>
+    <span class="n">non_df</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">amb</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span>
+
+    <span class="c1"># Define bins - default is one bin per unique value - or alt_bins provided</span>
+    <span class="k">if</span> <span class="n">alt_bins</span> <span class="o">==</span> <span class="s1">&#39;No&#39;</span><span class="p">:</span>
+        <span class="n">unique</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+        <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+        <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">bins</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="n">bins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">bins</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">alt_bins</span> <span class="o">==</span> <span class="s1">&#39;Yes&#39;</span><span class="p">:</span>
+        <span class="n">bins</span> <span class="o">=</span> <span class="n">alt_bins_array</span>
+
+    <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;hist&#39;</span><span class="p">:</span>
+        <span class="c1"># Plot overlaid histograms</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">non_df</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">non_df</span><span class="p">))</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">non_df</span><span class="p">),</span>
+                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;No&#39;</span><span class="p">,</span> <span class="n">rwidth</span><span class="o">=</span><span class="n">width</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">amb_df</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">amb_df</span><span class="p">))</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">amb_df</span><span class="p">),</span>
+                <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Yes&#39;</span><span class="p">,</span> <span class="n">rwidth</span><span class="o">=</span><span class="n">width</span><span class="p">)</span>
+
+        <span class="c1"># Add mean lines</span>
+        <span class="k">if</span> <span class="n">alt_m</span> <span class="o">==</span> <span class="s1">&#39;No&#39;</span><span class="p">:</span>
+            <span class="n">amb_m</span> <span class="o">=</span> <span class="n">amb_df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+            <span class="n">non_m</span> <span class="o">=</span> <span class="n">non_df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">amb_m</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">amb</span><span class="p">,</span> <span class="n">alt_m</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+            <span class="n">non_m</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">amb</span><span class="p">,</span> <span class="n">alt_m</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">non_m</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C0&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.65</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">amb_m</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.65</span><span class="p">)</span>
+        <span class="c1"># Ending for title mentioning mean line</span>
+        <span class="n">title_end</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">(with line for mean &#39;</span> <span class="o">+</span> <span class="n">xlab</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
+
+    <span class="k">elif</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;bar&#39;</span><span class="p">:</span>
+        <span class="c1"># Group by ambulance and find proportions in each category of column</span>
+        <span class="n">toplot</span> <span class="o">=</span> <span class="p">(</span><span class="n">dataset</span>
+                  <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;arrive_by_ambulance_lab&#39;</span><span class="p">)[</span><span class="n">col</span><span class="p">]</span>
+                  <span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                  <span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+        <span class="c1"># Plot grouped bar charts</span>
+        <span class="n">toplot</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+        <span class="c1"># No ending for title</span>
+        <span class="n">title_end</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="c1"># Add legend, labels and titles</span>
+    <span class="n">order</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Ambulance&#39;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlab</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Proportion (grouped by ambulance v.s. not)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Proportion of patients of each &#39;</span> <span class="o">+</span> <span class="n">xlab</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+                 <span class="s1">&#39;when grouped by whether they arrived by ambulance&#39;</span> <span class="o">+</span>
+                 <span class="n">title_end</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">alt_title</span> <span class="o">!=</span> <span class="s1">&#39;No&#39;</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">alt_title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">mean_over_time</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">xlab</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">data_full</span><span class="p">,</span> <span class="n">alt_title</span><span class="o">=</span><span class="s1">&#39;No&#39;</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Plot the mean of the column over time, when data is grouped</span>
+<span class="sd">    by whether arrived by ambulance</span>
+<span class="sd">    col: string, column of interest</span>
+<span class="sd">    xlab: string, x axis label</span>
+<span class="sd">    ax: axis object to plot on</span>
+<span class="sd">    dataset: dataframe to use, default is data_full</span>
+<span class="sd">    alt_title: string, optional, can provide an alternative title</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># Seperate by whether arrived by ambulance</span>
+    <span class="n">amb</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="n">amb_df</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">amb</span><span class="p">]</span>
+    <span class="n">non_df</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="o">~</span><span class="n">amb</span><span class="p">]</span>
+
+    <span class="c1"># Find mean of col in each month for ambulance v.s. non-ambulance patients</span>
+    <span class="n">non_plt</span> <span class="o">=</span> <span class="n">non_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;quarter_year&#39;</span><span class="p">)[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">amb_plt</span> <span class="o">=</span> <span class="n">amb_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;quarter_year&#39;</span><span class="p">)[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+    <span class="n">non_plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;No&#39;</span><span class="p">)</span>
+    <span class="n">amb_plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Yes&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Mean &#39;</span> <span class="o">+</span> <span class="n">xlab</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mean &#39;</span> <span class="o">+</span> <span class="n">xlab</span> <span class="o">+</span> <span class="s1">&#39; over time by ambulance arrival&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Ambulance&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">alt_title</span> <span class="o">!=</span> <span class="s1">&#39;No&#39;</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">alt_title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_by_severity</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="n">lab</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Plots mean of column by ambulance arrival and strong severity</span>
+<span class="sd">    col: string, column of interest</span>
+<span class="sd">    lab: string, label for use in axis and title</span>
+<span class="sd">    dataset: dataframe to use (e.g. data_full, onset_data)</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># Mean arrival to scan time by stroke severity (groups)</span>
+    <span class="c1"># and whether arrived by ambulance</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="p">(</span><span class="n">dataset</span>
+          <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;arrive_by_ambulance_lab&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;stroke_severity_groups&#39;</span><span class="p">])[</span><span class="n">col</span><span class="p">]</span>
+          <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+          <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">))</span>
+
+    <span class="c1"># Initialise figure</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+    <span class="c1"># Group dataframe by ambulance arrival</span>
+    <span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;arrive_by_ambulance_lab&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Plot lines</span>
+    <span class="n">grouped</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;stroke_severity_groups&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+                 <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="c1"># Correct legend</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">grouped</span><span class="o">.</span><span class="n">groups</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Ambulance&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Add axis labels and show plot</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Mean &#39;</span> <span class="o">+</span> <span class="n">lab</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Stroke severity group&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean &#39;</span> <span class="o">+</span> <span class="n">lab</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">+</span> <span class="s1">&#39; by stroke severity</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+                 <span class="s1">&#39;and whether arrived by ambulance&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="frequency-of-ambulance-arrivals">
+<h2>Frequency of ambulance arrivals<a class="headerlink" href="#frequency-of-ambulance-arrivals" title="Permalink to this headline">#</a></h2>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>Overall <strong>79% patients arrived by ambulance</strong>.</p></li>
+<li><p><strong>Proportion of arrivals by ambulance is decreasing</strong> - it was decreasing from 2016 to 2020, then increased with the first COVID-19 lockdown, and decreased over 2021 (duplicates analysis from comparison over time notebook).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find overall frequency</span>
+<span class="n">freq</span> <span class="o">=</span> <span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">)</span>
+<span class="n">freq</span><span class="p">[</span><span class="s1">&#39;percent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">freq</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">freq</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span>
+<span class="n">display</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span>
+
+<span class="c1"># Plot frequency over time (grouped by month)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">data_full</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;month_year&#39;</span><span class="p">)[</span><span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Proportion of arrivals by ambulance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -476,55 +735,76 @@ document.write(`
     <tr style="text-align: right;">
       <th></th>
       <th>index</th>
-      <th>count</th>
-      <th>percentage</th>
+      <th>n</th>
+      <th>percent</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>Arrived by ambulance</td>
-      <td>123839</td>
-      <td>90.380896</td>
+      <td>1.0</td>
+      <td>283190</td>
+      <td>78.910484</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Did not arrive by ambulance</td>
-      <td>13173</td>
-      <td>9.613995</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>NaN</td>
-      <td>7</td>
-      <td>0.005109</td>
+      <td>0.0</td>
+      <td>75685</td>
+      <td>21.089516</td>
     </tr>
   </tbody>
 </table>
-</div></div></div>
+</div></div><img alt="_images/355d3def2bf74d671847c192e12a39fb6d5f3443ab45f72587fe185628ed0319.png" src="_images/355d3def2bf74d671847c192e12a39fb6d5f3443ab45f72587fe185628ed0319.png" />
 </div>
-<p>Patients who arrived by ambulance typically had:</p>
+</div>
+</div>
+<div class="section" id="characteristics-of-patients-who-arrive-by-ambulance-v-s-not">
+<h2>Characteristics of patients who arrive by ambulance v.s. not<a class="headerlink" href="#characteristics-of-patients-who-arrive-by-ambulance-v-s-not" title="Permalink to this headline">#</a></h2>
+<p>All variables are included in the summary table, and then some are explored in more detail in visualisations (not all due to time to produce figures)</p>
+<div class="section" id="summary-table">
+<h3>Summary table<a class="headerlink" href="#summary-table" title="Permalink to this headline">#</a></h3>
+<p>Observations that patients who arrive by ambulance (compared to those who did not), are on average:</p>
 <ul class="simple">
-<li><p>More severe strokes (NIHSS)</p></li>
-<li><p>Higher discharge disability (Rankin)</p></li>
-<li><p>Shorter arrival to scan time</p></li>
-<li><p>Similar scan to thrombolysis time and onset to arrival</p></li>
+<li><p>Higher age</p></li>
+<li><p>Lower proportion male</p></li>
+<li><p>Lower proportion infarction</p></li>
+<li><p>Shorter onset to arrival time</p></li>
+<li><p>Greater proportion onset known (and precise onest known)</p></li>
+<li><p>Similar proportion onset during sleep</p></li>
+<li><p>Shorter arrival to scan time, scan to thrombolysis time, or arrival to thrombectomy time</p></li>
+<li><p>Higher proportion thrombolysed or receive thrombectomy</p></li>
+<li><p>Higher proportion with comorbidities (except diabetes)</p></li>
+<li><p>Higher proportion on anticoagulants</p></li>
+<li><p>Higher prior disability</p></li>
+<li><p>More severe stroke (and so higher proportion meeting each NIHSS criteria)</p></li>
+<li><p>Lower proportion with complete NIHSS</p></li>
+<li><p>More deaths</p></li>
+<li><p>Higher disability at discharge and six months</p></li>
+<li><p>Higher proportion who did not receive thrombolysis for reasons of: haemorrhagic, comorbidity, medication, refusal, age, improving, other medical</p></li>
+<li><p>Lower proportion have reason of: lower time window, too mild/severe, time unknown wake up (and therefore, these reasons are higher in patients who did not arrive by ambulance)</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">data</span>
- <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">)[[</span><span class="s1">&#39;onset_to_arrival_time&#39;</span><span class="p">,</span>
-                                  <span class="s1">&#39;prior_disability&#39;</span><span class="p">,</span>
-                                  <span class="s1">&#39;discharge_disability&#39;</span><span class="p">,</span>
-                                  <span class="s1">&#39;stroke_severity&#39;</span><span class="p">,</span>
-                                  <span class="s1">&#39;arrival_to_scan_time&#39;</span><span class="p">,</span>
-                                  <span class="s1">&#39;scan_to_thrombolysis_time&#39;</span><span class="p">]]</span>
- <span class="o">.</span><span class="n">describe</span><span class="p">()</span>
- <span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
- <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">)</span>
- <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;level_0&#39;</span><span class="p">:</span> <span class="s1">&#39;variable&#39;</span><span class="p">,</span> <span class="s1">&#39;level_1&#39;</span><span class="p">:</span> <span class="s1">&#39;analysis&#39;</span><span class="p">})</span>
- <span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;variable&#39;</span><span class="p">,</span> <span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">],</span>
-        <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;analysis&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;value&#39;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Drop columns that are not appropriate to compare</span>
+<span class="c1"># (removed &quot;thrombolysis no&quot; due to low numbers)</span>
+<span class="n">drop</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;call_to_ambulance_arrival_time&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;ambulance_on_scene_time&#39;</span><span class="p">,</span> <span class="s1">&#39;ambulance_travel_to_hospital_time&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;ambulance_wait_time_at_hospital&#39;</span><span class="p">,</span> <span class="s1">&#39;arrival_time_3_hour_period&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;thrombolysis_no_not_available&#39;</span><span class="p">,</span> <span class="s1">&#39;thrombolysis_no_out_of_hours&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;thrombolysis_no_scan_not_quick_enough&#39;</span><span class="p">,</span> <span class="s1">&#39;thrombolysis_no_no_reason&#39;</span><span class="p">]</span>
+
+<span class="c1"># Groupby ambulance arrival and find mean and median of all other columns</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_full</span>
+        <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">drop</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">median</span> <span class="o">=</span> <span class="p">(</span><span class="n">data_full</span>
+          <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">drop</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+          <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">)</span>
+          <span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+          <span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">({</span><span class="s1">&#39;mean&#39;</span><span class="p">:</span> <span class="n">mean</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">:</span> <span class="n">median</span><span class="p">},</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -539,260 +819,744 @@ document.write(`
         vertical-align: top;
     }
 
-    .dataframe thead th {
-        text-align: right;
+    .dataframe thead tr th {
+        text-align: left;
     }
 </style>
 <table border="1" class="dataframe">
   <thead>
-    <tr style="text-align: right;">
+    <tr>
       <th></th>
-      <th>analysis</th>
-      <th>25%</th>
-      <th>50%</th>
-      <th>75%</th>
-      <th>count</th>
-      <th>max</th>
-      <th>mean</th>
-      <th>min</th>
-      <th>std</th>
+      <th colspan="2" halign="left">mean</th>
+      <th colspan="2" halign="left">median</th>
     </tr>
     <tr>
-      <th>variable</th>
       <th>arrive_by_ambulance</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>0.0</th>
+      <th>1.0</th>
+      <th>0.0</th>
+      <th>1.0</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th rowspan="2" valign="top">arrival_to_scan_time</th>
-      <th>0.0</th>
-      <td>27.0</td>
-      <td>51.0</td>
-      <td>109.0</td>
-      <td>13173.0</td>
-      <td>87883.0</td>
-      <td>149.006073</td>
-      <td>1.0</td>
-      <td>1311.917713</td>
+      <th>age</th>
+      <td>69.241428</td>
+      <td>75.572284</td>
+      <td>72.5</td>
+      <td>77.5</td>
     </tr>
     <tr>
-      <th>1.0</th>
-      <td>15.0</td>
-      <td>26.0</td>
-      <td>50.0</td>
-      <td>123839.0</td>
-      <td>440117.0</td>
-      <td>93.860625</td>
-      <td>1.0</td>
-      <td>1540.675959</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">discharge_disability</th>
-      <th>0.0</th>
+      <th>male</th>
+      <td>0.584290</td>
+      <td>0.514658</td>
       <td>1.0</td>
       <td>1.0</td>
-      <td>3.0</td>
-      <td>13097.0</td>
-      <td>6.0</td>
-      <td>1.787127</td>
-      <td>0.0</td>
-      <td>1.656527</td>
     </tr>
     <tr>
-      <th>1.0</th>
-      <td>1.0</td>
-      <td>3.0</td>
-      <td>5.0</td>
-      <td>122908.0</td>
-      <td>6.0</td>
-      <td>2.918728</td>
-      <td>0.0</td>
-      <td>2.010143</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">onset_to_arrival_time</th>
-      <th>0.0</th>
-      <td>59.0</td>
-      <td>100.0</td>
-      <td>156.0</td>
-      <td>13173.0</td>
-      <td>240.0</td>
-      <td>109.195020</td>
-      <td>1.0</td>
-      <td>61.929199</td>
-    </tr>
-    <tr>
-      <th>1.0</th>
-      <td>74.0</td>
-      <td>104.0</td>
-      <td>149.0</td>
-      <td>123839.0</td>
-      <td>240.0</td>
-      <td>114.308756</td>
-      <td>1.0</td>
-      <td>51.890416</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">prior_disability</th>
-      <th>0.0</th>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>13173.0</td>
-      <td>5.0</td>
-      <td>0.551431</td>
-      <td>0.0</td>
-      <td>1.016655</td>
-    </tr>
-    <tr>
-      <th>1.0</th>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>2.0</td>
-      <td>123839.0</td>
-      <td>5.0</td>
-      <td>1.098467</td>
-      <td>0.0</td>
-      <td>1.433088</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">scan_to_thrombolysis_time</th>
-      <th>0.0</th>
-      <td>22.0</td>
-      <td>34.0</td>
-      <td>51.0</td>
-      <td>3024.0</td>
-      <td>318.0</td>
-      <td>41.118056</td>
-      <td>0.0</td>
-      <td>30.193328</td>
-    </tr>
-    <tr>
-      <th>1.0</th>
-      <td>19.0</td>
-      <td>30.0</td>
-      <td>47.0</td>
-      <td>37029.0</td>
-      <td>656.0</td>
-      <td>36.795998</td>
-      <td>0.0</td>
-      <td>28.463958</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">stroke_severity</th>
-      <th>0.0</th>
-      <td>1.0</td>
-      <td>3.0</td>
-      <td>6.0</td>
-      <td>13173.0</td>
-      <td>42.0</td>
-      <td>5.096257</td>
-      <td>0.0</td>
-      <td>6.087541</td>
-    </tr>
-    <tr>
-      <th>1.0</th>
-      <td>3.0</td>
-      <td>6.0</td>
-      <td>14.0</td>
-      <td>123839.0</td>
-      <td>42.0</td>
-      <td>9.326149</td>
-      <td>0.0</td>
-      <td>8.361657</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p>Patients who arrived by ambulance…</p>
-<ul class="simple">
-<li><p>Lower proportion had infarction</p></li>
-<li><p>Higher proportion thrombolysed</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert from 0/1 to False/True</span>
-<span class="n">amb_compare_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;thrombolysis&#39;</span><span class="p">,</span> <span class="s1">&#39;infarction&#39;</span><span class="p">]</span>
-<span class="n">amb_compare</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">amb_compare_cols</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
-
-<span class="c1"># Add whether arrived by ambulance</span>
-<span class="n">amb_compare</span><span class="p">[</span><span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">]</span>
-
-<span class="c1"># Groupby arrive by ambulance and find proportion == 1</span>
-<span class="c1"># (e.g. proportion thrombolysed)</span>
-<span class="p">(</span><span class="n">amb_compare</span>
- <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">)</span>
- <span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="n">i</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">amb_compare_cols</span><span class="p">}))</span><span class="o">*</span><span class="mi">100</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>thrombolysis</th>
       <th>infarction</th>
+      <td>0.917183</td>
+      <td>0.867354</td>
+      <td>1.0</td>
+      <td>1.0</td>
     </tr>
     <tr>
-      <th>arrive_by_ambulance</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0.0</th>
-      <td>22.956046</td>
-      <td>89.227966</td>
+      <th>onset_to_arrival_time</th>
+      <td>2449.159008</td>
+      <td>1514.614941</td>
+      <td>577.0</td>
+      <td>164.0</td>
     </tr>
     <tr>
-      <th>1.0</th>
-      <td>29.900920</td>
-      <td>84.969194</td>
+      <th>onset_known</th>
+      <td>0.538284</td>
+      <td>0.705371</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>precise_onset_known</th>
+      <td>0.241356</td>
+      <td>0.361418</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>onset_during_sleep</th>
+      <td>0.131691</td>
+      <td>0.137155</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>arrival_to_scan_time</th>
+      <td>246.715452</td>
+      <td>181.807730</td>
+      <td>103.0</td>
+      <td>42.0</td>
+    </tr>
+    <tr>
+      <th>thrombolysis</th>
+      <td>0.041025</td>
+      <td>0.134306</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>scan_to_thrombolysis_time</th>
+      <td>41.290821</td>
+      <td>36.845954</td>
+      <td>34.0</td>
+      <td>30.0</td>
+    </tr>
+    <tr>
+      <th>thrombectomy</th>
+      <td>0.003118</td>
+      <td>0.014446</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>arrival_to_thrombectomy_time</th>
+      <td>231.250000</td>
+      <td>219.646786</td>
+      <td>174.5</td>
+      <td>171.0</td>
+    </tr>
+    <tr>
+      <th>congestive_heart_failure</th>
+      <td>0.031658</td>
+      <td>0.053921</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>hypertension</th>
+      <td>0.518319</td>
+      <td>0.548949</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>atrial_fibrillation</th>
+      <td>0.110709</td>
+      <td>0.201165</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>diabetes</th>
+      <td>0.216027</td>
+      <td>0.213648</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>prior_stroke_tia</th>
+      <td>0.202788</td>
+      <td>0.267467</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>afib_antiplatelet</th>
+      <td>0.015353</td>
+      <td>0.031145</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>afib_anticoagulant</th>
+      <td>0.118995</td>
+      <td>0.187691</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>afib_vit_k_anticoagulant</th>
+      <td>0.018762</td>
+      <td>0.027197</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>afib_doac_anticoagulant</th>
+      <td>0.050023</td>
+      <td>0.076472</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>afib_heparin_anticoagulant</th>
+      <td>0.000687</td>
+      <td>0.001042</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>new_afib_diagnosis</th>
+      <td>0.039871</td>
+      <td>0.074278</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>prior_disability</th>
+      <td>0.567986</td>
+      <td>1.157152</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>stroke_severity</th>
+      <td>3.221405</td>
+      <td>8.087242</td>
+      <td>2.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>nihss_complete</th>
+      <td>0.960111</td>
+      <td>0.939486</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>nihss_arrival_loc</th>
+      <td>0.046905</td>
+      <td>0.267019</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>nihss_arrival_loc_questions</th>
+      <td>0.196259</td>
+      <td>0.626388</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>nihss_arrival_loc_commands</th>
+      <td>0.079112</td>
+      <td>0.346676</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>nihss_arrival_best_gaze</th>
+      <td>0.077835</td>
+      <td>0.292255</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>nihss_arrival_visual</th>
+      <td>0.289780</td>
+      <td>0.441909</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>nihss_arrival_facial_palsy</th>
+      <td>0.353690</td>
+      <td>0.748477</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>nihss_arrival_motor_arm_left</th>
+      <td>0.297386</td>
+      <td>0.773739</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>nihss_arrival_motor_arm_right</th>
+      <td>0.257380</td>
+      <td>0.732572</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>nihss_arrival_motor_leg_left</th>
+      <td>0.270348</td>
+      <td>0.799642</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>nihss_arrival_motor_leg_right</th>
+      <td>0.239512</td>
+      <td>0.766623</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>nihss_arrival_limb_ataxia</th>
+      <td>0.264772</td>
+      <td>0.279972</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>nihss_arrival_sensory</th>
+      <td>0.254554</td>
+      <td>0.457295</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>nihss_arrival_best_language</th>
+      <td>0.270301</td>
+      <td>0.740287</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>nihss_arrival_dysarthria</th>
+      <td>0.305170</td>
+      <td>0.671046</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>nihss_arrival_extinction_inattention</th>
+      <td>0.118309</td>
+      <td>0.407500</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>death</th>
+      <td>0.031725</td>
+      <td>0.167471</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>discharge_disability</th>
+      <td>1.649823</td>
+      <td>2.917954</td>
+      <td>1.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>disability_6_month</th>
+      <td>1.572932</td>
+      <td>2.374898</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>thrombolysis_no_but_haemorrhagic</th>
+      <td>0.085644</td>
+      <td>0.135693</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>thrombolysis_no_but_time_window</th>
+      <td>0.498078</td>
+      <td>0.269543</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>thrombolysis_no_but_comorbidity</th>
+      <td>0.013067</td>
+      <td>0.039945</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>thrombolysis_no_but_medication</th>
+      <td>0.022144</td>
+      <td>0.045701</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>thrombolysis_no_but_refusal</th>
+      <td>0.001189</td>
+      <td>0.002994</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>thrombolysis_no_but_age</th>
+      <td>0.002167</td>
+      <td>0.006497</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>thrombolysis_no_but_improving</th>
+      <td>0.062139</td>
+      <td>0.070094</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>thrombolysis_no_but_too_mild_severe</th>
+      <td>0.169333</td>
+      <td>0.122218</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>thrombolysis_no_but_time_unknown_wake_up</th>
+      <td>0.338297</td>
+      <td>0.309181</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>thrombolysis_no_but_other_medical</th>
+      <td>0.038449</td>
+      <td>0.068332</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
+</div>
+<div class="section" id="stroke-severity">
+<h3>Stroke severity<a class="headerlink" href="#stroke-severity" title="Permalink to this headline">#</a></h3>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>At greater stroke severities, a higher proportion of patients arrive by ambulance.</p></li>
+<li><p>From apx. NIHSS 0 to 10 the proportion increases before plateuing around NIHSS 10-15, where the proportion is roughly 95%+.</p></li>
+<li><p>Relatedly, patients arriving by ambulance typically had more severe strokes.</p></li>
+<li><p>Mean stroke severity over time has some seasonal variation, with slight trends observable (but often within range of normal variation) - e.g. lower mean stroke severity of ambulance arrivals in mid-2020 to 21, but not in non-ambulance-arrivals</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create grouped bar plot based on proportions</span>
-<span class="p">(</span><span class="n">data</span>
- <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;arrive_by_ambulance&#39;</span><span class="p">)[</span><span class="s1">&#39;discharge_disability&#39;</span><span class="p">]</span>
- <span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
- <span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s1">&#39;discharge_disability&#39;</span><span class="p">)</span>
- <span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">())</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Proportion&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up figure</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># Create plots</span>
+<span class="n">proportion_arrivals</span><span class="p">(</span><span class="s1">&#39;stroke_severity&#39;</span><span class="p">,</span> <span class="s1">&#39;Stroke severity&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">proportions_by_arrival</span><span class="p">(</span><span class="s1">&#39;stroke_severity&#39;</span><span class="p">,</span> <span class="s1">&#39;Stroke severity&#39;</span><span class="p">,</span>
+                       <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;hist&#39;</span><span class="p">)</span>
+<span class="n">mean_over_time</span><span class="p">(</span><span class="s1">&#39;stroke_severity&#39;</span><span class="p">,</span> <span class="s1">&#39;stroke severity&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># Show plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/981334bb6be7fbc8d04ad9763f5ac2d73b7e7e9a8b4a16f28cdd946421d9801c.png" src="_images/981334bb6be7fbc8d04ad9763f5ac2d73b7e7e9a8b4a16f28cdd946421d9801c.png" />
+<img alt="_images/7154b2fca4aa1a2865da9baba61142de6c30d01991e13e9a11a4cd1a93b73959.png" src="_images/7154b2fca4aa1a2865da9baba61142de6c30d01991e13e9a11a4cd1a93b73959.png" />
+</div>
+</div>
+</div>
+<div class="section" id="age">
+<h3>Age<a class="headerlink" href="#age" title="Permalink to this headline">#</a></h3>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>In higher age groups, a greater proportion of patients arriving by ambulance</p></li>
+<li><p>Relatedly, the average age of patients arriving by ambulance was older.</p></li>
+<li><p>Mean age over time is very variable.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up figure</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># Create column where age is the base of the category</span>
+<span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;age_base&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mf">2.5</span>
+
+<span class="c1"># Create plots</span>
+<span class="n">proportion_arrivals</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;Age group&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">proportions_by_arrival</span><span class="p">(</span><span class="s1">&#39;age_base&#39;</span><span class="p">,</span> <span class="s1">&#39;Age group&#39;</span><span class="p">,</span>
+                       <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;hist&#39;</span><span class="p">,</span> <span class="n">alt_m</span><span class="o">=</span><span class="s1">&#39;age&#39;</span><span class="p">)</span>
+<span class="n">mean_over_time</span><span class="p">(</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># Show plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e93ebc334ea3922400e8bce045c7ad4832de49c616359eae9f2d7b3a43ea650a.png" src="_images/e93ebc334ea3922400e8bce045c7ad4832de49c616359eae9f2d7b3a43ea650a.png" />
+</div>
+</div>
+</div>
+<div class="section" id="discharge-disability">
+<h3>Discharge disability<a class="headerlink" href="#discharge-disability" title="Permalink to this headline">#</a></h3>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>Proportion arriving by ambulance increases with discharge disability</p></li>
+<li><p>Relatedly, average discharge disability of patients who arrived by ambulance is higher</p></li>
+<li><p>Mean discharge disability of patients arriving by ambulance has seasonal variation but no clear overall trend - whilst the mean of patients who do not arrive by ambulance appears to be gradually increasing over time</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up figure</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># Create plots</span>
+<span class="n">proportion_arrivals</span><span class="p">(</span><span class="s1">&#39;discharge_disability&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;Discharge disability&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">proportions_by_arrival</span><span class="p">(</span><span class="s1">&#39;discharge_disability&#39;</span><span class="p">,</span> <span class="s1">&#39;Discharge disability&#39;</span><span class="p">,</span>
+                       <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="n">mean_over_time</span><span class="p">(</span><span class="s1">&#39;discharge_disability&#39;</span><span class="p">,</span> <span class="s1">&#39;discharge disability&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># Show plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f7cd8d248e8daab829548a22666fc0d6db7bd5011d5428519d2471925d861321.png" src="_images/f7cd8d248e8daab829548a22666fc0d6db7bd5011d5428519d2471925d861321.png" />
+</div>
+</div>
+</div>
+<div class="section" id="prior-disability">
+<h3>Prior disability<a class="headerlink" href="#prior-disability" title="Permalink to this headline">#</a></h3>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>Proportion arriving by ambulance increases with prior disability</p></li>
+<li><p>Relatedly, a greater proportion of patients at higher stroke severities arrive by ambulance, and vice versa</p></li>
+<li><p>Over time, the mean prior disability appears to increase for non-ambulance arrivals, and likewise for ambulance arrivals but with a dip in 2020.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up figure</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># Create plots</span>
+<span class="n">proportion_arrivals</span><span class="p">(</span><span class="s1">&#39;prior_disability&#39;</span><span class="p">,</span> <span class="s1">&#39;Prior disability&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">proportions_by_arrival</span><span class="p">(</span><span class="s1">&#39;prior_disability&#39;</span><span class="p">,</span> <span class="s1">&#39;Prior disability&#39;</span><span class="p">,</span>
+                       <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="n">mean_over_time</span><span class="p">(</span><span class="s1">&#39;prior_disability&#39;</span><span class="p">,</span> <span class="s1">&#39;prior disability&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># Show plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8bb856f1947847f4fd2aa5dfcbb7dd4803ae7082466af163c0836872a24155ab.png" src="_images/8bb856f1947847f4fd2aa5dfcbb7dd4803ae7082466af163c0836872a24155ab.png" />
+</div>
+</div>
+</div>
+<div class="section" id="disability-at-6-months">
+<h3>Disability at 6 months<a class="headerlink" href="#disability-at-6-months" title="Permalink to this headline">#</a></h3>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>The proportion of patients who arrived by ambulance is greater for patients with a higher disability at 6 months (though proportion for mRS 5 is lower than mRS 6)</p></li>
+<li><p>Relatedly, there were a greater proportion of patients of lower disabilities at 6 months in those who did not arrive by ambulance. Likewise, for example, a higher proportion of patients who arrived by ambulance had mRS 6 at 6 months, than non-ambulance-arrivals</p></li>
+<li><p>Mean disability at 6 months is quite variable, but appears to be increasing for non-ambulance arrivals</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up figure</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># Create plots</span>
+<span class="n">proportion_arrivals</span><span class="p">(</span><span class="s1">&#39;disability_6_month&#39;</span><span class="p">,</span> <span class="s1">&#39;Disability at 6 months&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">proportions_by_arrival</span><span class="p">(</span><span class="s1">&#39;disability_6_month&#39;</span><span class="p">,</span> <span class="s1">&#39;Disability at 6 months&#39;</span><span class="p">,</span>
+                       <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="n">mean_over_time</span><span class="p">(</span><span class="s1">&#39;disability_6_month&#39;</span><span class="p">,</span> <span class="s1">&#39;disability at 6 months&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># Show plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/cc9fd434c29fb95613f2a18bd75c797d2910a3743b6bfbf0a8935dff44dd65c7.png" src="_images/cc9fd434c29fb95613f2a18bd75c797d2910a3743b6bfbf0a8935dff44dd65c7.png" />
+</div>
+</div>
+</div>
+<div class="section" id="thrombolysis">
+<h3>Thrombolysis<a class="headerlink" href="#thrombolysis" title="Permalink to this headline">#</a></h3>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>Greater proportion of thrombolysed patients arrive by ambulance</p></li>
+<li><p>Relatedly, greater proportion of patients who arrived by ambulance are thrombolysed</p></li>
+<li><p>The proportion of ambulance arrivals thrombolysed since early 2020 appears to have decreased, whilst the proportion of non-ambulance arrivals thrombolysed appears to have increased… although you see this less when looking at proportion thrombolysed who those with known onset who arrived within four hours</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up figure</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># Create plots</span>
+<span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Proportion arriving by ambulance</span><span class="se">\n</span><span class="s1"> in patients thrombolysed v.s. not&#39;</span>
+<span class="n">proportion_arrivals</span><span class="p">(</span><span class="s1">&#39;thrombolysis&#39;</span><span class="p">,</span> <span class="s1">&#39;Thrombolysed&#39;</span><span class="p">,</span>
+                    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+
+<span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Proportion of patients thrombolysed in</span><span class="se">\n</span><span class="s1">ambulance arrivals v.s. not&#39;</span>
+<span class="n">proportions_by_arrival</span><span class="p">(</span><span class="s1">&#39;thrombolysis&#39;</span><span class="p">,</span> <span class="s1">&#39;thrombolysis status&#39;</span><span class="p">,</span>
+                       <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">alt_title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+
+<span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Proportion thrombolysed over time by ambulance arrival&#39;</span>
+<span class="n">mean_over_time</span><span class="p">(</span><span class="s1">&#39;thrombolysis&#39;</span><span class="p">,</span> <span class="s1">&#39;Proportion thrombolysed&#39;</span><span class="p">,</span>
+               <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">alt_title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+
+<span class="c1"># Show plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d4c32b58ac77a570058c47a6bb99c563eeb56383dc56925de962c3d0b2099905.png" src="_images/d4c32b58ac77a570058c47a6bb99c563eeb56383dc56925de962c3d0b2099905.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up figure</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># Create plots</span>
+<span class="n">title</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Proportion arriving by ambulance in &#39;</span> <span class="o">+</span>
+         <span class="s1">&#39;patients thrombolysed v.s. not</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+         <span class="s1">&#39;(from subset of patients arriving within 4 hours of known onset)&#39;</span><span class="p">)</span>
+<span class="n">proportion_arrivals</span><span class="p">(</span><span class="s1">&#39;thrombolysis&#39;</span><span class="p">,</span> <span class="s1">&#39;Thrombolysed&#39;</span><span class="p">,</span>
+                    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">data_4h</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+
+<span class="n">title</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Proportion of patients thrombolysed in ambulance arrivals vs not</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+         <span class="s1">&#39;(from subset of patients arriving within 4 hours of known onset)&#39;</span><span class="p">)</span>
+<span class="n">proportions_by_arrival</span><span class="p">(</span><span class="s1">&#39;thrombolysis&#39;</span><span class="p">,</span> <span class="s1">&#39;thrombolysis&#39;</span><span class="p">,</span>
+                       <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">data_4h</span><span class="p">,</span> <span class="n">alt_title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+
+<span class="n">title</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Proportion thrombolysed over time by ambulance arrival</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span>
+         <span class="s1">&#39;(from subset of patients arriving within 4 hours of known onset)&#39;</span><span class="p">)</span>
+<span class="n">mean_over_time</span><span class="p">(</span><span class="s1">&#39;thrombolysis&#39;</span><span class="p">,</span> <span class="s1">&#39;Proportion thrombolysed&#39;</span><span class="p">,</span>
+               <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">dataset</span><span class="o">=</span><span class="n">data_4h</span><span class="p">,</span> <span class="n">alt_title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+
+<span class="c1"># Show plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/872d1a72b261ec77c229f37e9cfa96214f43a79198d6a990938d1cb136e09e12.png" src="_images/872d1a72b261ec77c229f37e9cfa96214f43a79198d6a990938d1cb136e09e12.png" />
+</div>
+</div>
+</div>
+<div class="section" id="onset-to-arrival-time">
+<h3>Onset to arrival time<a class="headerlink" href="#onset-to-arrival-time" title="Permalink to this headline">#</a></h3>
+<p>Note: Analysis excludes onset to arrival times over 24 hours due to focus on emergency pathway and exclusion of anomalous times when using means.</p>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>A higher proportion of patients with shorter onset to arrival times, arrived by ambulance</p></li>
+<li><p>Relatedly, a greater proportion of patients who arrived by ambulance had shorter onset to arrival times</p></li>
+<li><p>Over the years, the mean onset to arrival time of ambulance arrivals has increased, whilst the arrival times of non-ambulance-users are more variable, with a drop in times in the second half of 2021.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">max</span> <span class="o">=</span> <span class="mi">24</span><span class="o">*</span><span class="mi">60</span>
+
+<span class="c1"># Convert continuous times into categories (every 30 minutes)</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">+</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;onset_arrival_cat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span>
+    <span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;onset_to_arrival_time&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+
+<span class="c1"># Drop times over 24 hours</span>
+<span class="n">onset_data</span> <span class="o">=</span> <span class="n">data_full</span><span class="p">[</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;onset_to_arrival_time&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="nb">max</span><span class="p">]</span>
+
+<span class="c1"># Set up figure</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># Proportion arriving by ambulance in each time bucket</span>
+<span class="n">proportion_arrivals</span><span class="p">(</span><span class="s1">&#39;onset_arrival_cat&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;Onset to arrival time (&lt;24h, in 30min groups)&#39;</span><span class="p">,</span>
+                    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">onset_data</span><span class="p">)</span>
+
+<span class="c1"># Distribution of onset to arrival time</span>
+<span class="n">proportions_by_arrival</span><span class="p">(</span>
+    <span class="s1">&#39;onset_to_arrival_time&#39;</span><span class="p">,</span> <span class="s1">&#39;Onset to arrival time (&lt;24h)&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;hist&#39;</span><span class="p">,</span> <span class="n">alt_bins</span><span class="o">=</span><span class="s1">&#39;Yes&#39;</span><span class="p">,</span> <span class="n">alt_bins_array</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">onset_data</span><span class="p">)</span>
+
+<span class="c1"># Mean time, over the years</span>
+<span class="n">mean_over_time</span><span class="p">(</span><span class="s1">&#39;onset_to_arrival_time&#39;</span><span class="p">,</span> <span class="s1">&#39;Onset to arrival time (&lt;24h)&#39;</span><span class="p">,</span>
+               <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">dataset</span><span class="o">=</span><span class="n">onset_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ab5ebe2e0b5fb4b3675c8bb2b404c2e00cccad354bdcfc9284fa3e1949d0e8ca.png" src="_images/ab5ebe2e0b5fb4b3675c8bb2b404c2e00cccad354bdcfc9284fa3e1949d0e8ca.png" />
+</div>
+</div>
+<p>The discrepancy in onset to arrival time by ambulance is more so for lower stroke severities. Times are similar for the most severe strokes (and in fact, the times of ambulance arrivals are slightly longer than non-ambulance).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_by_severity</span><span class="p">(</span><span class="s1">&#39;onset_to_arrival_time&#39;</span><span class="p">,</span> <span class="s1">&#39;onset to arrival time (&lt;24h)&#39;</span><span class="p">,</span>
+                 <span class="n">dataset</span><span class="o">=</span><span class="n">onset_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4c87a11eaf503fa1e049a98fba09dc85e0ad299848922ef447ca7b87809531bf.png" src="_images/4c87a11eaf503fa1e049a98fba09dc85e0ad299848922ef447ca7b87809531bf.png" />
+</div>
+</div>
+</div>
+<div class="section" id="arrival-to-scan-time">
+<h3>Arrival to scan time<a class="headerlink" href="#arrival-to-scan-time" title="Permalink to this headline">#</a></h3>
+<p>Observations:</p>
+<ul class="simple">
+<li><p>In patients with short arrival to scan times, a very high proportion arrived by ambulance. The proportion is much lower for times apx. 2 hours to 7 hours, but then for the longer times, a higher proportion arrived by ambulance. It should be noted that, overall, a very small proportion of patients actually arrived at those later times.</p></li>
+<li><p>Relatedly, a greater proportion of patients who arrived by ambulance have shorter arrival to scan times.</p></li>
+<li><p>Over the years, the mean arrival to scan time follows a similar trend for ambulance arrivals versus not - decreasing, with a dip in 2020, and then increasing into 2021.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">max</span> <span class="o">=</span> <span class="mi">12</span><span class="o">*</span><span class="mi">60</span>
+
+<span class="c1"># Convert continuous times into categories (every 30 minutes)</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">+</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;arrival_scan_cat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span>
+    <span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;arrival_to_scan_time&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+
+<span class="c1"># Drop times over 12 hours</span>
+<span class="n">onset_data</span> <span class="o">=</span> <span class="n">data_full</span><span class="p">[</span><span class="n">data_full</span><span class="p">[</span><span class="s1">&#39;arrival_to_scan_time&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="nb">max</span><span class="p">]</span>
+
+<span class="c1"># Set up figure</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># Proportion arriving by ambulance in each time bucket</span>
+<span class="n">proportion_arrivals</span><span class="p">(</span><span class="s1">&#39;arrival_scan_cat&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;Arrival to scan time (&lt;12h, in 30min groups)&#39;</span><span class="p">,</span>
+                    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">onset_data</span><span class="p">)</span>
+
+<span class="c1"># Distribution of onset to arrival time</span>
+<span class="n">proportions_by_arrival</span><span class="p">(</span>
+    <span class="s1">&#39;arrival_to_scan_time&#39;</span><span class="p">,</span> <span class="s1">&#39;Arrival to scan time (&lt;12h)&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;hist&#39;</span><span class="p">,</span> <span class="n">alt_bins</span><span class="o">=</span><span class="s1">&#39;Yes&#39;</span><span class="p">,</span> <span class="n">alt_bins_array</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">onset_data</span><span class="p">)</span>
+
+<span class="c1"># Mean time, over the years</span>
+<span class="n">mean_over_time</span><span class="p">(</span><span class="s1">&#39;arrival_to_scan_time&#39;</span><span class="p">,</span> <span class="s1">&#39;Arrival to scan time (&lt;12h)&#39;</span><span class="p">,</span>
+               <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">dataset</span><span class="o">=</span><span class="n">onset_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2df488fc3c410d9e9c23cd203562fc868ecfb59cd53b66c346002dfce33e5bbb.png" src="_images/2df488fc3c410d9e9c23cd203562fc868ecfb59cd53b66c346002dfce33e5bbb.png" />
+</div>
+</div>
+<p>The discrepancy in arrival to scan times is slightly less so for the lowest and highest stroke severities, although there remains a discrepancy for all severities.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_by_severity</span><span class="p">(</span><span class="s1">&#39;arrival_to_scan_time&#39;</span><span class="p">,</span> <span class="s1">&#39;arrival to scan time (&lt;12h)&#39;</span><span class="p">,</span>
+                 <span class="n">dataset</span><span class="o">=</span><span class="n">onset_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e342452ae62361dd87d1c0663c78cb0eed4f13d45e07c4bb076b2604d813b540.png" src="_images/e342452ae62361dd87d1c0663c78cb0eed4f13d45e07c4bb076b2604d813b540.png" />
+</div>
 </div>
 </div>
 </div>
@@ -830,22 +1594,13 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="sam2_thrombectomy.html"
+       href="sam2_compare_years.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Thrombectomy</p>
+        <p class="prev-next-title">Year by year comparison</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="sam2_size_associations.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Associations with number of admissions</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
@@ -867,7 +1622,21 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aims">Aims:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up">Set up</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-by-whether-arrive-by-ambulance">Comparing by whether arrive by ambulance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reformat-data">Reformat data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frequency-of-ambulance-arrivals">Frequency of ambulance arrivals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristics-of-patients-who-arrive-by-ambulance-v-s-not">Characteristics of patients who arrive by ambulance v.s. not</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-table">Summary table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stroke-severity">Stroke severity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#age">Age</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discharge-disability">Discharge disability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prior-disability">Prior disability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disability-at-6-months">Disability at 6 months</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thrombolysis">Thrombolysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#onset-to-arrival-time">Onset to arrival time</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arrival-to-scan-time">Arrival to scan time</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

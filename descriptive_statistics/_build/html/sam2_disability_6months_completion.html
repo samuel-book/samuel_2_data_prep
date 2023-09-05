@@ -63,7 +63,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Disability at six months (results)" href="sam2_disability_6months_results.html" />
-    <link rel="prev" title="Covariance/correlation between features" href="sam1_correlations.html" />
+    <link rel="prev" title="Correlations between features" href="sam1_correlations.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -152,27 +152,22 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="01_reformat_data.html">Reformat data</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">SAMueL-1</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Based on SAMueL-1</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="sam1_pathway_statistics.html">Descriptive analysis of stroke pathway data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam1_thrombolysis_associations.html">Associations between thrombolysis use and patient features</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam1_compare_by_thrombolysis.html">Comparison between patients who received thrombolysis versus not</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam1_day_week_pathway_patterns.html">Daily and weekly pathway patterns</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam1_pathway_distributions.html">Stroke pathway timing distributions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sam1_correlations.html">Covariance/correlation between features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam1_correlations.html">Correlations between features</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">SAMueL-2 (detailed/complete)</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">New for SAMueL-2</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Disability at six months (completion)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam2_disability_6months_results.html">Disability at six months (results)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam2_thrombectomy.html">Thrombectomy</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">SAMUeL-2 (incomplete)</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="sam2_ambulance.html">Ambulance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sam2_size_associations.html">Associations with number of admissions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sam2_compare_years.html">Year by year comparison</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sam2_disability_discharge.html">Thrombolysis outcomes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sam2_ambulance.html">Ambulance</a></li>
 </ul>
 
     </div>
@@ -438,15 +433,13 @@ document.write(`
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
 <span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span><span class="p">,</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="p">(</span><span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">,</span>
-                             <span class="n">r2_score</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="p">(</span><span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span><span class="p">)</span>
 
 <span class="c1"># Set max rows when display dataframe</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
@@ -657,6 +650,7 @@ document.write(`
 </div>
 <p><strong>Visualise completion of disability at 6 months by team</strong></p>
 <p>The graph presents the proportion of patients who were not dead at discharge and are missing disability at six months. We can see there is <strong>large variability</strong> between teams, from 10.25% missing data to 99.95% missing data.</p>
+<p><strong>Important caveat:</strong> Each disability score (pre-stroke, discharge and 6 months) can be the responsibility of different stroke teams, as patients can be moved between teams for different services, but we are only provided one team name.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create columns where they are TRUE if missing disability</span>
@@ -1018,6 +1012,14 @@ Name: 6_month_complete, dtype: float64
         <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
         <span class="n">reg_results</span><span class="p">[</span><span class="s1">&#39;confusion&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
 
+        <span class="c1"># Calculate FPR and TPR for all thresholds of the classification</span>
+        <span class="n">probs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+        <span class="n">preds</span> <span class="o">=</span> <span class="n">probs</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">threshold</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">preds</span><span class="p">)</span>
+        <span class="n">reg_results</span><span class="p">[</span><span class="s1">&#39;fpr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">fpr</span>
+        <span class="n">reg_results</span><span class="p">[</span><span class="s1">&#39;tpr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tpr</span>
+        <span class="n">reg_results</span><span class="p">[</span><span class="s1">&#39;roc_auc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">auc</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">)</span>
+
     <span class="k">return</span> <span class="p">(</span><span class="n">reg_results</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1025,20 +1027,14 @@ Name: 6_month_complete, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logistic_regression</span><span class="p">(</span><span class="n">reg_df</span><span class="p">,</span> <span class="n">standardise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">logistic_regression</span><span class="p">(</span><span class="n">reg_df</span><span class="p">,</span> <span class="n">standardise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">res</span><span class="p">[</span><span class="s1">&#39;confusion&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>defaultdict(list,
-            {&#39;feature_weights&#39;: [array([[ 0.04656685, -0.13427037,  0.07747488,  0.04044917, -0.46130055]]),
-              array([[ 0.04511475, -0.1328435 ,  0.07879367,  0.03787641, -0.45563004]]),
-              array([[ 0.04239823, -0.13610947,  0.07885667,  0.04281216, -0.45526751]]),
-              array([[ 0.04392537, -0.13297785,  0.07556136,  0.03773259, -0.45832226]]),
-              array([[ 0.0408941 , -0.13453528,  0.07800657,  0.04224722, -0.45412759]])],
-             &#39;accuracy&#39;: 0.6920486593425096,
-             &#39;confusion&#39;: array([[49307,     8],
-                    [21940,    16]])})
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[49307,     8],
+       [21940,    16]])
 </pre></div>
 </div>
 </div>
@@ -1075,26 +1071,50 @@ Name: 6_month_complete, dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logistic_regression</span><span class="p">(</span><span class="n">reg_df_under</span><span class="p">,</span> <span class="n">standardise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">logistic_regression</span><span class="p">(</span><span class="n">reg_df_under</span><span class="p">,</span> <span class="n">standardise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">res</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>defaultdict(list,
-            {&#39;feature_weights&#39;: [array([[ 0.04703205, -0.12254233,  0.07573366,  0.03339329, -0.46743752]]),
-              array([[ 0.054982  , -0.12387545,  0.07085426,  0.03905425, -0.47335221]]),
-              array([[ 0.05334856, -0.12321454,  0.08037915,  0.04038137, -0.47323735]]),
-              array([[ 0.04877762, -0.12038816,  0.07621313,  0.04049618, -0.46952761]]),
-              array([[ 0.05267271, -0.12486921,  0.07459176,  0.03982176, -0.47283985]])],
-             &#39;accuracy&#39;: 0.5684001097694841,
-             &#39;confusion&#39;: array([[10945, 10903],
-                    [ 7970, 13910]])})
+            {&#39;feature_weights&#39;: [array([[ 0.05061606, -0.12742546,  0.07198772,  0.04368519, -0.47087918]]),
+              array([[ 0.05843797, -0.1295769 ,  0.06728217,  0.04437875, -0.47091139]]),
+              array([[ 0.05440457, -0.12356035,  0.0743523 ,  0.0428499 , -0.47194244]]),
+              array([[ 0.04749379, -0.12175285,  0.07393638,  0.04520857, -0.47334115]]),
+              array([[ 0.05406446, -0.13207935,  0.07556783,  0.04398249, -0.47095444]])],
+             &#39;accuracy&#39;: 0.5707784485912917,
+             &#39;confusion&#39;: array([[10977, 10871],
+                    [ 7898, 13982]]),
+             &#39;fpr&#39;: array([0.00000000e+00, 4.57707799e-05, 4.57707799e-05, ...,
+                    9.99679605e-01, 9.99771146e-01, 1.00000000e+00]),
+             &#39;tpr&#39;: array([0.00000000e+00, 0.00000000e+00, 1.82815356e-04, ...,
+                    1.00000000e+00, 1.00000000e+00, 1.00000000e+00]),
+             &#39;roc_auc&#39;: 0.6073165240213756})
 </pre></div>
 </div>
 </div>
 </div>
-<p>Very low accuracy - 0.57.</p>
-<p>Would need to test assumptions - but anticipating it does not satisfy them all.</p>
+<p>Very low accuracy - 0.57 - model is unusable (you almost might as well flip a coin).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Receiver Operating Characteristic&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;fpr&#39;</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;tpr&#39;</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span>
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;AUC=</span><span class="si">%0.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;roc_auc&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True Positive Rate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;False Positive Rate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f652d1e9c7a156a490894fd5dea090c81804c76c9af8e40b0312d881063e4386.png" src="_images/f652d1e9c7a156a490894fd5dea090c81804c76c9af8e40b0312d881063e4386.png" />
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1136,7 +1156,7 @@ Name: 6_month_complete, dtype: int64
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Covariance/correlation between features</p>
+        <p class="prev-next-title">Correlations between features</p>
       </div>
     </a>
     <a class="right-next"
